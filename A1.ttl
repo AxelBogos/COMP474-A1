@@ -11,25 +11,28 @@
 @prefix a1_data: <http://a1.io/data#> 
 
 a1_schema:University
-	<predicate><object>.
+  a rdfs:Class ;
+  rdfs:subClassOf foaf:Organization ;
+  rdfs:label "University"@en.
 
 a1_schema:ClassEvent
-	<predicate><object>.
+  a rdfs:Class ;
+  rdfs:label "Class Event"@en.
 
 a1_schema:Lecture
-	<predicate><object>.
+	rdfs:subClassOf a1_schema:ClassEvent;
+	rdfs:label "Lecutre"@en.
 
 a1_schema:Lab
-	<predicate><object>.
+	rdfs:subClassOf a1_schema:ClassEvent;
+	rdfs:label "Laboratory"@en.
 
 a1_schema:Tutorial
-	<predicate><object>.
+	rdfs:subClassOf a1_schema:ClassEvent;
+	rdfs:label "Tutorial"@en.
 
 a1_schema:Course
-	<predicate><object>.
+	rdfs:label "Course"@en.
 
 a1_schema:Topics
-	<predicate><object>.
-
-a1_schema:Professor
-	<predicate><object>.
+	rdfs:label "Topic"@en.
