@@ -34,9 +34,43 @@ a1_schema:Tutorial
 	rdfs:subClassOf a1_schema:ClassEvent;
 	rdfs:label "Tutorial"@en.
 
+### Course
 a1_schema:Course
 	a rdfs:Class;
 	rdfs:label "Course"@en.
+a1_schema:Name
+	a rdf:Property;
+	rdfs:label "Course Name"@en ;
+	rdfs:comment "The name of the Course"@en ;
+	rdfs:domain a1_schema:Course;
+	rdfs:range rdfs:Literal.
+a1_schema:Subject
+	a rdf:Property;
+	rdfs:label "Course Subject"@en ;
+	rdfs:comment "The Subject of the Course"@en ;
+	rdfs:domain a1_schema:Course;
+	rdfs:range rdfs:Literal.
+a1_schema:Number
+	a rdf:Property;
+	rdfs:label "Course Number"@en ;
+	rdfs:comment "The Number of the Course"@en ;
+	rdfs:domain a1_schema:Course;
+	rdfs:range rdfs:Literal.
+a1_schema:Description
+	a rdf:Property;
+	rdfs:label "Course Description"@en ;
+	rdfs:comment "The Description of the Course"@en ;
+	rdfs:domain a1_schema:Course;
+	rdfs:range rdfs:Literal.
+a1_schema:Outline
+	a rdf:Property;
+	rdfs:label "Course Outline"@en ;
+	rdfs:comment "The Outline of the Course"@en ;
+	rdfs:domain a1_schema:Course;
+	rdfs:range rdfs:Literal.
+a1_schema:Link
+	a rdfs:subPropertyOf rdfs:seeAlso
+
 
 a1_schema:Topics
 	a rdfs:Class;
