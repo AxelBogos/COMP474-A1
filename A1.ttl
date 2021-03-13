@@ -16,23 +16,28 @@ a1_schema:University
   rdfs:label "University"@en.
 
 a1_schema:ClassEvent
-  a rdfs:Class ;
+  a rdfs:Class;
   rdfs:label "Class Event"@en.
 
 a1_schema:Lecture
+	a rdfs:Class;
 	rdfs:subClassOf a1_schema:ClassEvent;
 	rdfs:label "Lecutre"@en.
 
 a1_schema:Lab
+	a rdfs:Class;
 	rdfs:subClassOf a1_schema:ClassEvent;
 	rdfs:label "Laboratory"@en.
 
 a1_schema:Tutorial
+	a rdfs:Class;
 	rdfs:subClassOf a1_schema:ClassEvent;
 	rdfs:label "Tutorial"@en.
 
 a1_schema:Course
+	a rdfs:Class;
 	rdfs:label "Course"@en.
 
 a1_schema:Topics
+	a rdfs:Class;
 	rdfs:label "Topic"@en.
