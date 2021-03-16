@@ -3,7 +3,7 @@ Competency Questions
 01. Which topics are covered in the second lecture of comp 346
 02. What is comp 232 about?
 03. Which courses at concordia teach natural language programming?
-04. When do comp 474 labs start?
+04. Where can I get more information about comp 474 topics?
 05. Is comp 352 taught at concordia?
 06. Which universities teach courses about discrete math?
 07. How many COMP courses are taught at concordia university?
