@@ -26,7 +26,7 @@ with open('/Users/welton/remoteproj/copy.csv','r') as data:
             g.add((cn, SCH.CourseSubject, Literal(row['Course code'])))
             g.add((cn, SCH.CourseNumber, Literal(row['Course number'])))
             # g.add((cn, SCH.CourseDescription, Literal(row['Description'])))
-            # g.add((cn, SCH.CourseWebsite, Literal(row['Website'])))
+            g.add((cn, SCH.CourseWebsite, Literal(row['Website'])))
 
             # g.add((cn, SCH.Outline, someURIToContent)))
             
