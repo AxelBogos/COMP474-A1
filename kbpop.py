@@ -3,8 +3,8 @@ from rdflib import Graph, URIRef, BNode, Literal, Namespace
 from rdflib.namespace import RDF,RDFS,XSD,FOAF,OWL
 
 DBR = Namespace("http://dbpedia.org/resource/")
-SCH = Namespace("http://a1.io/schema#")
-DAT = Namespace("http://a1.io/data#")
+SCH = Namespace("http://a1.io/schema/")
+DAT = Namespace("http://a1.io/data/")
 
 g = Graph()
 g.parse('A1.ttl', format='turtle')
