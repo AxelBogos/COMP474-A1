@@ -17,22 +17,13 @@ a1_schema:University
   rdfs:subClassOf foaf:Organization ;
   rdfs:label "University"@en.
 
+a1_schema:Lecture
+	a rdfs:Class;
+	rdfs:label "Lecture"@en.
+
 a1_schema:ClassEvent
   a rdfs:Class;
   rdfs:label "Class Event"@en.
-
-## TODO: I dont think lectures are a class event. I think it goes 
-##	course
-##		lecture
-##			classEvent (if we have to explicitly define that)
-##				tutorial
-##				lab
-## 
-
-a1_schema:Lecture
-	a rdfs:Class;
-	rdfs:subClassOf a1_schema:ClassEvent;
-	rdfs:label "Lecutre"@en.
 
 a1_schema:Lab
 	a rdfs:Class;
@@ -48,21 +39,27 @@ a1_schema:Course
 	a rdfs:Class;
 	rdfs:label "Course"@en.
 
-## TODO: Need a way to link topics to a course (make topic be a propertyOf Course)
-
-a1_schema:Topics
+a1_schema:Topic
 	a rdfs:Class;
 	rdfs:label "Topic"@en.
 
 ### Proprieties
+
 a1_schema:PartOfClass
 	a rdf:Property;
 	rdfs:label "Part of class"@en ;
-	rdfs:comment "Class Event is part of a particular class"@en ;
-	rdfs:domain a1_schema:ClassEvent;
+	rdfs:comment "A Lecture is part of a particular Class"@en ;
+	rdfs:domain a1_schema:Lecture;
 	rdfs:range a1_schema:Class.
 
-a1_schema:Offers
+a1_schema:PartOfLecture
+	a rdf:Property;
+	rdfs:label "Part of Lecture"@en ;
+	rdfs:comment "A Class Event is part of a particular Lecture"@en ;
+	rdfs:domain a1_schema:ClassEvent;
+	rdfs:range a1_schema:Lecture.
+
+a1_schema:OffersCourse
 	a rdf:Property;
 	rdfs:label "Offers"@en ;
 	rdfs:comment "Classes a university offers"@en ;
@@ -104,9 +101,16 @@ a1_schema:Content
 	rdfs:domain a1_schema:ClassEvent;
 	rdfs:range rdfs:Literal.
 
-a1_schema:LectureOfEvent
+a1_schema:LectureOfClass
 	a rdf:Property;
 	rdfs:label "Lecture of Event"@en ;
-	rdfs:comment "Lecture associated with a class event"@en ;
-	rdfs:domain a1_schema:ClassEvent;
+	rdfs:comment "Lecture associated with a class"@en ;
+	rdfs:domain a1_schema:Class;
 	rdfs:range rdfs:Lecture.
+
+a1_schema:TopicOf
+	a rdf:Property;
+	rdfs:label "Topics"@en ;
+	rdfs:comment "Topics of a course"@en ;
+	rdfs:domain a1_schema:Course;
+	rdfs:range a1_schema:Topic.
