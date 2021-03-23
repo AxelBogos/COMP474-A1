@@ -21,6 +21,14 @@ a1_schema:ClassEvent
   a rdfs:Class;
   rdfs:label "Class Event"@en.
 
+## TODO: I dont think lectures are a class event. I think it goes 
+##	course
+##		lecture
+##			classEvent (if we have to explicitly define that)
+##				tutorial
+##				lab
+## 
+
 a1_schema:Lecture
 	a rdfs:Class;
 	rdfs:subClassOf a1_schema:ClassEvent;
@@ -39,6 +47,8 @@ a1_schema:Tutorial
 a1_schema:Course
 	a rdfs:Class;
 	rdfs:label "Course"@en.
+
+## TODO: Need a way to link topics to a course (make topic be a propertyOf Course)
 
 a1_schema:Topics
 	a rdfs:Class;
