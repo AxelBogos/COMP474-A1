@@ -71,7 +71,7 @@ a1_schema:RelatedToLecture
 	a rdf:Property;
 	rdfs:label "Related to Lecture"@en ;
 	rdfs:comment "A Class Event is related of a particular Lecture"@en ;
-	rdfs:domain a1_schema:ClassEvent;
+	rdfs:domain a1_schema:LectureRelatedEvent;
 	rdfs:range a1_schema:Lecture.
 
 a1_schema:Offers
