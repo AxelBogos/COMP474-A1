@@ -46,10 +46,10 @@ a1_schema:Slides
 	rdfs:subClassOf teach:Material;
 	rdfs:label "Slides"@en.
 
-a1_schema:Worksheets
+a1_schema:Worksheet
     a rdfs:Class;
     rdfs:subClassOf teach:Material;
-    rdfs:label "Worksheets"@en.
+    rdfs:label "Worksheet"@en.
 
 ### Proprieties
 
