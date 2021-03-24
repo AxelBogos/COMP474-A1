@@ -108,6 +108,8 @@ a1_schema:LectureOfClass
 	rdfs:domain a1_schema:Class;
 	rdfs:range rdfs:Lecture.
 
+#TODO: I think topics may actually be tied to specific lectures, rather than exclusively the course as a whole
+
 a1_schema:TopicOf
 	a rdf:Property;
 	rdfs:label "Topics"@en ;

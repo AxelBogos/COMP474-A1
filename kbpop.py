@@ -16,7 +16,7 @@ g.add((DAT.Concordia, RDFS.seeAlso, URIRef("http://dbpedia.org/resource/Concordi
 with open('CATALOG.csv','r') as data:
     r = csv.DictReader(data)
     for row in r:
-        # Hardcoded filter for now
+        # Hardcoded filter for now - remove before submission
         if row['Course code'] == 'COMP' and row['Course number'] in ['474','353']:
             #Create the course
             cn = URIRef("http://a1.io/data#"+row['Course code']+row['Course number'])
@@ -37,6 +37,7 @@ with open('CATALOG.csv','r') as data:
 
 # TODO: Manually add topics and materials to satisfy the competency questions
 # TODO/ASK: What does "give each item an automatically generated URI" mean? 
+# TODO: Add all the materials. literally alllll of it
     # c474 course topics
         # Introduction to Intel Systems  (slides01)
         # Knowledge Graphs               (slides02,worksheet01)
@@ -47,7 +48,6 @@ with open('CATALOG.csv','r') as data:
         # ER Diagrams and Models         (DB2)
         # Relation Data Model            (DB3)
 
-
-
-
 print(g.serialize(format="turtle").decode("utf-8"))
+
+
