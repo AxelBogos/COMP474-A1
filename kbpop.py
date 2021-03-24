@@ -12,7 +12,7 @@ TEACH = Namespace("http://linkedscience.org/teach/ns#")
 
 REGEN_CLEAN_CATALOG = False
 
-special_courses = ["http://a1.io/data#COMP353","http://a1.io/data#COMP474"]
+special_courses = [URIRef("http://a1.io/data#COMP353"),URIRef("http://a1.io/data#COMP474")]
 
 def populate_knowledge_base():
 
@@ -29,23 +29,24 @@ def populate_knowledge_base():
         for row in r:
             #Create the course
             cn = URIRef("http://a1.io/data#"+row['Course code']+row['Course number'])
-            # TODO the CID in catalog doesnt seem to mean much intuitively. I think it should be
+            # TODO the CID in catalog doesnt seem to mean much intuitively. I think it should be cn everywhere
             cid = URIRef("http://a1.io/data#"+row['Key'])
-            g.add((cid, RDF.type, SCH.Course))
+            g.add((cn, RDF.type, SCH.Course))
 
             # Add to list of offered courses at Concordia
-            g.add((DBR.Concordia_University, SCH.Offers, cid))
+            g.add((DBR.Concordia_University, SCH.Offers, cn))
 
             #Add course deets
-            g.add((cid, TEACH.courseTitle, Literal(row['Title'])))
-            g.add((cid, SCH.HasSubject, Literal(row['Course code'])))
-            g.add((cid, SCH.CourseNumber, Literal(row['Course number'])))
-            g.add((cid, TEACH.courseDescription, Literal(row['Description'])))
+            g.add((cn, TEACH.courseTitle, Literal(row['Title'])))
+            g.add((cn, SCH.HasSubject, Literal(row['Course code'])))
+            g.add((cn, SCH.CourseNumber, Literal(row['Course number'])))
+            g.add((cn, TEACH.courseDescription, Literal(row['Description'])))
             # TODO: Consider manually populating the description ^^ for these 2 courses. The dataset we have is gross
-            g.add((cid, RDFS.seeAlso, Literal(row['Website'])))
+            g.add((cn, RDFS.seeAlso, Literal(row['Website'])))
 
             if cn in special_courses:
                 for i in range(1,12):
+
                     # Add Lectures
                     lec_id = URIRef("http://a1.io/data#" + "{}{}Lec{}".format(row['Course code'],row['Course number'],i))
                     g.add((cn, SCH.HasLecture, lec_id))
@@ -62,42 +63,26 @@ def populate_knowledge_base():
                     g.add((tut_id, RDF.type, SCH.Tutorial))
                     g.add((tut_id,SCH.RelatedToLecture,lec_id))
 
+                    # Add Topics TODO: will be manual i think?
+
                 # Add content
                 dir_name = "c{}content".format(row['Course number'])
                 for sub_dir in ['Readings', 'Slides', 'Worksheet', 'Other']:
-                    path = path.join(dir_name,sub_dir)
-                    if os.path.isdir(path):
-                        for f, idf in enumerate(os.listdir(path)):
-                            f_uri = URIRef("http://a1.io/data#" + path.join(path,f))
-                            g.add((f_uri,RDF.type, SCH.sub_dir))
+                    dir_path = os.path.join(dir_name, sub_dir)
+                    if os.path.isdir(dir_path):
+                        for idf, f in enumerate(sorted(os.listdir(dir_path))):
+                            f_uri = URIRef("http://a1.io/data#" + path.join(dir_path,f))
+                            lec_id = URIRef("http://a1.io/data#" + "{}{}Lec{}".format(row['Course code'], row['Course number'], idf+1))
+                            g.add((f_uri, RDF.type, SCH+sub_dir))
+                            g.add((lec_id, SCH.HasMaterial,f_uri))
+
+                # Add outline TODO
 
 
-
-    # # Iteratively give each course 12 lectures
-    # for i in range(1,12):
-    #     # Add lecture (http://a1.io/data#GCS_147l1)
-    #     lid = URIRef("http://a1.io/data#" + row['Key'] + "l" + i)
-    #     g.add((lid, RDF.type, SCH.Lecture))
-    #     # Add lecture name
-    #     # g.add((lid, SCH.Lecturename, .........))
-    #     courseNumber = "someShit"
-    #     # Add lecture slide set (slide set)
-    #     ss = URIRef("c" + courseNumber + "content/Slides/" + i + ".pdf" )
-    #     # g.add((, RDF.type, SCH.Slides))
-    #     # g.add((lid, TEACH.hasCourseMaterial, .........))
-    #
-    #     # Add lecture Readings
-    #     # g.add((lid,TEACH.reading, .........))
-    #
-    #     # Add other lecture materials
-    #     # Add lecture topic (1 for now)
-    #         # from a list[]
-    #     # Add a lab and tutorial to each lecture
-    #         # Add a resource for each event
 
 # TODO: Manually add topics and materials to satisfy the competency questions
 # TODO/ASK: What does "give each item an automatically generated URI" mean?
-# TODO: Add all the materials. literally alllll of it
+# TODO: Add all the materials. literally all of it
 # c474 course topics
     # Introduction to Intel Systems  (slides01)
     # Knowledge Graphs               (slides02,worksheet01)

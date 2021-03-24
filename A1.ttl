@@ -51,6 +51,11 @@ a1_schema:Worksheet
     rdfs:subClassOf teach:Material;
     rdfs:label "Worksheet"@en.
 
+a1_schema:Reading
+    a rdfs:Class;
+    rdfs:subClassOf teach:Material;
+    rdfs:label "Worksheet"@en.
+
 ### Proprieties
 
 a1_schema:HasLecture
@@ -112,9 +117,16 @@ a1_schema:Outline
 a1_schema:HasContent
 	a rdf:Property;
 	rdfs:label "Content"@en ;
-	rdfs:comment "Content of a class event"@en ;
+	rdfs:comment "Sigle of a class, eg. COMP, SOEN"@en ;
 	rdfs:domain a1_schema:ClassEvent;
 	rdfs:range rdfs:Literal.
+
+a1_schema:HasMaterial
+	a rdf:Property;
+	rdfs:label "Lecture Material"@en ;
+	rdfs:comment "Material of a lecture"@en ;
+	rdfs:domain a1_schema:Lecture;
+	rdfs:range teach:Material.
 
 ### TEMPLATE FOR TRIPLE DECLARATION
 #  ConcordiaURI a a1_schema:University
