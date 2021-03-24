@@ -5,8 +5,9 @@
 @prefix dbr: <http://dbpedia.org/resource/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix dbp: <http://dbpedia.org/property/> .
-@prefix owl:<http://www.w3.org/2002/07/owl#> .
-@prefix teach:<http://linkedscience.org/teach/ns#>.
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix teach: <http://linkedscience.org/teach/ns#> .
+@prefix vivo: <http://vivoweb.org/ontology/core#> .
 
 @prefix a1_schema: <http://a1.io/schema#> .
 @prefix a1_data: <http://a1.io/data#> .
@@ -130,9 +131,9 @@ a1_schema:HasContent
 #Lecture a1_schema:HasContent literal (eg. COMP, SOEN)
 #Lecture teach:hasCourseMaterial URI
 #aURI a a1_schema:Worksheet
-#aURI a a1_schema:Reading
+#aURI a a1_schema:Reading --> TODO: This doesnt exist in the schema
 #aURI a a1_schema:Slides
 #Lecture rdfs:link URI
 #lecture dbp:subject URI
-#course dbp:subject URI
+#course dbp:subject URI (for topics)
 
