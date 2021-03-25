@@ -90,7 +90,7 @@ def populate_knowledge_base():
                     g.add((cn, SCH.Outline, DAT[outline_path]))
 
                 # Add content
-                for sub_dir in ['Readings', 'Slides', 'Worksheet', 'Other']:
+                for sub_dir in ['Reading', 'Slide', 'Worksheet', 'Other']:
                     dir_path = os.path.join(dir_name, sub_dir)
                     if os.path.isdir(dir_path):
                         for idf, f in enumerate(sorted(os.listdir(dir_path))):
