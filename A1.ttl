@@ -46,10 +46,10 @@ a1_schema:LectureMaterial
 	a rdfs:Class;
 	rdfs:subClassOf teach:Material ;
 	rdfs:label "Course"@en.
-a1_schema:Slides
+a1_schema:Slide
 	a rdfs:Class;
 	rdfs:subClassOf a1_schema:LectureMaterial;
-	rdfs:label "Slides"@en.
+	rdfs:label "Slide"@en.
 
 a1_schema:Worksheet
     a rdfs:Class;
@@ -142,7 +142,7 @@ a1_schema:HasMaterial
 #Lecture teach:hasCourseMaterial URI
 #aURI a a1_schema:Worksheet
 #aURI a a1_schema:Reading
-#aURI a a1_schema:Slides
+#aURI a a1_schema:Slide
 #Lecture rdfs:link URI
 #lecture dbp:subject URI
 #course dbp:subject URI (for topics)
