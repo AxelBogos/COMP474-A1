@@ -1,5 +1,6 @@
 @prefix a1_data: <http://a1.io/data#> .
 @prefix a1_schema: <http://a1.io/schema#> .
+@prefix dbp: <http://dbpedia.org/property/> .
 @prefix dbr: <http://dbpedia.org/resource/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -21,6 +22,10 @@ a1_schema:Lecture a rdfs:Class ;
 
 a1_schema:LectureRelatedEvent a rdfs:Class ;
     rdfs:label "Events related to lectures"@en .
+
+a1_schema:Reading a rdfs:Class ;
+    rdfs:label "Worksheet"@en ;
+    rdfs:subClassOf teach:Material .
 
 a1_schema:Slides a rdfs:Class ;
     rdfs:label "Slides"@en ;
@@ -46,6 +51,9 @@ a1_data:COMP353Lab10 a a1_schema:Lab ;
 
 a1_data:COMP353Lab11 a a1_schema:Lab ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec11 .
+
+a1_data:COMP353Lab12 a a1_schema:Lab ;
+    a1_schema:RelatedToLecture a1_data:COMP353Lec12 .
 
 a1_data:COMP353Lab2 a a1_schema:Lab ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec2 .
@@ -80,6 +88,9 @@ a1_data:COMP353Tut10 a a1_schema:Tutorial ;
 a1_data:COMP353Tut11 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec11 .
 
+a1_data:COMP353Tut12 a a1_schema:Tutorial ;
+    a1_schema:RelatedToLecture a1_data:COMP353Lec12 .
+
 a1_data:COMP353Tut2 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec2 .
 
@@ -107,12 +118,6 @@ a1_data:COMP353Tut9 a a1_schema:Tutorial ;
 a1_data:COMP474Lab1 a a1_schema:Lab ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec1 .
 
-a1_data:COMP474Lab10 a a1_schema:Lab ;
-    a1_schema:RelatedToLecture a1_data:COMP474Lec10 .
-
-a1_data:COMP474Lab11 a a1_schema:Lab ;
-    a1_schema:RelatedToLecture a1_data:COMP474Lec11 .
-
 a1_data:COMP474Lab2 a a1_schema:Lab ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec2 .
 
@@ -139,12 +144,6 @@ a1_data:COMP474Lab9 a a1_schema:Lab ;
 
 a1_data:COMP474Tut1 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec1 .
-
-a1_data:COMP474Tut10 a a1_schema:Tutorial ;
-    a1_schema:RelatedToLecture a1_data:COMP474Lec10 .
-
-a1_data:COMP474Tut11 a a1_schema:Tutorial ;
-    a1_schema:RelatedToLecture a1_data:COMP474Lec11 .
 
 a1_data:COMP474Tut2 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec2 .
@@ -178,7 +177,7 @@ a1_schema:CourseNumber a rdf:Property ;
 
 a1_schema:HasContent a rdf:Property ;
     rdfs:label "Content"@en ;
-    rdfs:comment "Content of a class event"@en ;
+    rdfs:comment "Sigle of a class, eg. COMP, SOEN"@en ;
     rdfs:domain a1_schema:ClassEvent ;
     rdfs:range rdfs:Literal .
 
@@ -187,6 +186,12 @@ a1_schema:HasLecture a rdf:Property ;
     rdfs:comment "A Lecture is part of a particular Class"@en ;
     rdfs:domain a1_schema:Lecture ;
     rdfs:range a1_schema:Course .
+
+a1_schema:HasMaterial a rdf:Property ;
+    rdfs:label "Lecture Material"@en ;
+    rdfs:comment "Material of a lecture"@en ;
+    rdfs:domain a1_schema:Lecture ;
+    rdfs:range teach:Material .
 
 a1_schema:HasSubject a rdf:Property ;
     rdfs:label "Course Subject"@en ;
@@ -3870,6 +3875,7 @@ a1_data:COMP353 a a1_schema:Course ;
     a1_schema:HasLecture a1_data:COMP353Lec1,
         a1_data:COMP353Lec10,
         a1_data:COMP353Lec11,
+        a1_data:COMP353Lec12,
         a1_data:COMP353Lec2,
         a1_data:COMP353Lec3,
         a1_data:COMP353Lec4,
@@ -3879,6 +3885,7 @@ a1_data:COMP353 a a1_schema:Course ;
         a1_data:COMP353Lec8,
         a1_data:COMP353Lec9 ;
     a1_schema:HasSubject "COMP" ;
+    a1_schema:Outline <http://a1.io/data#c353content/Outline.pdf> ;
     teach:courseDescription "Laboratory: 24 hours total, group project" ;
     teach:courseTitle "Databases" ;
     rdfs:seeAlso "" .
@@ -3963,8 +3970,6 @@ a1_data:COMP473 a a1_schema:Course ;
 a1_data:COMP474 a a1_schema:Course ;
     a1_schema:CourseNumber "474" ;
     a1_schema:HasLecture a1_data:COMP474Lec1,
-        a1_data:COMP474Lec10,
-        a1_data:COMP474Lec11,
         a1_data:COMP474Lec2,
         a1_data:COMP474Lec3,
         a1_data:COMP474Lec4,
@@ -3974,6 +3979,7 @@ a1_data:COMP474 a a1_schema:Course ;
         a1_data:COMP474Lec8,
         a1_data:COMP474Lec9 ;
     a1_schema:HasSubject "COMP" ;
+    a1_schema:Outline <http://a1.io/data#c474content/Outline.pdf> ;
     teach:courseDescription "Laboratory: 24 hours total, project" ;
     teach:courseTitle "Intelligent Systems" ;
     rdfs:seeAlso "" .
@@ -9968,69 +9974,177 @@ a1_data:WSDB496 a a1_schema:Course ;
     teach:courseTitle "Directed Research" ;
     rdfs:seeAlso "" .
 
+<http://a1.io/data#c353content/Readings/reading1.pdf> a a1_schema:Readings .
+
+<http://a1.io/data#c353content/Readings/reading2.pdf> a a1_schema:Readings .
+
+<http://a1.io/data#c353content/Slides/DB1.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c353content/Slides/DB10.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c353content/Slides/DB11.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c353content/Slides/DB12.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c353content/Slides/DB2.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c353content/Slides/DB3.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c353content/Slides/DB4.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c353content/Slides/DB5.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c353content/Slides/DB6.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c353content/Slides/DB7.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c353content/Slides/DB8.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c353content/Slides/DB9.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c474content/Slides/slides1.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c474content/Slides/slides2.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c474content/Slides/slides3.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c474content/Slides/slides4.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c474content/Slides/slides5.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c474content/Slides/slides6.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c474content/Slides/slides7.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c474content/Slides/slides8.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c474content/Slides/slides9.pdf> a a1_schema:Slides .
+
+<http://a1.io/data#c474content/Worksheet/worksheet1.pdf> a a1_schema:Worksheet .
+
+<http://a1.io/data#c474content/Worksheet/worksheet2.pdf> a a1_schema:Worksheet .
+
+<http://a1.io/data#c474content/Worksheet/worksheet3.pdf> a a1_schema:Worksheet .
+
+<http://a1.io/data#c474content/Worksheet/worksheet4.pdf> a a1_schema:Worksheet .
+
+<http://a1.io/data#c474content/Worksheet/worksheet5.pdf> a a1_schema:Worksheet .
+
+<http://a1.io/data#c474content/Worksheet/worksheet6.pdf> a a1_schema:Worksheet .
+
+<http://a1.io/data#c474content/Worksheet/worksheet7.pdf> a a1_schema:Worksheet .
+
 a1_data:COMP353Lec1 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 1 .
+    a1_schema:HasMaterial <http://a1.io/data#c353content/Readings/reading1.pdf>,
+        <http://a1.io/data#c353content/Slides/DB1.pdf> ;
+    a1_schema:LectureNumber 1 ;
+    dbp:subject dbr:Database .
 
 a1_data:COMP353Lec10 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 10 .
+    a1_schema:HasMaterial <http://a1.io/data#c353content/Slides/DB7.pdf> ;
+    a1_schema:LectureNumber 10 ;
+    dbp:subject dbr:SQL .
 
 a1_data:COMP353Lec11 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 11 .
+    a1_schema:HasMaterial <http://a1.io/data#c353content/Slides/DB8.pdf> ;
+    a1_schema:LectureNumber 11 ;
+    dbp:subject dbr:Datalog .
+
+a1_data:COMP353Lec12 a a1_schema:Lecture ;
+    a1_schema:HasMaterial <http://a1.io/data#c353content/Slides/DB9.pdf> ;
+    a1_schema:LectureNumber 12 ;
+    dbp:subject dbr:Object_Definition_Language .
 
 a1_data:COMP353Lec2 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 2 .
+    a1_schema:HasMaterial <http://a1.io/data#c353content/Readings/reading2.pdf>,
+        <http://a1.io/data#c353content/Slides/DB10.pdf> ;
+    a1_schema:LectureNumber 2 ;
+    dbp:subject <http://dbpedia.org/resource/Entity–relationship_model> .
 
 a1_data:COMP353Lec3 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 3 .
+    a1_schema:HasMaterial <http://a1.io/data#c353content/Slides/DB11.pdf> ;
+    a1_schema:LectureNumber 3 ;
+    dbp:subject dbr:Relational_database .
 
 a1_data:COMP353Lec4 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 4 .
+    a1_schema:HasMaterial <http://a1.io/data#c353content/Slides/DB12.pdf> ;
+    a1_schema:LectureNumber 4 ;
+    dbp:subject <http://dbpedia.org/resource/Armstrong%27s_axioms> .
 
 a1_data:COMP353Lec5 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 5 .
+    a1_schema:HasMaterial <http://a1.io/data#c353content/Slides/DB2.pdf> ;
+    a1_schema:LectureNumber 5 ;
+    dbp:subject <http://dbpedia.org/resource/Armstrong%27s_axioms> .
 
 a1_data:COMP353Lec6 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 6 .
+    a1_schema:HasMaterial <http://a1.io/data#c353content/Slides/DB3.pdf> ;
+    a1_schema:LectureNumber 6 ;
+    dbp:subject dbr:Database_normalization .
 
 a1_data:COMP353Lec7 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 7 .
+    a1_schema:HasMaterial <http://a1.io/data#c353content/Slides/DB4.pdf> ;
+    a1_schema:LectureNumber 7 ;
+    dbp:subject dbr:Relational_algebra .
 
 a1_data:COMP353Lec8 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 8 .
+    a1_schema:HasMaterial <http://a1.io/data#c353content/Slides/DB5.pdf> ;
+    a1_schema:LectureNumber 8 ;
+    dbp:subject dbr:SQL .
 
 a1_data:COMP353Lec9 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 9 .
+    a1_schema:HasMaterial <http://a1.io/data#c353content/Slides/DB6.pdf> ;
+    a1_schema:LectureNumber 9 ;
+    dbp:subject dbr:SQL .
 
 a1_data:COMP474Lec1 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 1 .
-
-a1_data:COMP474Lec10 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 10 .
-
-a1_data:COMP474Lec11 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 11 .
+    a1_schema:HasMaterial <http://a1.io/data#c474content/Slides/slides1.pdf>,
+        <http://a1.io/data#c474content/Worksheet/worksheet1.pdf> ;
+    a1_schema:LectureNumber 1 ;
+    dbp:subject dbr:Intelligent_system .
 
 a1_data:COMP474Lec2 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 2 .
+    a1_schema:HasMaterial <http://a1.io/data#c474content/Slides/slides2.pdf>,
+        <http://a1.io/data#c474content/Worksheet/worksheet2.pdf> ;
+    a1_schema:LectureNumber 2 ;
+    dbp:subject dbr:Knowledge_graph .
 
 a1_data:COMP474Lec3 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 3 .
+    a1_schema:HasMaterial <http://a1.io/data#c474content/Slides/slides3.pdf>,
+        <http://a1.io/data#c474content/Worksheet/worksheet3.pdf> ;
+    a1_schema:LectureNumber 3 ;
+    dbp:subject <http://dbpedia.org/resource/Ontology_(information_science)> .
 
 a1_data:COMP474Lec4 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 4 .
+    a1_schema:HasMaterial <http://a1.io/data#c474content/Slides/slides4.pdf>,
+        <http://a1.io/data#c474content/Worksheet/worksheet4.pdf> ;
+    a1_schema:LectureNumber 4 ;
+    dbp:subject dbr:SPARQL .
 
 a1_data:COMP474Lec5 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 5 .
+    a1_schema:HasMaterial <http://a1.io/data#c474content/Slides/slides5.pdf>,
+        <http://a1.io/data#c474content/Worksheet/worksheet5.pdf> ;
+    a1_schema:LectureNumber 5 ;
+    dbp:subject dbr:Knowledge_base .
 
 a1_data:COMP474Lec6 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 6 .
+    a1_schema:HasMaterial <http://a1.io/data#c474content/Slides/slides6.pdf>,
+        <http://a1.io/data#c474content/Worksheet/worksheet6.pdf> ;
+    a1_schema:LectureNumber 6 ;
+    dbp:subject dbr:Recommender_system .
 
 a1_data:COMP474Lec7 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 7 .
+    a1_schema:HasMaterial <http://a1.io/data#c474content/Slides/slides7.pdf>,
+        <http://a1.io/data#c474content/Worksheet/worksheet7.pdf> ;
+    a1_schema:LectureNumber 7 ;
+    dbp:subject dbr:Machine_learning .
 
 a1_data:COMP474Lec8 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 8 .
+    a1_schema:HasMaterial <http://a1.io/data#c474content/Slides/slides8.pdf> ;
+    a1_schema:LectureNumber 8 ;
+    dbp:subject dbr:Intelligent_agent .
 
 a1_data:COMP474Lec9 a a1_schema:Lecture ;
-    a1_schema:LectureNumber 9 .
+    a1_schema:HasMaterial <http://a1.io/data#c474content/Slides/slides9.pdf> ;
+    a1_schema:LectureNumber 9 ;
+    dbp:subject dbr:Text_mining .
 
