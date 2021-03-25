@@ -68,10 +68,10 @@ def populate_knowledge_base():
                     # Add topics & Lecture Name
                     if row['Course number'] == '353':
                         g.add((lec_id, DBP.subject, DBR[topics_353[i - 1]]))
-                        g.add((lec_id, SCH.LectureName, Literal(topics_353[i - 1])))
+                        g.add((lec_id, TEACH.hasTitle, Literal(topics_353[i - 1])))
                     else:
                         g.add((lec_id, DBP.subject, DBR[topics_474[i-1]]))
-                        g.add((lec_id, SCH.LectureName, Literal(topics_474[i - 1])))
+                        g.add((lec_id, TEACH.hasTitle, Literal(topics_474[i - 1])))
 
                     # Add Labs
                     lab_id = DAT["{}{}Lab{}".format(row['Course code'], row['Course number'], i)]

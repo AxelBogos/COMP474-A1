@@ -20,7 +20,7 @@ a1_schema:University
 
 a1_schema:Lecture
 	a rdfs:Class;
-	#rdfs:subClassOf teach:Lecture ;
+	rdfs:subClassOf teach:Lecture ;
 	rdfs:label "Lecture"@en.
 
 a1_schema:LectureRelatedEvent
@@ -39,10 +39,12 @@ a1_schema:Tutorial
 
 a1_schema:Course
 	a rdfs:Class;
+	rdfs:subClassOf teach:Course ;
 	rdfs:label "Course"@en.
 
 a1_schema:LectureMaterial
 	a rdfs:Class;
+	rdfs:subClassOf teach:Material ;
 	rdfs:label "Course"@en.
 a1_schema:Slides
 	a rdfs:Class;
@@ -67,13 +69,6 @@ a1_schema:HasLecture
 	rdfs:comment "A Lecture is part of a particular Class"@en ;
 	rdfs:domain a1_schema:Lecture;
 	rdfs:range a1_schema:Course.
-
-a1_schema:LectureName
-	a rdf:Property;
-	rdfs:label "Lecture Name"@en ;
-	rdfs:comment "Name of a "@en ;
-	rdfs:domain a1_schema:Lecture;
-	rdfs:range rdfs:Literal.
 
 a1_schema:RelatedToLecture
 	a rdf:Property;
