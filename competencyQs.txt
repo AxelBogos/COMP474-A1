@@ -1,8 +1,8 @@
 Competency Questions 
 
-01. Which topics are covered in the second lecture of comp 474?
-02. What is comp 353 about?
-03. Which courses at concordia teach natural language programming?
+01. What is course COMP474 about?
+02. Which topics were covered in the second lecture in COMP474?
+03. Which courses at Concordia teach deep learning?
 04. Where can I get more information about comp 474 topics?
 05. Is comp 474 taught at concordia?
 06. Which universities teach courses about database design?
