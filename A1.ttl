@@ -15,12 +15,12 @@
 ### Classes
 a1_schema:University
   a rdfs:Class ;
-  owl:sameAs vivo:university ;
+  owl:sameAs dbr:University ;
   rdfs:label "University"@en.
 
 a1_schema:Lecture
 	a rdfs:Class;
-	rdfs:subClassOf teach:Lecture ;
+	#rdfs:subClassOf teach:Lecture ;
 	rdfs:label "Lecture"@en.
 
 a1_schema:LectureRelatedEvent
@@ -41,19 +41,22 @@ a1_schema:Course
 	a rdfs:Class;
 	rdfs:label "Course"@en.
 
+a1_schema:LectureMaterial
+	a rdfs:Class;
+	rdfs:label "Course"@en.
 a1_schema:Slides
 	a rdfs:Class;
-	rdfs:subClassOf teach:Material;
+	rdfs:subClassOf a1_schema:LectureMaterial;
 	rdfs:label "Slides"@en.
 
 a1_schema:Worksheet
     a rdfs:Class;
-    rdfs:subClassOf teach:Material;
+    rdfs:subClassOf a1_schema:LectureMaterial;
     rdfs:label "Worksheet"@en.
 
 a1_schema:Reading
     a rdfs:Class;
-    rdfs:subClassOf teach:Material;
+    rdfs:subClassOf a1_schema:LectureMaterial;
     rdfs:label "Worksheet"@en.
 
 ### Proprieties
@@ -70,7 +73,7 @@ a1_schema:LectureName
 	rdfs:label "Lecture Name"@en ;
 	rdfs:comment "Name of a "@en ;
 	rdfs:domain a1_schema:Lecture;
-	rdfs:range rdfs:literal.
+	rdfs:range rdfs:Literal.
 
 a1_schema:RelatedToLecture
 	a rdf:Property;
@@ -118,7 +121,7 @@ a1_schema:HasContent
 	a rdf:Property;
 	rdfs:label "Content"@en ;
 	rdfs:comment "Sigle of a class, eg. COMP, SOEN"@en ;
-	rdfs:domain a1_schema:ClassEvent;
+	rdfs:domain a1_schema:Course;
 	rdfs:range rdfs:Literal.
 
 a1_schema:HasMaterial
@@ -126,7 +129,7 @@ a1_schema:HasMaterial
 	rdfs:label "Lecture Material"@en ;
 	rdfs:comment "Material of a lecture"@en ;
 	rdfs:domain a1_schema:Lecture;
-	rdfs:range teach:Material.
+	rdfs:range a1_schema:LectureMaterial.
 
 ### TEMPLATE FOR TRIPLE DECLARATION
 #  ConcordiaURI a a1_schema:University

@@ -11,6 +11,7 @@ DBP = Namespace("http://dbpedia.org/property/")
 SCH = Namespace("http://a1.io/schema#")
 DAT = Namespace("http://a1.io/data#")
 TEACH = Namespace("http://linkedscience.org/teach/ns#")
+ORG = Namespace("http://rdf.muninn-project.org/ontologies/organization#")
 
 REGEN_CLEAN_CATALOG = False
 
@@ -31,10 +32,9 @@ def populate_knowledge_base():
     g.parse('A1.ttl', format='turtle')
 
     # Add our university to the KB using the pre-defined schema
-    # TODO it says we should have a link to the university's DBPEDIA entry,
-    #  so maybe we are not supposed to use the dbp entry as our key?
-    g.add((DBR.Concordia_University, RDF.type, SCH.University))
-
+    g.add((DAT.Concordia_University, RDF.type, SCH.University))
+    g.add((DAT.Concordia_University, ORG.name, Literal("Concordia University")))
+    g.add((DAT.Concordia_University, RDFS.seeAlso, DBR.Concordia_University))
     with open('CLEAN_CATALOG.csv', 'r') as data:
         r = csv.DictReader(data)
         for row in r:
@@ -65,11 +65,13 @@ def populate_knowledge_base():
                     g.add((lec_id, RDF.type, SCH.Lecture))
                     g.add((lec_id, SCH.LectureNumber, Literal(i)))
 
-                    # Add topics
+                    # Add topics & Lecture Name
                     if row['Course number'] == '353':
                         g.add((lec_id, DBP.subject, DBR[topics_353[i - 1]]))
+                        g.add((lec_id, SCH.LectureName, Literal(topics_353[i - 1])))
                     else:
                         g.add((lec_id, DBP.subject, DBR[topics_474[i-1]]))
+                        g.add((lec_id, SCH.LectureName, Literal(topics_474[i - 1])))
 
                     # Add Labs
                     lab_id = DAT["{}{}Lab{}".format(row['Course code'], row['Course number'], i)]
