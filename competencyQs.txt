@@ -1,6 +1,6 @@
 Competency Questions 
 
-01. Which topics are covered in the second lecture of comp 474
+01. Which topics are covered in the second lecture of comp 474?
 02. What is comp 353 about?
 03. Which courses at concordia teach natural language programming?
 04. Where can I get more information about comp 474 topics?
