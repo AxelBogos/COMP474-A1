@@ -1,3 +1,4 @@
+#Where can I get more information about comp 474 topics?
 SELECT ?link 
     WHERE{
         a1_data:COMP474 rdf:seeAlso ?link  

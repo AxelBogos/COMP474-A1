@@ -1,5 +1,6 @@
+#Which courses at Concordia teach Knowledge graph?
 SELECT ?Course
 WHERE{
         ?Course a1_schema:HasLecture ?Lecture .
-        ?Lecture dbp:subject dbr:Deep_learning
+        ?Lecture dbp:subject dbr:Knowledge_graph
     }
