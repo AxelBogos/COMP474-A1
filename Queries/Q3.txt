@@ -1,0 +1,5 @@
+SELECT ?Course
+WHERE{
+        ?Course a1_schema:HasLecture ?Lecture .
+        ?Lecture dbp:subject dbr:Deep_learning
+    }

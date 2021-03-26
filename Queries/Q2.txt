@@ -1,0 +1,6 @@
+SELECT ?topic
+WHERE{
+a1_data:COMP474Lec2 dbp:subject ?topic 
+}
+
+

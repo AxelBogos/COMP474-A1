@@ -1,0 +1,4 @@
+SELECT ?link 
+    WHERE{
+        a1_data:COMP474 rdf:seeAlso ?link  
+    }
