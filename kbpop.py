@@ -103,7 +103,7 @@ def populate_knowledge_base():
                             lec_id = DAT["{}{}Lec{}".format(row['Course code'], row['Course number'], idf + 1)]
                             g.add((f_uri, RDF.type, SCH[sub_dir]))
                             g.add((lec_id, SCH.HasMaterial, f_uri))
-    g.serialize(destination="out/kb_test.ttl", format="turtle")
+    g.serialize(destination="out/kb.ttl", format="turtle")
 
 
 def regenerate_catalog():
