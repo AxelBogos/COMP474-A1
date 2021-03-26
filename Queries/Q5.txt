@@ -1,4 +1,0 @@
-ASK 
-    WHERE{
-        dbr:Concordia_University a1_schema:Offers a1_data:COMP474
-    }

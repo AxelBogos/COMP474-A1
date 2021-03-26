@@ -1,0 +1,11 @@
+PREFIX a1_schema: <http://a1.io/schema#>
+
+SELECT ?course (COUNT(?readings) as ?count)
+WHERE {
+  ?course a1_schema:HasLecture ?lecture .
+  ?lecture a1_schema:HasMaterial ?readings .
+  ?readings a a1_schema:Reading .
+} 
+GROUP BY ?course
+ORDER BY ?count
+LIMIT 1

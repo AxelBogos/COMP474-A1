@@ -1,4 +1,0 @@
-SELECT ?topic 
-WHERE {
-a1_data:COMP474 teach:courseDescription ?topic
-}

@@ -1,0 +1,8 @@
+#What is course COMP474 about?
+prefix a1_data: <http://a1.io/data#>
+prefix teach: <http://linkedscience.org/teach/ns#>
+
+SELECT ?Course_Description 
+WHERE {
+a1_data:COMP474 teach:courseDescription ?Course_Description 
+}
