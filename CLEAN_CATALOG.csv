@@ -379,20 +379,16 @@ GCS_250,GCS,Electrical and Computer Engineering (ECE),Computer Engineering,Gradu
 GCS_251,GCS,Electrical and Computer Engineering (ECE),Computer Engineering,Graduate,Master,COEN,7741,Advanced Computer Architecture,A project is required,Courses,Course-integrated,
 GCS_252,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,273,Basic Circuit Analysis,Laboratory: 15 hours total,Courses,Course-integrated,
 GCS_253,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,275,Principles of Electrical Engineering,Laboratory: 15 hours total,Courses,Course-integrated,
-GCS_254,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,311,Electronics I,"Laboratory: 15 hours total
-Laboratory pre-labs, extensive simulation exercises",Courses,Course-integrated,
-GCS_255,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,312,Electronics II,"Laboratory: 15 hours total
-Laboratory pre-labs, extensive simulation exercises",Courses,Course-integrated,
+GCS_254,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,311,Electronics I,"Laboratory: 15 hours total Laboratory pre-labs, extensive simulation exercises",Courses,Course-integrated,
+GCS_255,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,312,Electronics II,"Laboratory: 15 hours total Laboratory pre-labs, extensive simulation exercises",Courses,Course-integrated,
 GCS_256,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,321,Introduction to Semiconductor Materials and Devices,Laboratory: 15 hours total,Courses,Course-integrated,
 GCS_257,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,331,Fundamentals of Electrical Power Engineering,Laboratory: 15 hours total,Courses,Course-integrated,
 GCS_258,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,342,Discrete-Time Signals and Systems,Laboratory: 15 hours total,Courses,Course-integrated,
 GCS_259,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,367,Introduction to Digital Communications,Laboratory: 15 hours total,Courses,Course-integrated,
 GCS_260,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,372,Fundamentals of Control Systems,Laboratory: 15 hours total,Courses,Course-integrated,
 GCS_261,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,390,Electrical Engineering Product Design Project,"Team, Build system/device, Equivalent laboratory time: 6 hours per week",Courses,Course-integrated,
-GCS_262,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,421,Solid State Devices,"Design, fabricate
-Laboratory: 15 hours total",Courses,Course-integrated,
-GCS_263,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,422,Design of Integrated Circuit Components,"Design, fabricate
-Laboratory: 15 hours total",Courses,Course-integrated,
+GCS_262,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,421,Solid State Devices,"Design, fabricate Laboratory: 15 hours total",Courses,Course-integrated,
+GCS_263,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,422,Design of Integrated Circuit Components,"Design, fabricate Laboratory: 15 hours total",Courses,Course-integrated,
 GCS_264,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,423,Introduction to Analog VLSI,"Design, Laboratory: 30 hours total",Courses,Course-integrated,
 GCS_265,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,424,VLSI Process Technology,"Device fabrication, Laboratory: 15 hours total",Courses,Course-integrated,
 GCS_266,GCS,Electrical and Computer Engineering (ECE),Electrical Engineering,Undergraduate,Bachelor,ELEC,425,Optical Devices for High-Speed Communications,Laboratory: 15 hours total,Courses,Course-integrated,
@@ -508,13 +504,11 @@ GCS_375,GCS,"Mechanical, Industrial and Aerospace Engineering (MIAE)",Industrial
 GCS_376,GCS,"Mechanical, Industrial and Aerospace Engineering (MIAE)",Industrial Engineering,Graduate,Master,INDU,6411,Human Factors Engineering,A project on a current topic is required,Courses,Course-integrated,
 GCS_377,GCS,"Mechanical, Industrial and Aerospace Engineering (MIAE)",Industrial Engineering,Graduate,Master,INDU,6421,Occupational Safety Engineering,A project on a current topic is required,Courses,Course-integrated,
 GCS_378,GCS,"Mechanical, Industrial and Aerospace Engineering (MIAE)",Mechanical Engineering,Undergraduate,Bachelor,MECH,211,Mechanical Engineering Drawing,"Laboratory: 2 hours per week, alternate weeks",Courses,Course-integrated,
-GCS_379,GCS,"Mechanical, Industrial and Aerospace Engineering (MIAE)",Mechanical Engineering,Undergraduate,Bachelor,MECH,215,Programming for Mechanical and Industrial Engineers,"Laboratory: 1 hour per week
-Using Arduino - a type of microcontroller board used for mechatronics and robotics",Courses,Course-integrated,
+GCS_379,GCS,"Mechanical, Industrial and Aerospace Engineering (MIAE)",Mechanical Engineering,Undergraduate,Bachelor,MECH,215,Programming for Mechanical and Industrial Engineers,Laboratory: 1 hour per week Using Arduino - a type of microcontroller board used for mechatronics and robotics,Courses,Course-integrated,
 GCS_380,GCS,"Mechanical, Industrial and Aerospace Engineering (MIAE)",Mechanical Engineering,Undergraduate,Bachelor,MECH,311,Manufacturing Processes,"Industrial visits, field trips to local industries, Laboratory: 3 hours per week, alternate weeks",Courses,Course-integrated,
 GCS_381,GCS,"Mechanical, Industrial and Aerospace Engineering (MIAE)",Mechanical Engineering,Undergraduate,Bachelor,MECH,321,Properties and Failure of Materials,"Laboratory: 2 hours per week, alternate weeks",Courses,Course-integrated,
 GCS_382,GCS,"Mechanical, Industrial and Aerospace Engineering (MIAE)",Mechanical Engineering,Undergraduate,Bachelor,MECH,343,Theory of Machines,"Laboratory: 2 hours per week, alternate weeks",Courses,Course-integrated,
-GCS_383,GCS,"Mechanical, Industrial and Aerospace Engineering (MIAE)",Mechanical Engineering,Undergraduate,Bachelor,MECH,351,Thermodynamics II,"Laboratory: 2 hours per week, alternate weeks
-Micro Steam Car Competition: students design & build a car powered by a soda-can water boiler, a pin-sized nozzle and a turbine which drives the front wheels",Courses,Course-integrated,
+GCS_383,GCS,"Mechanical, Industrial and Aerospace Engineering (MIAE)",Mechanical Engineering,Undergraduate,Bachelor,MECH,351,Thermodynamics II,"Laboratory: 2 hours per week, alternate weeks Micro Steam Car Competition: students design & build a car powered by a soda-can water boiler, a pin-sized nozzle and a turbine which drives the front wheels",Courses,Course-integrated,
 GCS_384,GCS,"Mechanical, Industrial and Aerospace Engineering (MIAE)",Mechanical Engineering,Undergraduate,Bachelor,MECH,352,Heat Transfer I,"Laboratory: 2 hours per week, alternate weeks",Courses,Course-integrated,
 GCS_385,GCS,"Mechanical, Industrial and Aerospace Engineering (MIAE)",Mechanical Engineering,Undergraduate,Bachelor,MECH,361,Fluid Mechanics II,"Laboratory: 2 hours per week, alternate weeks",Courses,Course-integrated,
 GCS_386,GCS,"Mechanical, Industrial and Aerospace Engineering (MIAE)",Mechanical Engineering,Undergraduate,Bachelor,MECH,368,Electronics for Mechanical Engineers,"Laboratory: 2 hours per week, alternate weeks",Courses,Course-integrated,
@@ -641,13 +635,11 @@ FAS_16,FAS,Applied Human Sciences,Youth Work,Graduate,Certificate,AHSC,510,Advan
 FAS_17,FAS,Applied Human Sciences,Youth Work,Graduate,Certificate,AHSC,525,Individual and Group Intervention with Youth,"Fieldwork component, 1 hour per week of observation in a youth work setting",Courses,Course-integrated,
 FAS_18,FAS,Applied Human Sciences,Youth Work,Graduate,Certificate,AHSC,527,Advanced Youth Work Intervention: Case Management and Supervision,Implementing & monitoring effective and collaborative case plans with young people & their families,Courses,Course-integrated,
 FAS_19,FAS,Applied Human Sciences,Youth Work,Graduate,Certificate,AHSC,599,Independent Study,"Field studies, and/or research",Courses,Course-integrated,
-FAS_20,FAS,Applied Human Sciences,Human Systems Intervention,Graduate,Certificate,AHSC,610,Group Process Intervention,"Residential Laboratory; Course-integrated
-projects",,Course-integrated,
+FAS_20,FAS,Applied Human Sciences,Human Systems Intervention,Graduate,Certificate,AHSC,610,Group Process Intervention,Residential Laboratory; Course-integrated projects,,Course-integrated,
 FAS_21,FAS,Applied Human Sciences,Human Systems Intervention,Graduate,Certificate,AHSC,620,Learning and Individual Change Processes,Course-integrated projects; Capstone project,,Course-integrated,
 FAS_22,FAS,Applied Human Sciences,Human Systems Intervention,Graduate,Certificate,AHSC,631,Research Methods,Course-integrated projects; Simulations; Participatory action research,,Course-integrated,
 FAS_23,FAS,Applied Human Sciences,Human Systems Intervention,Graduate,Certificate,AHSC,632,Planning Human Systems Intervention,Course-integrated projects; Simulations; Case studies,,Course-integrated,
-FAS_24,FAS,Applied Human Sciences,Human Systems Intervention,Graduate,Certificate,AHSC,660,Philosophy and Ethics of Intervention,"Course-integrated project; Case studies; Hands-on
-workshops",,Course-integrated,
+FAS_24,FAS,Applied Human Sciences,Human Systems Intervention,Graduate,Certificate,AHSC,660,Philosophy and Ethics of Intervention,Course-integrated project; Case studies; Hands-on workshops,,Course-integrated,
 FAS_25,FAS,Applied Human Sciences,Human Systems Intervention,Graduate,Master,AHSC,670,Consultation Methods,Establish effective client-consultant relationships ,Courses,Course-integrated,
 FAS_26,FAS,Applied Human Sciences,Human Systems Intervention,Graduate,Master,AHSC,675,Introduction to Open Systems Theory,Course-integrated projects; Simulations,,Course-integrated,
 FAS_27,FAS,Applied Human Sciences,Human Systems Intervention,Graduate,Master,AHSC,680,Facilitating Individual and Group Learning Processes,Laboratory setting plus delivery of a workshop to a community client,Courses,Course-integrated,
@@ -771,22 +763,17 @@ FAS_172,FAS,Études françaises,Langue française,Undergraduate,Bachelor,FRAN,31
 FAS_173,FAS,Études françaises,Langue française,Undergraduate,Bachelor,FRAN,319,Le français des affaires II,textes administratifs; écriture professionelle en affaires,Courses,Course-integrated,
 FAS_0173,FAS,Études françaises,Traduction,Undergraduate,Bachelor,FTRA,301,Traduction littéraire du français à l’anglais,travaux pratiques ,Courses,Course-integrated,
 FAS_0174,FAS,Études françaises,Traduction,Undergraduate,Bachelor,FTRA,304,Traduction littéraire de l’anglais au français,travaux pratiques ,Courses,Course-integrated,
-FAS_0175,FAS,Études françaises,"Traduction
-",Undergraduate,Bachelor,FTRA,401,Traduction littéraire avancée : du français à l’anglais,travaux pratiques ,Courses,Course-integrated,
+FAS_0175,FAS,Études françaises,Traduction ,Undergraduate,Bachelor,FTRA,401,Traduction littéraire avancée : du français à l’anglais,travaux pratiques ,Courses,Course-integrated,
 FAS_0176,FAS,Études françaises,Traduction,Undergraduate,Bachelor,FTRA,402,Traduction littéraire avancée : de l’anglais au français,travaux pratiques ,Courses,Course-integrated,
 FAS_174,FAS,Études françaises,Traduction,Undergraduate,Bachelor,FTRA,411,Terminologie et mondialisation,"aspect pratique, utilisation d’outils",Courses,Course-integrated,
-FAS_175,FAS,Études françaises,"Traduction
-",Undergraduate,Bachelor,FTRA,416,Informatique et traduction,"exercices, initiation aux outils informatisés",Courses,Course-integrated,
+FAS_175,FAS,Études françaises,Traduction ,Undergraduate,Bachelor,FTRA,416,Informatique et traduction,"exercices, initiation aux outils informatisés",Courses,Course-integrated,
 FAS_176,FAS,Études françaises,Traduction,Undergraduate,Bachelor,FTRA,418,"Web, technologies, traduction : théories et critiques",travail approfondi de recherche,Courses,Course-integrated,
 FAS_177,FAS,Études françaises,Traduction,Undergraduate,Bachelor,FTRA,438,Initiation au sous-titrage,volet pratique,Courses,Course-integrated,
-FAS_178,FAS,Études françaises,"Traduction
-",Undergraduate,Bachelor,FTRA,452,Traduction automatique (TA) et traduction assistée par ordinateur (TAO),"exercises, appliquent des outils",Courses,Course-integrated,
+FAS_178,FAS,Études françaises,Traduction ,Undergraduate,Bachelor,FTRA,452,Traduction automatique (TA) et traduction assistée par ordinateur (TAO),"exercises, appliquent des outils",Courses,Course-integrated,
 FAS_179,FAS,Études françaises,Traduction,Undergraduate,Bachelor,FTRA,455,Gestion de projets,mises en situation,Courses,Course-integrated,
 FAS_180,FAS,Études françaises,Traduction,Undergraduate,Bachelor,FTRA,492,Tutorat en traduction,sujet particulier,Courses,Course-integrated,
-FAS_181,FAS,Études françaises,"Traduction
-",Undergraduate,Bachelor,FTRA,498,Étude avancée d’un sujet particulier,sujet particulier,Courses,Course-integrated,
-FAS_182,FAS,Études françaises,"Traduction
-",Undergraduate,Bachelor,FTRA,499,Étude avancée d’un sujet particulier,sujets particuliers,Courses,Course-integrated,
+FAS_181,FAS,Études françaises,Traduction ,Undergraduate,Bachelor,FTRA,498,Étude avancée d’un sujet particulier,sujet particulier,Courses,Course-integrated,
+FAS_182,FAS,Études françaises,Traduction ,Undergraduate,Bachelor,FTRA,499,Étude avancée d’un sujet particulier,sujets particuliers,Courses,Course-integrated,
 FAS_183,FAS,Études françaises,Traduction,Graduate,Certificate,FTRA,527,Travaux dirigés (A),travaux dirigés,Course-integrated projects,Course-integrated,
 FAS_184,FAS,Études françaises,Traduction,Graduate,Certificate,FTRA,528,Travaux dirigés (F),travaux dirigés,Course-integrated projects,Course-integrated,
 FAS_185,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,534,Terminologie et mondialisation,"aspect pratique, utilisation d’outils",Courses,Course-integrated,
@@ -797,8 +784,7 @@ FAS_189,FAS,Études françaises,Traduction,Graduate,Certificate,FTRA,598,Étude 
 FAS_190,FAS,Études françaises,Technologies de la traduction,Graduate,Certificate,FTRA,598,Étude avancée d’un sujet particulier / Special Topics,"étude avancée, sujet particulier",Courses,Course-integrated,
 FAS_191,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,612,Traduction avancée en sciences humaines et sociales Co-listé : FTRA 542 ou FTRA 543,séminaire pratique,Courses,Course-integrated,
 FAS_192,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,613,Advanced translation in social sciences and the humanities Co-listé : FTRA 542 ou FTRA 543,séminaire pratique,Courses,Course-integrated,
-FAS_193,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,614,"Traduction littéraire avancée 
-Co-listé : FTRA 544 ou 545",séminaire pratique,Courses,Course-integrated,
+FAS_193,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,614,Traduction littéraire avancée  Co-listé : FTRA 544 ou 545,séminaire pratique,Courses,Course-integrated,
 FAS_194,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,615,Advanced literary translation Co-listé : FTRA 544 ou 545,séminaire pratique,Courses,Course-integrated,
 FAS_195,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,631,Initiation à la traduction générale Co-listé : FTRA 531,outils de travail,Courses,Course-integrated,
 FAS_196,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,632,Initiation à la traduction générale Co-listé : FTRA 532,outils de travail,Courses,Course-integrated,
@@ -806,8 +792,7 @@ FAS_197,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,633,Aspects t
 FAS_198,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,634,Traduction littéraire de l’anglais au français Co-listé : FTRA 504,travaux pratiques,Courses,Course-integrated,
 FAS_199,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,635,Traduction littéraire du français à l’anglais Co-listé : FTRA 501,travaux pratiques,Courses,Course-integrated,
 FAS_200,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,636,Informatique et traduction Co-listé : FTRA 536,"exercises, initiation aux outils informatisés",Courses,Course-integrated,
-FAS_201,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,638,"Initiation au sous-titrage 
-Co-listé : FTRA 538",volet pratique,Courses,Course-integrated,
+FAS_201,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,638,Initiation au sous-titrage  Co-listé : FTRA 538,volet pratique,Courses,Course-integrated,
 FAS_202,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,652,Traduction assistée par ordinateur (TAO) et post édition Co-listé : FTRA 552,"appliquer, exercices de programmation, outils, logiciels",Courses,Course-integrated,
 FAS_203,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,655,Gestion de projets Co-listé : FTRA 555,mises en situation,Courses,Course-integrated,
 FAS_204,FAS,Études françaises,Traductologie,Graduate,Master,FTRA,658,Pratique de la localisation Co-listé : FTRA 558,pratique,Courses,Course-integrated,
@@ -920,12 +905,9 @@ FAS_314,FAS,Loyola College for Diversity and Sustainability,Minor in Sustainabil
 FAS_315,FAS,Loyola College for Diversity and Sustainability,Minor in Sustainability Studies,Undergraduate,Bachelor,LOYC,240,Global Environmental Issues and Ecological Justice (also listed as POLI 208),Groupwork simulation of the international climate change negotiations through the United Nations Framework Convention on Climate Change (UNFCCC).  Groups must come to an agreement for further reducing fossil fuel emissions following the success of the Paris Climate Accords in 2015.,,Course-integrated,
 FAS_316,FAS,Loyola College for Diversity and Sustainability,Any program,Undergraduate,Bachelor,LOYC,298-01,Ecocide and Dystopias,Film production and exhibition,Artistic performances & exhibits,Course-integrated,
 FAS_317,FAS,Loyola College for Diversity and Sustainability,Any program,Undergraduate,Bachelor,LOYC,320,Biodiversity on Earth,Fieldwork on biodiversity in the neighbourhood,Labs / Clinics,Course-integrated,
-FAS_318,FAS,Mathematics and Statistics,"Actuarial Mathematics / 
-Actuarial Mathematics and Finance",Undergraduate,Bachelor,ACTU,286,Actuarial Mathematics Lab I,Lab,Courses,Course-integrated,
-FAS_319,FAS,Mathematics and Statistics,"Actuarial Mathematics / 
-Actuarial Mathematics and Finance",Undergraduate,Bachelor,ACTU,386,Actuarial Mathematics Lab II,Lab,Courses,Course-integrated,
-FAS_320,FAS,Mathematics and Statistics,"Actuarial Mathematics / 
-Actuarial Mathematics and Finance",Undergraduate,Bachelor,ACTU,486,Actuarial Mathematics Lab III,"Lab, workshop",Courses,Course-integrated,
+FAS_318,FAS,Mathematics and Statistics,Actuarial Mathematics /  Actuarial Mathematics and Finance,Undergraduate,Bachelor,ACTU,286,Actuarial Mathematics Lab I,Lab,Courses,Course-integrated,
+FAS_319,FAS,Mathematics and Statistics,Actuarial Mathematics /  Actuarial Mathematics and Finance,Undergraduate,Bachelor,ACTU,386,Actuarial Mathematics Lab II,Lab,Courses,Course-integrated,
+FAS_320,FAS,Mathematics and Statistics,Actuarial Mathematics /  Actuarial Mathematics and Finance,Undergraduate,Bachelor,ACTU,486,Actuarial Mathematics Lab III,"Lab, workshop",Courses,Course-integrated,
 FAS_321,FAS,Mathematics and Statistics,Any program,Undergraduate,Bachelor,MAST,232,Mathematics with Computer Algebra,"Interactive, in the computer laboratory",Courses,Course-integrated,
 FAS_322,FAS,Mathematics and Statistics,Mathematics and Statistics and Computer Applications,Undergraduate,Bachelor,MAST,324,Introduction to Optimization,Use of computing softwares,Courses,Course-integrated,
 FAS_323,FAS,Mathematics and Statistics,Statistics / Mathematics and Statistics and Computer Applications,Undergraduate,Bachelor,MAST,333,Applied Statistics,Use of statistical software,Courses,Course-integrated,
@@ -967,8 +949,7 @@ FAS_358,FAS,Psychology,Clinical Psychology,Graduate,Master,PSYC,707,Assessment P
 FAS_359,FAS,Psychology,Clinical Psychology,Graduate,Master,PSYC,708,APC Practicum II: General,Assessment and treatment of selected clients of the Applied Psychology Centre under faculty supervision,Practica,Course-integrated,
 FAS_360,FAS,Psychology,Clinical Psychology,Graduate,Master,PSYC,709,APC Practicum II: Adult,Assessment and treatment of selected adult clients of the Applied Psychology Centre under faculty supervision,Practica,Course-integrated,
 FAS_361,FAS,Psychology,Clinical Psychology,Graduate,Master,PSYC,710,APC Practicum II: Child,Assessment and treatment of selected child clients of the Applied Psychology Centre under faculty supervision,Practica,Course-integrated,
-FAS_362,FAS,Psychology,Clinical Psychology,Graduate,Master,PSYC,711,"Extramural Practicum I: General
-",4-month extramural practicum done under qualified supervisors,Practica,Course-integrated,
+FAS_362,FAS,Psychology,Clinical Psychology,Graduate,Master,PSYC,711,Extramural Practicum I: General ,4-month extramural practicum done under qualified supervisors,Practica,Course-integrated,
 FAS_363,FAS,Psychology,Clinical Psychology,Graduate,Master,PSYC,712,Extramural Practicum I: Adult,"4-month extramural practicum with adult clients, done under qualified supervisors",Practica,Course-integrated,
 FAS_364,FAS,Psychology,Clinical Psychology,Graduate,Master,PSYC,713,Extramural Practicum I: Child,"4-month extramural practicum with child clients, done under qualified supervisors",Practica,Course-integrated,
 FAS_365,FAS,Psychology,Psychology,Graduate,PhD,PSYC,823,APC Practicum III: General,"Practicum, clinical experience and supervision",,Course-integrated,
@@ -1125,8 +1106,7 @@ FAS_568,FAS,Physics,Physics,Undergraduate,Bachelor,PHYS,497,Specialization Resea
 FAS_569,FAS,Physics,Physics,Graduate,Master,PHYS,790,Master’s Research and Thesis,"Research, thesis",Major research projects,Research-based,
 FAS_570,FAS,Physics,Physics,Graduate,PhD,PHYS,890,Doctoral Research and Thesis,"Research, thesis",Major research projects,Research-based,
 FAS_574,FAS,Political Science,Political Science,Undergraduate,Bachelor,POLI,495,Honours Thesis,Thesis,Undergraduate research projects,Research-based,
-FAS_575,FAS,Political Science,"Political Science / 
-Public Policy and Public Administration",Graduate,Master,POLI,691,Extended Research Essay,Research essay,Major research projects,Research-based,
+FAS_575,FAS,Political Science,Political Science /  Public Policy and Public Administration,Graduate,Master,POLI,691,Extended Research Essay,Research essay,Major research projects,Research-based,
 FAS_576,FAS,Political Science,Political Science,Graduate,PhD,POLI,890,Thesis,Thesis,Major research projects,Research-based,
 FAS_578,FAS,Psychology,Psychology,Graduate,Master,PSYC,690,Research and Thesis,"Research, thesis",Major research projects,Research-based,
 FAS_579,FAS,Psychology,Psychology,Graduate,PhD,PSYC,890,Research and Thesis,"Research, thesis",Major research projects,Research-based,
@@ -1143,8 +1123,7 @@ FAS_591,FAS,Simone de Beauvoir Institute,Humanities,Graduate,PhD,HUMA,895,Thesis
 FAS_592,FAS,Simone de Beauvoir Institute,Women's Studies,Undergraduate,Bachelor,WSDB,496,Directed Research,Substantial research project,Undergraduate research projects,Research-based,
 FAS_593,FAS,Sociology and Anthropology,Anthropology,Undergraduate,Bachelor,ANTH,495,Honours Essay,Honours essay,Undergraduate research projects,Research-based,
 FAS_594,FAS,Sociology and Anthropology,Social and Cultural Anthropology,Graduate,Master,ANTH,692,Thesis,Thesis,Major research projects,Research-based,
-FAS_595,FAS,Sociology and Anthropology,"Social and Cultural Anthropology / 
-Sociology",Graduate,Master,ANTH,695,Essay,Essay,Major research projects,Research-based,
+FAS_595,FAS,Sociology and Anthropology,Social and Cultural Anthropology /  Sociology,Graduate,Master,ANTH,695,Essay,Essay,Major research projects,Research-based,
 FAS_596,FAS,Sociology and Anthropology,Social and Cultural Analysis,Graduate,Master,SOAN,890,Thesis,Thesis,Major research projects,Research-based,
 FAS_597,FAS,Sociology and Anthropology,Sociology,Undergraduate,Bachelor,SOCI,409,Honours Seminar,Honours paper,Undergraduate research projects,Research-based,
 FAS_598,FAS,Sociology and Anthropology,Sociology,Graduate,Master,SOCI,691,Thesis,Thesis,Major research projects,Research-based,
@@ -1176,17 +1155,13 @@ FAS_655,FAS,Economics,Economics,Graduate,Master,ECON,MA,Economics MA Co-op - Int
 FAS_656,FAS,Études françaises,Traduction,Undergraduate,Bachelor,TRAN,E-F,Traduction anglais-francais / English-French Translation Co-op - International,Co-op placement. Please visit the Co-op Institute for more details.,Co-op programs,International,
 FAS_657,FAS,Études françaises,Translation,Undergraduate,Bachelor,TRAN,F-E,Traduction francais-anglais / French-English Translation Co-op,Co-op placement. Please visit the Co-op Institute for more details.,Co-op programs,International,
 FAS_659,FAS,Loyola College for Diversity and Sustainability,Any program,Undergraduate,Bachelor,LOYC,398B,Orientation to International Community Engagement,"Students develop and engage in an intervention in a community organization. Along with LOYC 490: Integrative project, this course provides the academic context to prepare students to go to Uganda with the CEED program (LOYC 398B) and to follow through with the learning when they come back (LOYC 420)",Service learning,International,
-FAS_660,FAS,Loyola College for Diversity and Sustainability,"Diversity and the Contemporary World / 
-Sustainability Studies",Undergraduate,Bachelor,LOYC,420,Integrative Project,"Along with LOYC 398B: Orientation to International Community Engagement, this course provides the academic context to prepare students to go to Uganda with the CEED program (LOYC 398B) and to follow through with the learning when they come back (LOYC 420)",Service learning,International,https://www.concordia.ca/artsci/loyola-college-diversity-sustainability/programs/courses.html and https:/ceedconcordia.org/en/
+FAS_660,FAS,Loyola College for Diversity and Sustainability,Diversity and the Contemporary World /  Sustainability Studies,Undergraduate,Bachelor,LOYC,420,Integrative Project,"Along with LOYC 398B: Orientation to International Community Engagement, this course provides the academic context to prepare students to go to Uganda with the CEED program (LOYC 398B) and to follow through with the learning when they come back (LOYC 420)",Service learning,International,https://www.concordia.ca/artsci/loyola-college-diversity-sustainability/programs/courses.html and https:/ceedconcordia.org/en/
 FAS_661,FAS,Mathematics and Statistics,Actuarial Mathematics,Undergraduate,Bachelor,MATH,ACT,Actuarial Mathematics Co-op - International,Co-op placement. Please visit the Co-op Institute for more details.,Co-op programs,International,
 FAS_662,FAS,Mathematics and Statistics,Actuarial Finance,Undergraduate,Bachelor,MATH,ACTF,Actuarial Finance Co-op - International,Co-op placement. Please visit the Co-op Institute for more details.,Co-op programs,International,
 FAS_663,FAS,Mathematics and Statistics,Actuarial Finance,Graduate,Master,MATH,MACF,Actuarial Finance Master's Co-op - International,Co-op placement. Please visit the Co-op Institute for more details.,Co-op programs,International,
 FAS_666,FAS,Physics,Physics,Undergraduate,Bachelor,PREX,PHYS,Physics Professional Experience,Co-op placement. Please visit the Co-op Institute for more details.,Internships & exchanges,International,
 FAS_670,FAS,School of Irish Studies,Canadian Irish Studies,Undergraduate,Bachelor / Certificate,IRST,390,Field Studies in Ireland,Enrich learning experience in Ireland,Field schools,International,
-FAS_739,FAS,Applied Human Sciences,Any program,Undergraduate,Bachelor / Certificate,AHSC,498,"Leadership,
- Change &
- Social
- Innovation","Students join a learning community made up of undergraduate and graduate students, university staff and members of the local community. Together they engage in ‘u.lab’ - a process of innovation and change that connects inner change to outer action.",Courses,Course-integrated,
+FAS_739,FAS,Applied Human Sciences,Any program,Undergraduate,Bachelor / Certificate,AHSC,498,"Leadership,  Change &  Social  Innovation","Students join a learning community made up of undergraduate and graduate students, university staff and members of the local community. Together they engage in ‘u.lab’ - a process of innovation and change that connects inner change to outer action.",Courses,Course-integrated,
 FAS_740,FAS,Education,Adult Education,Undergraduate,Bachelor,ADED,230,Roles and Competencies of Adult Educators,"According to the participants’ needs & interests, an opportunity is given to explore competencies related to the particular roles",Courses,Course-integrated,
 FAS_741,FAS,Education,Adult Education,Any level,Any degree,ADED,344,Design of Adult Learning Projects,Design & conduct a learning activity in the area of subject matter speciality,Courses,Course-integrated,
 FAS_742,FAS,Education,Adult Education,Any level,Any degree,ADED,345,Evaluating Adult Learning Projects,Conduct an evaluation of an adult learning project in the area of subject matter speciality,Courses,Course-integrated,
