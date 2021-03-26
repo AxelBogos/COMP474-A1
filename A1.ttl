@@ -1,149 +1,132 @@
-@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix dbr: <http://dbpedia.org/resource/> .
-@prefix dbo: <http://dbpedia.org/ontology/> .
-@prefix dbp: <http://dbpedia.org/property/> .
-@prefix owl: <http://www.w3.org/2002/07/owl#> .
-@prefix teach: <http://linkedscience.org/teach/ns#> .
-@prefix vivo: <http://vivoweb.org/ontology/core#> .
+@prefix rdfs:      <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf:       <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:       <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf:      <http://xmlns.com/foaf/0.1/> .
+@prefix dbr:       <http://dbpedia.org/resource/> .
+@prefix dbo:       <http://dbpedia.org/ontology/> .
+@prefix dbp:       <http://dbpedia.org/property/> .
+@prefix owl:       <http://www.w3.org/2002/07/owl#> .
+@prefix teach:     <http://linkedscience.org/teach/ns#> .
+@prefix vivo:      <http://vivoweb.org/ontology/core#> .
+@prefix org:       <http://rdf.muninn-project.org/ontologies/organization#> .
 
 @prefix a1_schema: <http://a1.io/schema#> .
-@prefix a1_data: <http://a1.io/data#> .
+@prefix a1_data:   <http://a1.io/data#> .
 
 ### Classes
 a1_schema:University
-  a rdfs:Class ;
-  owl:sameAs dbr:University ;
-  rdfs:label "University"@en.
+    a               rdfs:Class ;
+    rdfs:subClassOf org:Organization ;
+    owl:sameAs      dbr:University ;
+    rdfs:label      "University"@en .
 
 a1_schema:Lecture
-	a rdfs:Class;
-	rdfs:subClassOf teach:Lecture ;
-	rdfs:label "Lecture"@en.
+    a               rdfs:Class ;
+    rdfs:subClassOf teach:Lecture ;
+    rdfs:label      "Lecture"@en .
 
 a1_schema:LectureRelatedEvent
-  a rdfs:Class;
-  rdfs:label "Events related to lectures"@en.
+    a          rdfs:Class ;
+    rdfs:label "Events related to lectures"@en .
 
 a1_schema:Lab
-	a rdfs:Class;
-	rdfs:subClassOf a1_schema:LectureRelatedEvent;
-	rdfs:label "Laboratory"@en.
+    a               rdfs:Class ;
+    rdfs:subClassOf a1_schema:LectureRelatedEvent ;
+    rdfs:label      "Laboratory"@en .
 
 a1_schema:Tutorial
-	a rdfs:Class;
-	rdfs:subClassOf a1_schema:LectureRelatedEvent;
-	rdfs:label "Tutorial"@en.
+    a               rdfs:Class ;
+    rdfs:subClassOf a1_schema:LectureRelatedEvent ;
+    rdfs:label      "Tutorial"@en .
 
 a1_schema:Course
-	a rdfs:Class;
-	rdfs:subClassOf teach:Course ;
-	rdfs:label "Course"@en.
+    a               rdfs:Class ;
+    rdfs:subClassOf teach:Course ;
+    rdfs:label      "Course"@en .
 
 a1_schema:LectureMaterial
-	a rdfs:Class;
-	rdfs:subClassOf teach:Material ;
-	rdfs:label "Course"@en.
+    a               rdfs:Class ;
+    rdfs:subClassOf teach:Material ;
+    rdfs:label      "Course"@en .
+
 a1_schema:Slide
-	a rdfs:Class;
-	rdfs:subClassOf a1_schema:LectureMaterial;
-	rdfs:label "Slide"@en.
+    a               rdfs:Class ;
+    rdfs:subClassOf a1_schema:LectureMaterial ;
+    rdfs:label      "Slide"@en .
 
 a1_schema:Worksheet
-    a rdfs:Class;
-    rdfs:subClassOf a1_schema:LectureMaterial;
-    rdfs:label "Worksheet"@en.
+    a               rdfs:Class ;
+    rdfs:subClassOf a1_schema:LectureMaterial ;
+    rdfs:label      "Worksheet"@en .
 
 a1_schema:Reading
-    a rdfs:Class;
-    rdfs:subClassOf a1_schema:LectureMaterial;
-    rdfs:label "Worksheet"@en.
+    a               rdfs:Class ;
+    rdfs:subClassOf a1_schema:LectureMaterial ;
+    rdfs:label      "Worksheet"@en .
 
 ### Proprieties
 
 a1_schema:HasLecture
-	a rdf:Property;
-	rdfs:label "Class has lecture"@en ;
-	rdfs:comment "A Lecture is part of a particular Class"@en ;
-	rdfs:domain a1_schema:Lecture;
-	rdfs:range a1_schema:Course.
+    a            rdf:Property ;
+    rdfs:label   "Class has lecture"@en ;
+    rdfs:comment "A Lecture is part of a particular Class"@en ;
+    rdfs:domain  a1_schema:Lecture ;
+    rdfs:range   a1_schema:Course .
 
 a1_schema:RelatedToLecture
-	a rdf:Property;
-	rdfs:label "Related to Lecture"@en ;
-	rdfs:comment "A Class Event is related of a particular Lecture"@en ;
-	rdfs:domain a1_schema:LectureRelatedEvent;
-	rdfs:range a1_schema:Lecture.
+    a            rdf:Property ;
+    rdfs:label   "Related to Lecture"@en ;
+    rdfs:comment "A Class Event is related of a particular Lecture"@en ;
+    rdfs:domain  a1_schema:LectureRelatedEvent ;
+    rdfs:range   a1_schema:Lecture .
 
 a1_schema:Offers
-	a rdf:Property;
-	rdfs:label "Offers"@en ;
-	rdfs:comment "Classes a university offers"@en ;
-	rdfs:domain a1_schema:University;
-	rdfs:range a1_schema:Course.
+    a            rdf:Property ;
+    rdfs:label   "Offers"@en ;
+    rdfs:comment "Classes a university offers"@en ;
+    rdfs:domain  a1_schema:University ;
+    rdfs:range   a1_schema:Course .
 
 a1_schema:HasSubject
-	a rdf:Property;
-	rdfs:label "Course Subject"@en ;
-	rdfs:comment "The Subject of a Course"@en ;
-	rdfs:domain a1_schema:Course;
-	rdfs:range rdfs:Literal.
+    a            rdf:Property ;
+    rdfs:label   "Course Subject"@en ;
+    rdfs:comment "The Subject of a Course"@en ;
+    rdfs:domain  a1_schema:Course ;
+    rdfs:range   rdfs:Literal .
 
 a1_schema:CourseNumber
-	a rdf:Property;
-	rdfs:label "Course Number"@en ;
-	rdfs:comment "The Number of a Course"@en ;
-	rdfs:domain a1_schema:Course;
-	rdfs:range rdfs:Literal.
+    a            rdf:Property ;
+    rdfs:label   "Course Number"@en ;
+    rdfs:comment "The Number of a Course"@en ;
+    rdfs:domain  a1_schema:Course ;
+    rdfs:range   rdfs:Literal .
 
 a1_schema:LectureNumber
-	a rdf:Property;
-	rdfs:label "Lecture Number"@en ;
-	rdfs:comment "Sequential number of a lecture"@en ;
-	rdfs:domain a1_schema:Lecture;
-	rdfs:range rdfs:Literal.
+    a            rdf:Property ;
+    rdfs:label   "Lecture Number"@en ;
+    rdfs:comment "Sequential number of a lecture"@en ;
+    rdfs:domain  a1_schema:Lecture ;
+    rdfs:range   rdfs:Literal .
 
 a1_schema:Outline
-	a rdf:Property;
-	rdfs:label "Course Outline"@en ;
-	rdfs:comment "The Outline of a Course"@en ;
-	rdfs:domain a1_schema:Course;
-	rdfs:range rdfs:Literal.
+    a            rdf:Property ;
+    rdfs:label   "Course Outline"@en ;
+    rdfs:comment "The Outline of a Course"@en ;
+    rdfs:domain  a1_schema:Course ;
+    rdfs:range   rdfs:Literal .
 
 a1_schema:HasContent
-	a rdf:Property;
-	rdfs:label "Content"@en ;
-	rdfs:comment "Sigle of a class, eg. COMP, SOEN"@en ;
-	rdfs:domain a1_schema:Course;
-	rdfs:range rdfs:Literal.
+    a            rdf:Property ;
+    rdfs:label   "Content"@en ;
+    rdfs:comment "Sigle of a class, eg. COMP, SOEN"@en ;
+    rdfs:domain  a1_schema:Course ;
+    rdfs:range   rdfs:Literal .
 
 a1_schema:HasMaterial
-	a rdf:Property;
-	rdfs:label "Lecture Material"@en ;
-	rdfs:comment "Material of a lecture"@en ;
-	rdfs:domain a1_schema:Lecture;
-	rdfs:range a1_schema:LectureMaterial.
+    a            rdf:Property ;
+    rdfs:label   "Lecture Material"@en ;
+    rdfs:comment "Material of a lecture"@en ;
+    rdfs:domain  a1_schema:Lecture ;
+    rdfs:range   a1_schema:LectureMaterial .
 
-### TEMPLATE FOR TRIPLE DECLARATION
-#  ConcordiaURI a a1_schema:University
-#1. Course name teach:CourseTitle literal
-#2. Course subject a1_schema:hasSubject literal
-#3. Course number a1_schema:CourseNumber literal
-#4. Course description teach:courseDescription literal
-#5. A link rdfs:seeAlso link
-#6. Course outline a1_schema:Outline uriToFile
-
-#Lectures. Information about lectures in a course, including:
-#Lecture a1_schema:LectureNumber literal
-#Lecture a1_schema:LectureName literal
-#Lecture a1_schema:HasContent literal (eg. COMP, SOEN)
-#Lecture teach:hasCourseMaterial URI
-#aURI a a1_schema:Worksheet
-#aURI a a1_schema:Reading
-#aURI a a1_schema:Slide
-#Lecture rdfs:link URI
-#lecture dbp:subject URI
-#course dbp:subject URI (for topics)
 

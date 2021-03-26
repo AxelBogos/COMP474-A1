@@ -2,7 +2,7 @@
 @prefix a1_schema: <http://a1.io/schema#> .
 @prefix dbp: <http://dbpedia.org/property/> .
 @prefix dbr: <http://dbpedia.org/resource/> .
-@prefix ns1: <http://rdf.muninn-project.org/ontologies/organization#> .
+@prefix org: <http://rdf.muninn-project.org/ontologies/organization#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -42,6 +42,7 @@ a1_schema:Tutorial a rdfs:Class ;
 
 a1_schema:University a rdfs:Class ;
     rdfs:label "University"@en ;
+    rdfs:subClassOf org:Organization ;
     owl:sameAs dbr:University .
 
 a1_schema:Worksheet a rdfs:Class ;
@@ -175,7 +176,7 @@ a1_data:COMP474Tut9 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec9 .
 
 a1_data:Concordia_University a a1_schema:University ;
-    ns1:name "Concordia University" ;
+    org:name "Concordia University" ;
     rdfs:seeAlso dbr:Concordia_University .
 
 a1_schema:CourseNumber a rdf:Property ;
