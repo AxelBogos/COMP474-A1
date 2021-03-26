@@ -50,7 +50,8 @@ def populate_knowledge_base():
             g.add((cn, SCH.HasSubject, Literal(row['Course code'])))
             g.add((cn, SCH.CourseNumber, Literal(row['Course number'])))
             g.add((cn, TEACH.courseDescription, Literal(row['Description'])))
-            g.add((cn, RDFS.seeAlso, Literal(row['Website'])))
+            if row['Website'] != "":
+                g.add((cn, RDFS.seeAlso, Literal(row['Website'])))
 
             if cn in special_courses:
                 if row['Course number'] == '353':
@@ -65,7 +66,7 @@ def populate_knowledge_base():
                     g.add((lec_id, RDF.type, SCH.Lecture))
                     g.add((lec_id, SCH.LectureNumber, Literal(i)))
 
-                    # Add topics & Lecture Name
+                    # Add topics, Lecture Name
                     if row['Course number'] == '353':
                         g.add((lec_id, DBP.subject, DBR[topics_353[i - 1]]))
                         g.add((lec_id, TEACH.hasTitle, Literal(topics_353[i - 1])))
@@ -83,11 +84,15 @@ def populate_knowledge_base():
                     g.add((tut_id, RDF.type, SCH.Tutorial))
                     g.add((tut_id, SCH.RelatedToLecture, lec_id))
 
+
                 # Add Outline
                 dir_name = "c{}content".format(row['Course number'])
                 outline_path = os.path.join(dir_name, 'Outline.pdf')
                 if(os.path.isfile(outline_path)):
                     g.add((cn, SCH.Outline, DAT[outline_path]))
+
+                #Add website (Neither special courses have one in CATALOG.csv)
+                g.add((cn, RDFS.seeAlso, URIRef("http://example.com/"+ row['Course code'] + row['Course number'])))
 
                 # Add content
                 for sub_dir in ['Reading', 'Slide', 'Worksheet', 'Other']:
@@ -108,7 +113,7 @@ def regenerate_catalog():
     :return: void
     """
     catalog = pd.read_csv('CATALOG.csv')
-
+    catalog = catalog.replace(r'\n', ' ', regex=True) # remove newline characters
     catalog = catalog.dropna(subset=['Course code', 'Course number'])  # remove empty course codes and course names
     catalog.to_csv('CLEAN_CATALOG.csv', index=False)
 
