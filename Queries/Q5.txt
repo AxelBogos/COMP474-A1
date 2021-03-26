@@ -1,4 +1,9 @@
 #Is comp 474 taught at concordia?
+
+prefix dbr: <http://dbpedia.org/resource/>
+prefix a1_schema: <http://a1.io/schema#>
+prefix a1_data: <http://a1.io/data#>
+
 ASK 
     WHERE{
         dbr:Concordia_University a1_schema:Offers a1_data:COMP474
