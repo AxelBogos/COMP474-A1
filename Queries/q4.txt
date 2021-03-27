@@ -1,0 +1,9 @@
+#Where can I get more information about comp 474 topics?
+
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+prefix a1_data: <http://a1.io/data#>
+
+SELECT ?link 
+    WHERE{
+        a1_data:COMP474 rdf:seeAlso ?link  
+    }

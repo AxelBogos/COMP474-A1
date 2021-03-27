@@ -1,0 +1,11 @@
+#Which topics were covered in the second lecture in COMP474?
+
+prefix a1_data: <http://a1.io/data#>
+prefix dbp: <http://dbpedia.org/property/>
+
+SELECT ?topic
+WHERE{
+a1_data:COMP474Lec2 dbp:subject ?topic 
+}
+
+

@@ -26,6 +26,8 @@ topics_474 = ['Intelligent_system', 'Knowledge_graph', 'Ontology_(information_sc
               'SPARQL', 'Knowledge_base', 'Recommender_system', 'Machine_learning',
               'Intelligent_agent', 'Text_mining']
 
+comp353_description = "Introduction to database management systems. Conceptual database design: the entity‑relationship model. The relational data model and relational algebra: functional dependencies and normalization. The SQL language and its application in defining, querying, and updating databases; integrity constraints; triggers. Developing database applications. "
+comp474_description = "Rule‑based expert systems, blackboard architecture, and agent‑based. Knowledge acquisition and representation. Uncertainty and conflict resolution. Reasoning and explanation. Design of intelligent systems."
 
 def populate_knowledge_base():
     g = Graph()
@@ -49,7 +51,8 @@ def populate_knowledge_base():
             g.add((cn, TEACH.courseTitle, Literal(row['Title'])))
             g.add((cn, SCH.HasSubject, Literal(row['Course code'])))
             g.add((cn, SCH.CourseNumber, Literal(row['Course number'])))
-            g.add((cn, TEACH.courseDescription, Literal(row['Description'])))
+            if cn not in special_courses:
+                g.add((cn, TEACH.courseDescription, Literal(row['Description'])))
             if row['Website'] != "":
                 g.add((cn, RDFS.seeAlso, Literal(row['Website'])))
 
@@ -66,13 +69,15 @@ def populate_knowledge_base():
                     g.add((lec_id, RDF.type, SCH.Lecture))
                     g.add((lec_id, SCH.LectureNumber, Literal(i)))
 
-                    # Add topics, Lecture Name
+                    # Add topics, Lecture Name, description
                     if row['Course number'] == '353':
                         g.add((lec_id, DBP.subject, DBR[topics_353[i - 1]]))
                         g.add((lec_id, TEACH.hasTitle, Literal(topics_353[i - 1])))
+                        g.add((cn, TEACH.courseDescription, Literal(comp353_description)))
                     else:
-                        g.add((lec_id, DBP.subject, DBR[topics_474[i-1]]))
+                        g.add((lec_id, DBP.subject, DBR[topics_474[i - 1]]))
                         g.add((lec_id, TEACH.hasTitle, Literal(topics_474[i - 1])))
+                        g.add((cn, TEACH.courseDescription, Literal(comp474_description)))
 
                     # Add Labs
                     lab_id = DAT["{}{}Lab{}".format(row['Course code'], row['Course number'], i)]
@@ -84,15 +89,14 @@ def populate_knowledge_base():
                     g.add((tut_id, RDF.type, SCH.Tutorial))
                     g.add((tut_id, SCH.RelatedToLecture, lec_id))
 
-
                 # Add Outline
                 dir_name = "c{}content".format(row['Course number'])
                 outline_path = os.path.join(dir_name, 'Outline.pdf')
-                if(os.path.isfile(outline_path)):
+                if (os.path.isfile(outline_path)):
                     g.add((cn, SCH.Outline, DAT[outline_path]))
 
-                #Add website (Neither special courses have one in CATALOG.csv)
-                g.add((cn, RDFS.seeAlso, URIRef("http://example.com/"+ row['Course code'] + row['Course number'])))
+                # Add website (Neither special courses have one in CATALOG.csv)
+                g.add((cn, RDFS.seeAlso, URIRef("http://example.com/" + row['Course code'] + row['Course number'])))
 
                 # Add content
                 for sub_dir in ['Reading', 'Slide', 'Worksheet', 'Other']:
@@ -103,7 +107,7 @@ def populate_knowledge_base():
                             lec_id = DAT["{}{}Lec{}".format(row['Course code'], row['Course number'], idf + 1)]
                             g.add((f_uri, RDF.type, SCH[sub_dir]))
                             g.add((lec_id, SCH.HasMaterial, f_uri))
-    g.serialize(destination="out/kb_test.ttl", format="turtle")
+    g.serialize(destination="out/kb.ttl", format="turtle")
 
 
 def regenerate_catalog():
@@ -113,7 +117,7 @@ def regenerate_catalog():
     :return: void
     """
     catalog = pd.read_csv('CATALOG.csv')
-    catalog = catalog.replace(r'\n', ' ', regex=True) # remove newline characters
+    catalog = catalog.replace(r'\n', ' ', regex=True)  # remove newline characters
     catalog = catalog.dropna(subset=['Course code', 'Course number'])  # remove empty course codes and course names
     catalog.to_csv('CLEAN_CATALOG.csv', index=False)
 

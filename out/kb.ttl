@@ -1,12 +1,16 @@
 @prefix a1_data: <http://a1.io/data#> .
 @prefix a1_schema: <http://a1.io/schema#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix dbp: <http://dbpedia.org/property/> .
 @prefix dbr: <http://dbpedia.org/resource/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix org: <http://rdf.muninn-project.org/ontologies/organization#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix teach: <http://linkedscience.org/teach/ns#> .
+@prefix vivo: <http://vivoweb.org/ontology/core#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 a1_schema:Course a rdfs:Class ;
@@ -2379,7 +2383,7 @@ a1_data:COMP353 a a1_schema:Course ;
         a1_data:COMP353Lec9 ;
     a1_schema:HasSubject "COMP" ;
     a1_schema:Outline <http://a1.io/data#c353content/Outline.pdf> ;
-    teach:courseDescription "Laboratory: 24 hours total, group project" ;
+    teach:courseDescription "Introduction to database management systems. Conceptual database design: the entity‑relationship model. The relational data model and relational algebra: functional dependencies and normalization. The SQL language and its application in defining, querying, and updating databases; integrity constraints; triggers. Developing database applications. " ;
     teach:courseTitle "Databases" ;
     rdfs:seeAlso <http://example.com/COMP353> .
 
@@ -2462,7 +2466,7 @@ a1_data:COMP474 a a1_schema:Course ;
         a1_data:COMP474Lec9 ;
     a1_schema:HasSubject "COMP" ;
     a1_schema:Outline <http://a1.io/data#c474content/Outline.pdf> ;
-    teach:courseDescription "Laboratory: 24 hours total, project" ;
+    teach:courseDescription "Rule‑based expert systems, blackboard architecture, and agent‑based. Knowledge acquisition and representation. Uncertainty and conflict resolution. Reasoning and explanation. Design of intelligent systems." ;
     teach:courseTitle "Intelligent Systems" ;
     rdfs:seeAlso <http://example.com/COMP474> .
 
