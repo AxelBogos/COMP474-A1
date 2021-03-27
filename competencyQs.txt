@@ -1,9 +1,9 @@
 Competency Questions 
 
-01. What is course COMP474 about?
-02. Which topics were covered in the second lecture in COMP474?
-03. Which courses at Concordia teach knowledge graph?
-04. Where can I get more information about comp 474 topics?
+01. Which topics were covered in the second lecture in COMP474?
+02. What is course COMP474 about?
+03. Which courses at Concordia teach about knowledge graphs?
+04. Where can I get more information about comp 474?
 05. Is comp 474 taught at concordia?
 06. Which universities teach courses about database design?
 07. How many COMP courses are taught at concordia university?

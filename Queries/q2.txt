@@ -1,11 +1,8 @@
-#Which topics were covered in the second lecture in COMP474?
-
+#What is course COMP474 about?
 prefix a1_data: <http://a1.io/data#>
-prefix dbp: <http://dbpedia.org/property/>
+prefix teach: <http://linkedscience.org/teach/ns#>
 
-SELECT ?topic
-WHERE{
-a1_data:COMP474Lec2 dbp:subject ?topic 
+SELECT ?Course_Description 
+WHERE {
+a1_data:COMP474 teach:courseDescription ?Course_Description 
 }
-
-
