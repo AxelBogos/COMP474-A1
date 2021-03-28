@@ -3,5 +3,5 @@ PREFIX dbr: <http://dbpedia.org/resource/>
 
 SELECT (COUNT(?course) AS ?count)
 WHERE {
-  dbr:Concordia_University a1_schema:Offers ?course .
+  a1_data:Concordia_University a1_schema:Offers ?course .
 }
