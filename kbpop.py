@@ -45,7 +45,7 @@ def populate_knowledge_base():
             g.add((cn, RDF.type, SCH.Course))
 
             # Add to list of offered courses at Concordia
-            g.add((DBR.Concordia_University, SCH.Offers, cn))
+            g.add((DAT.Concordia_University, SCH.Offers, cn))
 
             # Add course details
             g.add((cn, TEACH.courseTitle, Literal(row['Title'])))
