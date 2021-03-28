@@ -1,5 +1,6 @@
 PREFIX a1_schema: <http://a1.io/schema#>
-PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX a1_data: <http://a1.io/data#>
+
 
 SELECT (COUNT(?course) AS ?count)
 WHERE {
