@@ -14,5 +14,11 @@ Axel Bogos - 40077502 <br>
 #### Libraries Used:
 
 * [rdflib](https://github.com/RDFLib/rdflib) <br>
+* pandas
 ---
 
+## How To Run 
+---
+* environment.yml is included, but should not be needed if using the same environment as proscribed in labs.
+* Execute the main() function of ```kbpop.py``` will generate all relevent output in the `/.out` directory. 
+---
