@@ -108,6 +108,7 @@ def populate_knowledge_base():
                             g.add((f_uri, RDF.type, SCH[sub_dir]))
                             g.add((lec_id, SCH.HasMaterial, f_uri))
     g.serialize(destination="out/kb.ttl", format="turtle")
+    g.serialize(destination="out/kb_ntriples.rdf", format="ntriples")
 
 
 def regenerate_catalog():
