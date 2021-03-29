@@ -45,7 +45,7 @@ def populate_knowledge_base():
             g.add((cn, RDF.type, SCH.Course))
 
             # Add to list of offered courses at Concordia
-            g.add((DBR.Concordia_University, SCH.Offers, cn))
+            g.add((DAT.Concordia_University, SCH.Offers, cn))
 
             # Add course details
             g.add((cn, TEACH.courseTitle, Literal(row['Title'])))
@@ -108,6 +108,7 @@ def populate_knowledge_base():
                             g.add((f_uri, RDF.type, SCH[sub_dir]))
                             g.add((lec_id, SCH.HasMaterial, f_uri))
     g.serialize(destination="out/kb.ttl", format="turtle")
+    g.serialize(destination="out/kb_ntriples.rdf", format="ntriples")
 
 
 def regenerate_catalog():
