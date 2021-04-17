@@ -1,6 +1,7 @@
 import csv
 import os
 from os import path
+
 import pandas as pd
 from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import RDF, RDFS
@@ -188,8 +189,11 @@ def generate_directories():
 
 if __name__ == '__main__':
     if REGENERATE_CATALOG:
+        print('Generating catalog...')
         regenerate_catalog()
     if POPULATE_KNOWLEDGE_BASE:
+        print('Populating Knolwedge Base...')
         populate_knowledge_base()
     if REGENERATE_TXT_FROM_PDF:
+        print('Rendering PDF as txt...')
         regenerate_txt_from_pdf()

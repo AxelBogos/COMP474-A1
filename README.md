@@ -1,4 +1,4 @@
-# COMP 474 – Assignment 1 
+# COMP 474 – Assignment 1
 
 [Repo URL](https://github.com/AxelBogos/COMP474-A1) <br>
 ---
@@ -15,10 +15,13 @@ Axel Bogos - 40077502 <br>
 
 * [rdflib](https://github.com/RDFLib/rdflib) <br>
 * pandas
+
 ---
 
-## How To Run 
+## How To Run
 ---
+
 * environment.yml is included, but should not be needed if using the same environment as proscribed in labs.
-* Execute the main() function of ```kbpop.py``` will generate all relevent output in the `/.out` directory. 
+* Execute the main() function of ```kbpop.py``` will generate all relevent output in the `/.out` directory.
+
 ---
