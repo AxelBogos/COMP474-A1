@@ -5,6 +5,7 @@ from os import path
 import pandas as pd
 from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import RDF, RDFS
+from tika import parser
 
 DBR = Namespace("http://dbpedia.org/resource/")
 DBP = Namespace("http://dbpedia.org/property/")
@@ -14,6 +15,10 @@ TEACH = Namespace("http://linkedscience.org/teach/ns#")
 ORG = Namespace("http://rdf.muninn-project.org/ontologies/organization#")
 
 REGEN_CLEAN_CATALOG = False
+REGEN_KNOWLEDGE_BASE = False
+REGEN_TXT_FROM_PDF = True
+
+special_course_codes = ['353','474']
 
 special_courses = [URIRef("http://a1.io/data#COMP353"), URIRef("http://a1.io/data#COMP474")]
 
@@ -28,6 +33,7 @@ topics_474 = ['Intelligent_system', 'Knowledge_graph', 'Ontology_(information_sc
 
 comp353_description = "Introduction to database management systems. Conceptual database design: the entity‑relationship model. The relational data model and relational algebra: functional dependencies and normalization. The SQL language and its application in defining, querying, and updating databases; integrity constraints; triggers. Developing database applications. "
 comp474_description = "Rule‑based expert systems, blackboard architecture, and agent‑based. Knowledge acquisition and representation. Uncertainty and conflict resolution. Reasoning and explanation. Design of intelligent systems."
+
 
 def populate_knowledge_base():
     g = Graph()
@@ -110,7 +116,6 @@ def populate_knowledge_base():
     g.serialize(destination="out/kb.ttl", format="turtle")
     g.serialize(destination="out/kb_ntriples.rdf", format="ntriples")
 
-
 def regenerate_catalog():
     """
     Function to wrangle and clean data used in the KB construction. A bit bare bone for now.
@@ -122,8 +127,70 @@ def regenerate_catalog():
     catalog = catalog.dropna(subset=['Course code', 'Course number'])  # remove empty course codes and course names
     catalog.to_csv('CLEAN_CATALOG.csv', index=False)
 
+def regenerate_txt_from_pdf():
+
+    generate_directories()
+    for course in special_course_codes:
+        base_dir = f"c{course}content"
+        txt_dir = f"c{course}content"+"_txt"
+
+        base_outline = os.path.join(base_dir, 'Outline.pdf')
+        txt_outline = os.path.join(txt_dir, 'Outline.txt')
+
+        if os.path.isfile(base_outline):
+            file_data = parser.from_file(base_outline)
+
+            # get the content of the pdf file
+            output = file_data['content']
+
+            # convert it to utf-8
+            output = output.encode('utf-8', errors='ignore')
+            # save it
+            with open(txt_outline, 'w') as f:
+                f.write(str(output))
+
+        # Add content
+        for sub_dir in ['Reading', 'Slide', 'Worksheet', 'Other']:
+            base_subdir = os.path.join(base_dir, sub_dir)
+            if not os.path.exists(base_subdir):
+                continue
+            txt_subdir = os.path.join(txt_dir, sub_dir)
+            for idf, f in enumerate(sorted(os.listdir(base_subdir))):
+                file_data = parser.from_file(os.path.join(base_subdir,f))
+
+                # get the content of the pdf file
+                output = file_data['content']
+
+                # convert it to utf-8
+                output = output.encode('utf-8', errors='ignore')
+                # save it
+                with open(os.path.join(txt_subdir, f.split(".")[0] + ".txt"), 'w') as f:
+                    f.write(str(output))
+
+
+
+
+def generate_directories():
+    for course in special_course_codes:
+        dir_name = f"c{course}content"
+        if os.path.exists(dir_name) and not os.path.exists(dir_name+"_txt"):
+            txt_dir = dir_name + "_txt"
+            os.mkdir(txt_dir)
+        else:
+            continue
+
+        for sub_dir in ['Reading', 'Slide', 'Worksheet', 'Other']:
+            dir_path = os.path.join(dir_name, sub_dir)
+            if os.path.exists(dir_path) and not os.path.exists(os.path.join(txt_dir,sub_dir)):
+                txt_subdir = os.path.join(txt_dir, sub_dir)
+                os.mkdir(txt_subdir)
+            else:
+                continue
 
 if __name__ == '__main__':
     if REGEN_CLEAN_CATALOG:
         regenerate_catalog()
-    populate_knowledge_base()
+    if REGEN_TXT_FROM_PDF:
+        regenerate_txt_from_pdf()
+    if REGEN_KNOWLEDGE_BASE:
+        populate_knowledge_base()
