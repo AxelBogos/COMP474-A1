@@ -37,7 +37,7 @@ comp474_description = "Rule‑based expert systems, blackboard architecture, and
 
 def populate_knowledge_base():
     g = Graph()
-    g.parse('A1.ttl', format='turtle')
+    g.parse('Project.ttl', format='turtle')
 
     # Add our university to the KB using the pre-defined schema
     g.add((DAT.Concordia_University, RDF.type, SCH.University))
