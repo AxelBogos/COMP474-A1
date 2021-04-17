@@ -1,6 +1,5 @@
 import csv
 import os
-import sys
 from os import path
 
 import pandas as pd
@@ -15,12 +14,12 @@ DAT = Namespace("http://a1.io/data#")
 TEACH = Namespace("http://linkedscience.org/teach/ns#")
 ORG = Namespace("http://rdf.muninn-project.org/ontologies/organization#")
 
+BASE_DATA_DIR = 'data'
 REGENERATE_CATALOG = False
 POPULATE_KNOWLEDGE_BASE = False
 REGENERATE_TXT_FROM_PDF = False
 
 special_course_codes = ['353', '474']
-
 special_courses = [URIRef("http://a1.io/data#COMP353"), URIRef("http://a1.io/data#COMP474")]
 
 # All topics are dbpedia resources
@@ -44,7 +43,7 @@ def populate_knowledge_base():
     g.add((DAT.Concordia_University, RDF.type, SCH.University))
     g.add((DAT.Concordia_University, ORG.name, Literal("Concordia University")))
     g.add((DAT.Concordia_University, RDFS.seeAlso, DBR.Concordia_University))
-    with open('CLEAN_CATALOG.csv', 'r') as data:
+    with open(os.path.join(BASE_DATA_DIR, 'CLEAN_CATALOG.csv'), 'r') as data:
         r = csv.DictReader(data)
         for row in r:
             # Create the course
@@ -97,9 +96,9 @@ def populate_knowledge_base():
                     g.add((tut_id, SCH.RelatedToLecture, lec_id))
 
                 # Add Outline
-                dir_name = "c{}content".format(row['Course number'])
+                dir_name = os.path.join(BASE_DATA_DIR, "c{}content").format(row['Course number'])
                 outline_path = os.path.join(dir_name, 'Outline.pdf')
-                if (os.path.isfile(outline_path)):
+                if os.path.isfile(outline_path):
                     g.add((cn, SCH.Outline, DAT[outline_path]))
 
                 # Add website (Neither special courses have one in CATALOG.csv)
@@ -124,17 +123,17 @@ def regenerate_catalog():
     Creates a new .csv file CLEAN_CATALOG.csv  in the current dir.
     :return: void
     """
-    catalog = pd.read_csv('CATALOG.csv')
+    catalog = pd.read_csv(os.path.join(BASE_DATA_DIR, 'CATALOG.csv'))
     catalog = catalog.replace(r'\n', ' ', regex=True)  # remove newline characters
     catalog = catalog.dropna(subset=['Course code', 'Course number'])  # remove empty course codes and course names
-    catalog.to_csv('CLEAN_CATALOG.csv', index=False)
+    catalog.to_csv(os.path.join(BASE_DATA_DIR, 'CLEAN_CATALOG.csv'), index=False)
 
 
 def regenerate_txt_from_pdf():
     generate_directories()
     for course in special_course_codes:
-        base_dir = f"c{course}content"
-        txt_dir = f"c{course}content" + "_txt"
+        base_dir = os.path.join(BASE_DATA_DIR, f"c{course}content")
+        txt_dir = os.path.join(BASE_DATA_DIR, f"c{course}content" + "_txt")
 
         base_outline = os.path.join(base_dir, 'Outline.pdf')
         txt_outline = os.path.join(txt_dir, 'Outline.txt')
@@ -172,7 +171,7 @@ def regenerate_txt_from_pdf():
 
 def generate_directories():
     for course in special_course_codes:
-        dir_name = f"c{course}content"
+        dir_name = os.path.join(BASE_DATA_DIR, f"c{course}content")
         if os.path.exists(dir_name) and not os.path.exists(dir_name + "_txt"):
             txt_dir = dir_name + "_txt"
             os.mkdir(txt_dir)
@@ -190,8 +189,11 @@ def generate_directories():
 
 if __name__ == '__main__':
     if REGENERATE_CATALOG:
+        print('Generating catalog...')
         regenerate_catalog()
     if POPULATE_KNOWLEDGE_BASE:
+        print('Populating Knolwedge Base...')
         populate_knowledge_base()
     if REGENERATE_TXT_FROM_PDF:
+        print('Rendering PDF as txt...')
         regenerate_txt_from_pdf()
