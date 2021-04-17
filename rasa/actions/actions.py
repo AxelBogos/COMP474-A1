@@ -2,7 +2,7 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from helper_functions import query_fuseki, load_query
+from helper_functions import query_fuseki, load_query, find_label
 
 
 query2='prefix a1_data: <http://a1.io/data#> prefix dbp: <http://dbpedia.org/property/> prefix a1_schema: <http://a1.io/schema#> SELECT ?topic WHERE{a1_data:%s a1_schema:HasLecture ?lecture .?lecture a1_schema:LectureNumber 2 .?lecture dbp:subject ?topic}'
@@ -20,11 +20,12 @@ class Action_topic_of_lecture(Action):
         Query=load_query("q1.txt")
         Query=Query % (tracker.slots['course'],tracker.slots['lecture_number'])
         Answer=query_fuseki(Query)
+        process_query=find_label(Answer[0])
 
         if(Answer):
-            message=f"Lecture {tracker.slots['lecture_number']} of {tracker.slots['course']} is about {Answer[0]}"
+            message=f"Lecture {tracker.slots['lecture_number']} of {tracker.slots['course']} is about {process_query}"
         else:
-            message=f"I don't find any information about {tracker.slots['course']}."
+            message=f"I don't find any information about the lecture {tracker.slots['lecture_number']} of {tracker.slots['course']}."
 
         dispatcher.utter_message(text=message)
         return []
