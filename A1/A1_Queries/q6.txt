@@ -1,8 +1,13 @@
 PREFIX a1_schema: <http://a1.io/schema#>
 PREFIX teach: <http://linkedscience.org/teach/ns#>
+PREFIX dbr: <http://dbpedia.org/resource/>
+prefix dbp: <http://dbpedia.org/property/>
 
 SELECT ?university
 WHERE {
-  ?university a1_schema:Offers ?course .
-  ?course teach:courseTitle %s .
+    ?university org:name %s .
+  	?university a1_schema:Offers ?course .
+	  ?course a1_schema:HasLecture ?lecture .
+  	?lecture a1_schema:HasMaterial ?material .
+  	?material dbp:subject dbr:%s .
 }
