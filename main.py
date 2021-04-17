@@ -117,18 +117,26 @@ def populate_knowledge_base():
     g.serialize(destination="out/kb.ttl", format="turtle")
     g.serialize(destination="out/kb_ntriples.rdf", format="ntriples")
 
+
 def regenerate_catalog():
     """
     Function to wrangle and clean data used in the KB construction. A bit bare bone for now.
     Creates a new .csv file CLEAN_CATALOG.csv  in the current dir.
-    :return: void
+    :return: None
     """
     catalog = pd.read_csv(os.path.join(BASE_DATA_DIR, 'CATALOG.csv'))
     catalog = catalog.replace(r'\n', ' ', regex=True)  # remove newline characters
     catalog = catalog.dropna(subset=['Course code', 'Course number'])  # remove empty course codes and course names
     catalog.to_csv(os.path.join(BASE_DATA_DIR, 'CLEAN_CATALOG.csv'), index=False)
 
+
 def regenerate_txt_from_pdf():
+    '''
+    Populates the mirror directory structure generated in `generate_directories`. Uses Apache tika library
+    to render all pdfs into txt file in the equivalent _txt directory.
+    Example: data/c353content/Slides/slide1.pdf will be rendered as txt file in data/c353content_txt/Slides/slide1.txt
+    :return: None
+    '''
     generate_directories()
     for course in special_course_codes:
         base_dir = os.path.join(BASE_DATA_DIR, f"c{course}content")
@@ -167,7 +175,12 @@ def regenerate_txt_from_pdf():
                 with open(os.path.join(txt_subdir, f.split(".")[0] + ".txt"), 'w') as f:
                     f.write(str(output))
 
+
 def generate_directories():
+    '''
+    Generates a directory structure that mirrors all the course content directories with as txt files.
+    :return: None
+    '''
     for course in special_course_codes:
         dir_name = os.path.join(BASE_DATA_DIR, f"c{course}content")
         if os.path.exists(dir_name) and not os.path.exists(dir_name + "_txt"):
@@ -184,23 +197,32 @@ def generate_directories():
             else:
                 continue
 
-def generate_dbpedia_entities():
-    # You need to have already downloaded the spacy large english model to run this
-    # run python -m spacy download en_core_web_lg on your venv if it doesnt work (~750 mb)
+
+def generate_dbpedia_entities(file_txt):
+    '''
+    This function generates and returns the dbpedia entities linked by spotlight of a single file.
+    Warning! Requires the spacy en_core_web_lg model. If you do not have it, run
+    python -m spacy download en_core_web_lg on your venv (~750 mb)
+
+    !! We will definitely need to setup a local server of spotlight. Bad HTTP responses for many access in a row !!
+
+    :param file_txt: txt version of a file as rendered by Apache Tika.
+    :return: List of dbpedia URIs entities
+    '''
+
     nlp = spacy.load('en_core_web_lg')
+
     # add the pipeline stage
     nlp.add_pipe('dbpedia_spotlight')
+    print(nlp.pipe_names) # definitely need to adjust the pipeline
 
-    # hardcoded test - use apache to read render the pdf and feed the txt to spacy-spotlight
-    outline_path = os.path.join(BASE_DATA_DIR,'c353content','Outline.pdf')
-    file_data = parser.from_file(outline_path)
-    # get the content of the pdf file
-    output = file_data['content']
-    # convert it to utf-8
-    output = output.encode('utf-8', errors='ignore')
-    doc = nlp(str(output))
+    doc = nlp(file_txt)
+    entities = []
+    for ent in doc.ents:
+        print((ent.text, ent.kb_id_, ent._.dbpedia_raw_result['@similarityScore'] ))
+        entities.append(ent.kb_id_)
 
-    print([(ent.text, ent.kb_id_, ent._.dbpedia_raw_result['@similarityScore']+ "\n") for ent in doc.ents])
+    return entities
 
 if __name__ == '__main__':
     if REGENERATE_CATALOG:
@@ -212,4 +234,9 @@ if __name__ == '__main__':
     if REGENERATE_TXT_FROM_PDF:
         print('Rendering PDF as txt...')
         regenerate_txt_from_pdf()
-    generate_dbpedia_entities()
+
+    # hardcoded test - use apache to read render the pdf and feed the txt to spacy-spotlight
+    outline_path = os.path.join(BASE_DATA_DIR, 'c353content_txt', 'Outline.txt')
+    with open(outline_path, 'r') as f:
+        data = f.read().replace('\n', '')
+        generate_dbpedia_entities(data)
