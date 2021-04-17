@@ -1,5 +1,6 @@
 @prefix a1_data: <http://a1.io/data#> .
 @prefix a1_schema: <http://a1.io/schema#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix dbp: <http://dbpedia.org/property/> .
 @prefix dbr: <http://dbpedia.org/resource/> .
 @prefix org: <http://rdf.muninn-project.org/ontologies/organization#> .
@@ -13,20 +14,26 @@ a1_schema:Course a rdfs:Class ;
     rdfs:label "Course"@en ;
     rdfs:subClassOf teach:Course .
 
+a1_schema:CourseEvent a rdfs:Class ;
+    rdfs:label "Course Event"@en ;
+    rdfs:subClassOf dbo:Event .
+
 a1_schema:Lab a rdfs:Class ;
     rdfs:label "Laboratory"@en ;
     rdfs:subClassOf a1_schema:LectureRelatedEvent .
 
 a1_schema:Lecture a rdfs:Class ;
     rdfs:label "Lecture"@en ;
-    rdfs:subClassOf teach:Lecture .
+    rdfs:subClassOf a1_schema:CourseEvent ;
+    owl:sameAs teach:Lecture .
 
 a1_schema:LectureMaterial a rdfs:Class ;
     rdfs:label "Course"@en ;
     rdfs:subClassOf teach:Material .
 
 a1_schema:LectureRelatedEvent a rdfs:Class ;
-    rdfs:label "Events related to lectures"@en .
+    rdfs:label "Events related to lectures"@en ;
+    rdfs:subClassOf a1_schema:CourseEvent .
 
 a1_schema:Reading a rdfs:Class ;
     rdfs:label "Worksheet"@en ;
@@ -1407,7 +1414,7 @@ a1_schema:HasLecture a rdf:Property ;
 a1_schema:HasMaterial a rdf:Property ;
     rdfs:label "Lecture Material"@en ;
     rdfs:comment "Material of a lecture"@en ;
-    rdfs:domain a1_schema:Lecture ;
+    rdfs:domain a1_schema:CourseEvent ;
     rdfs:range a1_schema:LectureMaterial .
 
 a1_schema:HasSubject a rdf:Property ;
@@ -1415,6 +1422,12 @@ a1_schema:HasSubject a rdf:Property ;
     rdfs:comment "The Subject of a Course"@en ;
     rdfs:domain a1_schema:Course ;
     rdfs:range rdfs:Literal .
+
+a1_schema:LectureEventHasMaterial a rdf:Property ;
+    rdfs:label "Lecture Material"@en ;
+    rdfs:comment "Material of a lecture"@en ;
+    rdfs:domain a1_schema:Lecture ;
+    rdfs:range a1_schema:LectureMaterial .
 
 a1_schema:LectureNumber a rdf:Property ;
     rdfs:label "Lecture Number"@en ;
