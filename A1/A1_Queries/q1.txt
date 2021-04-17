@@ -5,9 +5,10 @@ prefix dbp: <http://dbpedia.org/property/>
 prefix a1_schema: <http://a1.io/schema#>
 
 SELECT ?topic 
+SELECT ?topic
 WHERE{
 	a1_data:%s a1_schema:HasLecture ?lecture .
-	?lecture a1_schema:LectureNumber %s .
-	?lecture dbp:subject ?topic
-
+  	?lecture a1_schema:LectureNumber %s .
+    ?lecture a1_schema:HasMaterial ?material .
+  	?material dbp:subject ?topic .
 }

@@ -8,16 +8,31 @@ intents:
   - mood_great
   - mood_unhappy
   - about_course
+  - teach_course
+  - count_courses
+  - course_website
+  - count_readings
+  - subject_of_course
   - bot_challenge
 entities:
   - course
+  - topic
+  - university
+  - course_title
 slots:
- course:
-  type: any
-  initial_value: "initial"
+  course:
+    type: any
+    initial_value: "initial"
+  topic:
+    type: text
+  university:
+    type: text
+  course_title:
+    type: text
   
 actions:
  - action_course_info
+ - get_teach_course
  
  
 responses:
