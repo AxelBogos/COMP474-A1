@@ -83,6 +83,7 @@ nlu:
     - extremly sad
     - so saad
     - so sad
+  
 - intent: about_course
   examples: |
     - What is [COMP474](course) about?
@@ -101,6 +102,7 @@ nlu:
     - Can you tell me about [COMP470](course) ?
     - Do you know [COMP474](course) ?
     - Tell me about [COMP474](course) ?
+
 - intent: about_topic_of_lecture
   examples: |
     - What is the lecture [2](lecture_number) of [COMP474](course) about?
@@ -114,8 +116,8 @@ nlu:
     - What is the topic of lecture [3](lecture_number) of [SOEN333](course)?
     - Tell me about lecture [4](lecture_number) of [COMP474](course).
     - Tell me about lecture [5](lecture_number) of [COMP420](course).
-    - Tell me about lecture [6](lecture_number) of [COMP353](course).
-    
+    - Tell me about lecture [6](lecture_number) of [COMP353](course).  
+
 - intent: teach_topic
   examples: |
     - Which universities teach courses about [database design](topic)?
@@ -127,7 +129,7 @@ nlu:
     - Who teaches courses about [sparql](topic)?
 
 - intent: count_courses
-  example: |
+  examples: |
     - How many [COMP](subject) courses are taught at [Concordia](university)?
     - How many [SOEN](subject) courses are taught at [Waterloo University](university)?
     - Does [McGill University](university) have a lot of courses in [COMP](subject)?
@@ -141,7 +143,7 @@ nlu:
     - How many of the same type are offered at [McGill](university)?
 
 - intent: course_website
-  example: |
+  examples: |
     - What is the course website for [COMP353](course)?
     - What is the course site for [COMP353](course)?
     - What's the website for [COMP474](course)?
@@ -157,7 +159,7 @@ nlu:
     - Where can I find more information about [COMP474](course)?
 
 - intent: count_readings
-  example: |
+  examples: |
     - Which course has the fewest readings?
     - Which course has the least readings?
     - What is the easiest class?
@@ -172,7 +174,7 @@ nlu:
     - courses with no readings?
 
 - intent: subject_of_course
-  example: |
+  examples: |
     - Is [Intelligent Systems](course_title) a [COMP](subject) or [SOEN](subject) course?
     - Which subject is [Intelligent Systems](course_title)?
     - Whats the course subject of [Advanced Database Design](course_title)?
