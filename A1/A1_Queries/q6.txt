@@ -4,5 +4,5 @@ PREFIX teach: <http://linkedscience.org/teach/ns#>
 SELECT ?university
 WHERE {
   ?university a1_schema:Offers ?course .
-  ?course teach:courseTitle "Database Design" .
+  ?course teach:courseTitle %s .
 }

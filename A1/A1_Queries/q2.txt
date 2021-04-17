@@ -4,5 +4,5 @@ prefix teach: <http://linkedscience.org/teach/ns#>
 
 SELECT ?Course_Description 
 WHERE {
-a1_data:COMP474 teach:courseDescription ?Course_Description 
+a1_data:%s teach:courseDescription ?Course_Description 
 }

@@ -5,5 +5,5 @@ prefix a1_data: <http://a1.io/data#>
 
 SELECT ?link 
     WHERE{
-        a1_data:COMP474 rdfs:seeAlso ?link  
+        a1_data:%s rdfs:seeAlso ?link  
     }
