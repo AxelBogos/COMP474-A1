@@ -27,11 +27,11 @@ special_courses_websites = [URIRef("http://concordia.catalog.acalog.com/preview_
                    URIRef("http://concordia.catalog.acalog.com/preview_course_nopop.php?catoid=1&coid=2718")]
 
 # All topics are dbpedia resources
-topics_353 = ['Database', 'Entity–relationship_model', 'Relational_database',
+lecture_titles_353 = ['Database', 'Entity–relationship_model', 'Relational_database',
               'Armstrong%27s_axioms', 'Armstrong%27s_axioms', 'Database_normalization',
               'Relational_algebra', 'SQL', 'SQL', 'SQL', 'Datalog', 'Object_Definition_Language']
 
-topics_474 = ['Intelligent_system', 'Knowledge_graph', 'Ontology_(information_science)',
+lecture_titles_474 = ['Intelligent_system', 'Knowledge_graph', 'Ontology_(information_science)',
               'SPARQL', 'Knowledge_base', 'Recommender_system', 'Machine_learning',
               'Intelligent_agent', 'Text_mining']
 
@@ -87,12 +87,10 @@ def populate_knowledge_base():
 
                     # Add topics, Lecture Name, description
                     if row['Course number'] == '353':
-                        #g.add((lec_id, DBP.subject, DBR[topics_353[i - 1]]))
-                        g.add((lec_id, TEACH.hasTitle, Literal(topics_353[i - 1])))
+                        g.add((lec_id, TEACH.hasTitle, Literal(lecture_titles_353[i - 1])))
                         g.add((cn, TEACH.courseDescription, Literal(comp353_description)))
                     else:
-                        #g.add((lec_id, DBP.subject, DBR[topics_474[i - 1]]))
-                        g.add((lec_id, TEACH.hasTitle, Literal(topics_474[i - 1])))
+                        g.add((lec_id, TEACH.hasTitle, Literal(lecture_titles_474[i - 1])))
                         g.add((cn, TEACH.courseDescription, Literal(comp474_description)))
 
                     # Add Labs
@@ -250,9 +248,3 @@ if __name__ == '__main__':
         print('Rendering PDF as txt...')
         regenerate_txt_from_pdf()
 
-    # hardcoded test - use apache to read render the pdf and feed the txt to spacy-spotlight
-    # outline_path = os.path.join(BASE_DATA_DIR, 'c474content_txt', 'Outline.txt')
-    # with open(outline_path, 'r') as f:
-    #     data = f.read().replace('\n', '')
-    #     result = generate_dbpedia_entities(data)
-    # [print(r+"\n") for r in result]
