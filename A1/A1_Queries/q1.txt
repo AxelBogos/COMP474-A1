@@ -6,8 +6,8 @@ prefix a1_schema: <http://a1.io/schema#>
 
 SELECT ?topic 
 WHERE{
-	a1_data:COMP474 a1_schema:HasLecture ?lecture .
-	?lecture a1_schema:LectureNumber 2 .
+	a1_data:%s a1_schema:HasLecture ?lecture .
+	?lecture a1_schema:LectureNumber %s .
 	?lecture dbp:subject ?topic
 
 }
