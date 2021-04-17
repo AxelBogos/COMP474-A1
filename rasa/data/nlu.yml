@@ -113,7 +113,7 @@ nlu:
     - Who teaches courses about [sparql](topic)?
 
 - intent: count_courses
-  example: |
+  examples: |
     - How many [COMP](subject) courses are taught at [Concordia](university)?
     - How many [SOEN](subject) courses are taught at [Waterloo University](university)?
     - Does [McGill University](university) have a lot of courses in [COMP](subject)?
@@ -127,7 +127,7 @@ nlu:
     - How many of the same type are offered at [McGill](university)?
 
 - intent: course_website
-  example: |
+  examples: |
     - What is the course website for [COMP353](course)?
     - What is the course site for [COMP353](course)?
     - What's the website for [COMP474](course)?
@@ -143,7 +143,7 @@ nlu:
     - Where can I find more information about [COMP474](course)?
 
 - intent: count_readings
-  example: |
+  examples: |
     - Which course has the fewest readings?
     - Which course has the least readings?
     - What is the easiest class?
@@ -158,7 +158,7 @@ nlu:
     - courses with no readings?
 
 - intent: subject_of_course
-  example: |
+  examples: |
     - Is [Intelligent Systems](course_title) a [COMP](subject) or [SOEN](subject) course?
     - Which subject is [Intelligent Systems](course_title)?
     - Whats the course subject of [Advanced Database Design](course_title)?
