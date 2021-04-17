@@ -101,10 +101,17 @@ nlu:
     - Can you tell me about [COMP470](course) ?
     - Do you know [COMP474](course) ?
     - Tell me about [COMP474](course) ?
-    
-- intent: bot_challenge
+- intent: about_topic_of_lecture
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - What is the lecture [2](lecture_number) of [COMP474](course) about?
+    - What is the lecture [10](lecture_number) of [COMP353](course) about?
+    - What is the lecture [3](lecture_number) of [SOEN333](course) about?
+    - What is lecture [3](lecture_number) about?
+    - In [COMP470](course) what is the topic of lecture [1](lecture_number)?
+    - In [COMP466](course) what is the topic of lecture [8](lecture_number)?
+    - What is the topic of lecture [2](lecture_number) of [COMP474](course)?
+    - What is the topic of lecture [10](lecture_number) of [COMP353](course)?
+    - What is the topic of lecture [3](lecture_number) of [SOEN333](course)?
+    - Tell me about lecture [4](lecture_number) of [COMP474](course).
+    - Tell me about lecture [5](lecture_number) of [COMP420](course).
+    - Tell me about lecture [6](lecture_number) of [COMP353](course).

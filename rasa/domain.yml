@@ -8,16 +8,22 @@ intents:
   - mood_great
   - mood_unhappy
   - about_course
+  - about_topic_of_lecture
   - bot_challenge
 entities:
   - course
+  - lecture_number
 slots:
  course:
   type: any
   initial_value: "initial"
-  
+ lecture_number:
+  type: any
+  initial_value: "initial"
+    
 actions:
  - action_course_info
+ - action_topic_of_lecture
  
  
 responses:
