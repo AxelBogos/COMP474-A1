@@ -1,5 +1,6 @@
 import csv
 import os
+import sys
 from os import path
 
 import pandas as pd
@@ -14,11 +15,11 @@ DAT = Namespace("http://a1.io/data#")
 TEACH = Namespace("http://linkedscience.org/teach/ns#")
 ORG = Namespace("http://rdf.muninn-project.org/ontologies/organization#")
 
-REGEN_CLEAN_CATALOG = False
-REGEN_KNOWLEDGE_BASE = False
-REGEN_TXT_FROM_PDF = True
+REGENERATE_CATALOG = False
+POPULATE_KNOWLEDGE_BASE = False
+REGENERATE_TXT_FROM_PDF = False
 
-special_course_codes = ['353','474']
+special_course_codes = ['353', '474']
 
 special_courses = [URIRef("http://a1.io/data#COMP353"), URIRef("http://a1.io/data#COMP474")]
 
@@ -116,6 +117,7 @@ def populate_knowledge_base():
     g.serialize(destination="out/kb.ttl", format="turtle")
     g.serialize(destination="out/kb_ntriples.rdf", format="ntriples")
 
+
 def regenerate_catalog():
     """
     Function to wrangle and clean data used in the KB construction. A bit bare bone for now.
@@ -127,12 +129,12 @@ def regenerate_catalog():
     catalog = catalog.dropna(subset=['Course code', 'Course number'])  # remove empty course codes and course names
     catalog.to_csv('CLEAN_CATALOG.csv', index=False)
 
-def regenerate_txt_from_pdf():
 
+def regenerate_txt_from_pdf():
     generate_directories()
     for course in special_course_codes:
         base_dir = f"c{course}content"
-        txt_dir = f"c{course}content"+"_txt"
+        txt_dir = f"c{course}content" + "_txt"
 
         base_outline = os.path.join(base_dir, 'Outline.pdf')
         txt_outline = os.path.join(txt_dir, 'Outline.txt')
@@ -156,7 +158,7 @@ def regenerate_txt_from_pdf():
                 continue
             txt_subdir = os.path.join(txt_dir, sub_dir)
             for idf, f in enumerate(sorted(os.listdir(base_subdir))):
-                file_data = parser.from_file(os.path.join(base_subdir,f))
+                file_data = parser.from_file(os.path.join(base_subdir, f))
 
                 # get the content of the pdf file
                 output = file_data['content']
@@ -168,12 +170,10 @@ def regenerate_txt_from_pdf():
                     f.write(str(output))
 
 
-
-
 def generate_directories():
     for course in special_course_codes:
         dir_name = f"c{course}content"
-        if os.path.exists(dir_name) and not os.path.exists(dir_name+"_txt"):
+        if os.path.exists(dir_name) and not os.path.exists(dir_name + "_txt"):
             txt_dir = dir_name + "_txt"
             os.mkdir(txt_dir)
         else:
@@ -181,16 +181,17 @@ def generate_directories():
 
         for sub_dir in ['Reading', 'Slide', 'Worksheet', 'Other']:
             dir_path = os.path.join(dir_name, sub_dir)
-            if os.path.exists(dir_path) and not os.path.exists(os.path.join(txt_dir,sub_dir)):
+            if os.path.exists(dir_path) and not os.path.exists(os.path.join(txt_dir, sub_dir)):
                 txt_subdir = os.path.join(txt_dir, sub_dir)
                 os.mkdir(txt_subdir)
             else:
                 continue
 
+
 if __name__ == '__main__':
-    if REGEN_CLEAN_CATALOG:
+    if REGENERATE_CATALOG:
         regenerate_catalog()
-    if REGEN_TXT_FROM_PDF:
-        regenerate_txt_from_pdf()
-    if REGEN_KNOWLEDGE_BASE:
+    if POPULATE_KNOWLEDGE_BASE:
         populate_knowledge_base()
+    if REGENERATE_TXT_FROM_PDF:
+        regenerate_txt_from_pdf()
