@@ -103,6 +103,7 @@ nlu:
     - Do you know [COMP474](course) ?
     - Tell me about [COMP474](course) ?
 
+
 - intent: about_topic_of_lecture
   examples: |
     - What is the lecture [2](lecture_number) of [COMP474](course) about?
@@ -118,7 +119,9 @@ nlu:
     - Tell me about lecture [5](lecture_number) of [COMP420](course).
     - Tell me about lecture [6](lecture_number) of [COMP353](course).  
 
-- intent: teach_topic
+
+    
+- intent: teach_course
   examples: |
     - Which universities teach courses about [database design](topic)?
     - Which universities teach courses about [machine learning](topic)?
@@ -180,8 +183,5 @@ nlu:
     - Whats the course subject of [Advanced Database Design](course_title)?
     - Is [Advanced Program Design in C++](course_title) a [COMP](subject) class?
     - Is [Databases](course_title) a [SOEN](subject) class?
-
-
-
 
 

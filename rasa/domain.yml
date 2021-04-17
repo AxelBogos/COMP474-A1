@@ -7,23 +7,42 @@ intents:
   - deny
   - mood_great
   - mood_unhappy
+  - bot_challenge
   - about_course
   - about_topic_of_lecture
-  - bot_challenge
+  - teach_course
+  - count_courses
+  - course_website
+  - count_readings
+  - subject_of_course
+  
+
 entities:
   - course
+  - topic
+  - university
+  - course_title
   - lecture_number
+  
 slots:
- course:
-  type: any
-  initial_value: "initial"
- lecture_number:
-  type: any
-  initial_value: "initial"
-    
+  course:
+    type: any
+    initial_value: "initial"
+  lecture_number:
+    type: any
+    initial_value: "initial"
+  topic:
+    type: text
+  university:
+    type: text
+  course_title:
+    type: text
+  
 actions:
  - action_course_info
+ - get_teach_course
  - action_topic_of_lecture
+
  
  
 responses:
