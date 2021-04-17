@@ -6,6 +6,7 @@ import pandas as pd
 from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import RDF, RDFS
 from tika import parser
+import spacy
 
 DBR = Namespace("http://dbpedia.org/resource/")
 DBP = Namespace("http://dbpedia.org/property/")
@@ -116,7 +117,6 @@ def populate_knowledge_base():
     g.serialize(destination="out/kb.ttl", format="turtle")
     g.serialize(destination="out/kb_ntriples.rdf", format="ntriples")
 
-
 def regenerate_catalog():
     """
     Function to wrangle and clean data used in the KB construction. A bit bare bone for now.
@@ -127,7 +127,6 @@ def regenerate_catalog():
     catalog = catalog.replace(r'\n', ' ', regex=True)  # remove newline characters
     catalog = catalog.dropna(subset=['Course code', 'Course number'])  # remove empty course codes and course names
     catalog.to_csv(os.path.join(BASE_DATA_DIR, 'CLEAN_CATALOG.csv'), index=False)
-
 
 def regenerate_txt_from_pdf():
     generate_directories()
@@ -168,7 +167,6 @@ def regenerate_txt_from_pdf():
                 with open(os.path.join(txt_subdir, f.split(".")[0] + ".txt"), 'w') as f:
                     f.write(str(output))
 
-
 def generate_directories():
     for course in special_course_codes:
         dir_name = os.path.join(BASE_DATA_DIR, f"c{course}content")
@@ -186,6 +184,23 @@ def generate_directories():
             else:
                 continue
 
+def generate_dbpedia_entities():
+    # You need to have already downloaded the spacy large english model to run this
+    # run python -m spacy download en_core_web_lg on your venv if it doesnt work (~750 mb)
+    nlp = spacy.load('en_core_web_lg')
+    # add the pipeline stage
+    nlp.add_pipe('dbpedia_spotlight')
+
+    # hardcoded test - use apache to read render the pdf and feed the txt to spacy-spotlight
+    outline_path = os.path.join(BASE_DATA_DIR,'c353content','Outline.pdf')
+    file_data = parser.from_file(outline_path)
+    # get the content of the pdf file
+    output = file_data['content']
+    # convert it to utf-8
+    output = output.encode('utf-8', errors='ignore')
+    doc = nlp(str(output))
+
+    print([(ent.text, ent.kb_id_, ent._.dbpedia_raw_result['@similarityScore']+ "\n") for ent in doc.ents])
 
 if __name__ == '__main__':
     if REGENERATE_CATALOG:
@@ -197,3 +212,4 @@ if __name__ == '__main__':
     if REGENERATE_TXT_FROM_PDF:
         print('Rendering PDF as txt...')
         regenerate_txt_from_pdf()
+    generate_dbpedia_entities()
