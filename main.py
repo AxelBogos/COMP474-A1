@@ -6,6 +6,7 @@ import pandas as pd
 from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import RDF, RDFS
 from tika import parser
+from tqdm import tqdm
 import spacy
 
 DBR = Namespace("http://dbpedia.org/resource/")
@@ -17,11 +18,13 @@ ORG = Namespace("http://rdf.muninn-project.org/ontologies/organization#")
 
 BASE_DATA_DIR = 'data'
 REGENERATE_CATALOG = False
-POPULATE_KNOWLEDGE_BASE = False
+POPULATE_KNOWLEDGE_BASE = True
 REGENERATE_TXT_FROM_PDF = False
 
-special_course_codes = ['353', '474']
 special_courses = [URIRef("http://a1.io/data#COMP353"), URIRef("http://a1.io/data#COMP474")]
+special_course_codes = ['353', '474']
+special_courses_websites = [URIRef("http://concordia.catalog.acalog.com/preview_course_nopop.php?catoid=1&coid=2703"),
+                   URIRef("http://concordia.catalog.acalog.com/preview_course_nopop.php?catoid=1&coid=2718")]
 
 # All topics are dbpedia resources
 topics_353 = ['Database', 'Entity–relationship_model', 'Relational_database',
@@ -35,9 +38,14 @@ topics_474 = ['Intelligent_system', 'Knowledge_graph', 'Ontology_(information_sc
 comp353_description = "Introduction to database management systems. Conceptual database design: the entity‑relationship model. The relational data model and relational algebra: functional dependencies and normalization. The SQL language and its application in defining, querying, and updating databases; integrity constraints; triggers. Developing database applications. "
 comp474_description = "Rule‑based expert systems, blackboard architecture, and agent‑based. Knowledge acquisition and representation. Uncertainty and conflict resolution. Reasoning and explanation. Design of intelligent systems."
 
+nlp = spacy.load('en_core_web_lg')
+
+# add the pipeline stage
+nlp.add_pipe('dbpedia_spotlight')
+# nlp.add_pipe('dbpedia_spotlight', config={'dbpedia_rest_endpoint': 'http://localhost:2222/rest'})
+g = Graph()
 
 def populate_knowledge_base():
-    g = Graph()
     g.parse('Project.ttl', format='turtle')
 
     # Add our university to the KB using the pre-defined schema
@@ -47,6 +55,7 @@ def populate_knowledge_base():
     with open(os.path.join(BASE_DATA_DIR, 'CLEAN_CATALOG.csv'), 'r') as data:
         r = csv.DictReader(data)
         for row in r:
+
             # Create the course
             cn = URIRef("http://a1.io/data#" + row['Course code'] + row['Course number'])
             g.add((cn, RDF.type, SCH.Course))
@@ -78,11 +87,11 @@ def populate_knowledge_base():
 
                     # Add topics, Lecture Name, description
                     if row['Course number'] == '353':
-                        g.add((lec_id, DBP.subject, DBR[topics_353[i - 1]]))
+                        #g.add((lec_id, DBP.subject, DBR[topics_353[i - 1]]))
                         g.add((lec_id, TEACH.hasTitle, Literal(topics_353[i - 1])))
                         g.add((cn, TEACH.courseDescription, Literal(comp353_description)))
                     else:
-                        g.add((lec_id, DBP.subject, DBR[topics_474[i - 1]]))
+                        #g.add((lec_id, DBP.subject, DBR[topics_474[i - 1]]))
                         g.add((lec_id, TEACH.hasTitle, Literal(topics_474[i - 1])))
                         g.add((cn, TEACH.courseDescription, Literal(comp474_description)))
 
@@ -98,6 +107,7 @@ def populate_knowledge_base():
 
                 # Add Outline
                 dir_name = os.path.join(BASE_DATA_DIR, "c{}content").format(row['Course number'])
+                dir_name_txt = os.path.join(BASE_DATA_DIR, "c{}content_txt").format(row['Course number'])
                 outline_path = os.path.join(dir_name, 'Outline.pdf')
                 if os.path.isfile(outline_path):
                     g.add((cn, SCH.Outline, DAT[outline_path]))
@@ -108,12 +118,23 @@ def populate_knowledge_base():
                 # Add content
                 for sub_dir in ['Reading', 'Slide', 'Worksheet', 'Other']:
                     dir_path = os.path.join(dir_name, sub_dir)
+                    dir_path_txt = os.path.join(dir_name_txt, sub_dir)
                     if os.path.isdir(dir_path):
                         for idf, f in enumerate(sorted(os.listdir(dir_path))):
-                            f_uri = DAT[path.join(dir_path, f)]
+                            f_path = os.path.join(dir_path, f)
+                            f_path_txt = os.path.join(dir_path_txt,f.split('.')[0]+".txt")
+                            f_uri = DAT[f_path]
                             lec_id = DAT["{}{}Lec{}".format(row['Course code'], row['Course number'], idf + 1)]
                             g.add((f_uri, RDF.type, SCH[sub_dir]))
                             g.add((lec_id, SCH.HasMaterial, f_uri))
+
+                            # Extract entities of file with spotlight
+                            with open(f_path_txt, 'r') as f:
+                                data = f.read()
+                                result = generate_dbpedia_entities(data)
+                            for entity in result:
+                                g.add((f_uri, DBP.subject, URIRef(entity)))
+
     g.serialize(destination="out/kb.ttl", format="turtle")
     g.serialize(destination="out/kb_ntriples.rdf", format="ntriples")
 
@@ -149,7 +170,7 @@ def regenerate_txt_from_pdf():
             file_data = parser.from_file(base_outline)
 
             # get the content of the pdf file
-            output = file_data['content']
+            output = file_data['content'].strip().replace('\n', '')
 
             # convert it to utf-8
             output = output.encode('utf-8', errors='ignore')
@@ -167,7 +188,7 @@ def regenerate_txt_from_pdf():
                 file_data = parser.from_file(os.path.join(base_subdir, f))
 
                 # get the content of the pdf file
-                output = file_data['content']
+                output = file_data['content'].strip().replace('\n', '')
 
                 # convert it to utf-8
                 output = output.encode('utf-8', errors='ignore')
@@ -210,19 +231,13 @@ def generate_dbpedia_entities(file_txt):
     :return: List of dbpedia URIs entities
     '''
 
-    nlp = spacy.load('en_core_web_lg')
-
-    # add the pipeline stage
-    nlp.add_pipe('dbpedia_spotlight')
-    print(nlp.pipe_names) # definitely need to adjust the pipeline
-
     doc = nlp(file_txt)
     entities = []
     for ent in doc.ents:
-        print((ent.text, ent.kb_id_, ent._.dbpedia_raw_result['@similarityScore'] ))
-        entities.append(ent.kb_id_)
+        if eval(ent._.dbpedia_raw_result['@similarityScore']) >= 0.75:
+            entities.append(ent.kb_id_)
+    return set(entities)
 
-    return entities
 
 if __name__ == '__main__':
     if REGENERATE_CATALOG:
@@ -236,7 +251,8 @@ if __name__ == '__main__':
         regenerate_txt_from_pdf()
 
     # hardcoded test - use apache to read render the pdf and feed the txt to spacy-spotlight
-    outline_path = os.path.join(BASE_DATA_DIR, 'c353content_txt', 'Outline.txt')
-    with open(outline_path, 'r') as f:
-        data = f.read().replace('\n', '')
-        generate_dbpedia_entities(data)
+    # outline_path = os.path.join(BASE_DATA_DIR, 'c474content_txt', 'Outline.txt')
+    # with open(outline_path, 'r') as f:
+    #     data = f.read().replace('\n', '')
+    #     result = generate_dbpedia_entities(data)
+    # [print(r+"\n") for r in result]
