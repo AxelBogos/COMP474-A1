@@ -102,6 +102,74 @@ nlu:
     - Do you know [COMP474](course) ?
     - Tell me about [COMP474](course) ?
     
+- intent: teach_topic
+  examples: |
+    - Which universities teach courses about [database design](topic)?
+    - Which universities teach courses about [machine learning](topic)?
+    - Where can I learn about [natural language processing](topic)?
+    - Where can I learn about [relational algebra](topic)?
+    - Tell me which schools teach [SQL](topic)
+    - Do they teach [database design](topic)?
+    - Who teaches courses about [sparql](topic)?
+
+- intent: count_courses
+  example: |
+    - How many [COMP](subject) courses are taught at [Concordia](university)?
+    - How many [SOEN](subject) courses are taught at [Waterloo University](university)?
+    - Does [McGill University](university) have a lot of courses in [COMP](subject)?
+    - Does [Concordia](university) have a any courses in [SOCI](subject)?
+    - How many courses in [SOEN](subject) are offered at [Concordia](university)?
+    - Does the [COMP](subject) have a lot of courses at [McGill](university)?
+    - Do you know how many [COMP](subject) courses are available at [Concordia](university)?
+    - Can you tell me the number of courses in [COMP](subject) are taught at [Concordia](university)?
+    - How many [COMP](subject) are offered there?
+    - How about [SOEN](subject)?
+    - How many of the same type are offered at [McGill](university)?
+
+- intent: course_website
+  example: |
+    - What is the course website for [COMP353](course)?
+    - What is the course site for [COMP353](course)?
+    - What's the website for [COMP474](course)?
+    - What's the site for [COMP474](course)?
+    - Does [COMP474](course) have a website?
+    - Does it have a public website?
+    - Does it have a public site?
+    - What's the url for the course website?
+    - What's the url for the course site?
+    - Give me the website for [SOEN232](course)?
+    - Is there a website for [SOCI345](course)?
+    - Where can I find more info about [COMP474](course) online?
+    - Where can I find more information about [COMP474](course)?
+
+- intent: count_readings
+  example: |
+    - Which course has the fewest readings?
+    - Which course has the least readings?
+    - What is the easiest class?
+    - What is the easiest class I can take?
+    - Which course has the least reading?
+    - What course wont make me read?
+    - I dont like reading. what coourse should I take?
+    - classes with no reading?
+    - classes with almost no reading?
+    - low reading classes
+    - which courses avoid reading?
+    - courses with no readings?
+
+- intent: subject_of_course
+  example: |
+    - Is [Intelligent Systems](course_title) a [COMP](subject) or [SOEN](subject) course?
+    - Which subject is [Intelligent Systems](course_title)?
+    - Whats the course subject of [Advanced Database Design](course_title)?
+    - Is [Advanced Program Design in C++](course_title) a [COMP](subject) class?
+    - Is [Databases](course_title) a [SOEN](subject) class?
+    - 
+
+
+
+
+
 - intent: bot_challenge
   examples: |
     - are you a bot?
