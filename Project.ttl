@@ -14,19 +14,27 @@
 @prefix a1_data:   <http://a1.io/data#> .
 
 ### Classes
+
 a1_schema:University
     a               rdfs:Class ;
     rdfs:subClassOf org:Organization ;
     owl:sameAs      dbr:University ;
     rdfs:label      "University"@en .
 
+a1_schema:CourseEvent
+    a               rdfs:Class ;
+    rdfs:subClassOf dbo:Event ;
+    rdfs:label      "Course Event"@en .
+
 a1_schema:Lecture
     a               rdfs:Class ;
-    rdfs:subClassOf teach:Lecture ;
+    rdfs:subClassOf a1_schema:CourseEvent ;
+    owl:sameAs      teach:Lecture;
     rdfs:label      "Lecture"@en .
 
 a1_schema:LectureRelatedEvent
     a          rdfs:Class ;
+    rdfs:subClassOf a1_schema:CourseEvent ;
     rdfs:label "Events related to lectures"@en .
 
 a1_schema:Lab
@@ -123,6 +131,13 @@ a1_schema:HasContent
     rdfs:range   rdfs:Literal .
 
 a1_schema:HasMaterial
+    a            rdf:Property ;
+    rdfs:label   "Lecture Material"@en ;
+    rdfs:comment "Material of a lecture"@en ;
+    rdfs:domain  a1_schema:CourseEvent ;
+    rdfs:range   a1_schema:LectureMaterial .
+
+a1_schema:LectureEventHasMaterial
     a            rdf:Property ;
     rdfs:label   "Lecture Material"@en ;
     rdfs:comment "Material of a lecture"@en ;
