@@ -1,7 +1,8 @@
 import requests
 from rdflib import Graph,URIRef, RDFS 
 import spacy
-dir_path="..\..\A1\A1_Queries\\"
+import os
+dir_path= os.path.abspath(os.path.join('..','A1','A1_Queries'))
 nlp = spacy.load('en_core_web_lg')
 nlp.add_pipe('dbpedia_spotlight')
 
@@ -18,7 +19,7 @@ def ASK_fuseki(query):
      return response['boolean']
 
 def load_query(file_name):
-    path=dir_path+file_name
+    path=os.path.join(dir_path,file_name)
     with open(path) as f:
         return f.read()
 

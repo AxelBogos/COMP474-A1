@@ -2,7 +2,7 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from helper_functions import SELECT_fuseki, ASK_fuseki, load_query, find_label, generate_dbpedia_entities 
+from actions.helper_functions import SELECT_fuseki, ASK_fuseki, load_query, find_label, generate_dbpedia_entities 
 
 
 # Question 1
