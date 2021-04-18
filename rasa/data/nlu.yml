@@ -151,7 +151,7 @@ nlu:
     - [COMP490](course) is offered at [University McGill](university)?
     - [COMP491](course) is offered at [University McGill](university)?
     
-- intent: teach_course
+- intent: uni_teach_topic
   examples: |
     - Which universities teach courses about [database design](topic)?
     - Which universities teach courses about [machine learning](topic)?

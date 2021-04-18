@@ -13,7 +13,7 @@ intents:
   - about_which_course_in_university_teaches_about_subject
   - course_material_of_lec
   - about_university_offers_course
-  - teach_course
+  - uni_teach_topic
   - count_courses
   - course_website
   - count_readings
@@ -36,17 +36,20 @@ slots:
     initial_value: "initial"
   topic:
     type: text
+    initial_value: "initial"
   university:
     type: text
+    initial_value: "initial"
   course_title:
     type: text
+    initial_value: "initial"
   
 actions:
  - action_course_info
  - action_topic_of_lecture
  - action_university_offers_course
  - action_which_course_in_university_teaches_about_subject
- - get_teach_course
+ - get_unis_teach_topic
  - materials_for_lecture
 
  

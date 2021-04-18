@@ -99,8 +99,6 @@ class materials_for_lec(Action):
         dispatcher.utter_message(text=message)
         return []
 
-
-
 # Question 5
 class Action_Course_Link(Action):
 
@@ -119,6 +117,32 @@ class Action_Course_Link(Action):
             message=f"Yes, it does!"
         else:
             message=f"No, it doesn't."
+
+        dispatcher.utter_message(text=message)
+        return []
+
+# Question 6
+class get_unis_teach_topic(Action):
+    def name(self) -> Text: return "get_unis_teach_topic"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        Query = load_query("q6.txt")
+        
+        dbp = generate_dbpedia_entities(tracker.slots['topic'])
+        if(len(dbp)>0):
+            topic = dbp[0].replace('http://dbpedia.org/resource/','')
+            Query = Query % (topic)
+            answer = SELECT_fuseki(Query)
+            if(answer):
+                message = f"The topic '{tracker.slots['topic']}' is taught in some courses at:\n"
+                for a in answer:
+                    message = message + f"\t- {find_label(a)}\n"
+            else: message = f"Could not find any universities that teach courses about {tracker.slots['topic']}"
+
+        else: message = f"Did not recognize topic '{tracker.slots['topic']}'"
 
         dispatcher.utter_message(text=message)
         return []

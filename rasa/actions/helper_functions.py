@@ -48,6 +48,11 @@ def generate_dbpedia_entities(file_txt):
     for ent in doc.ents:
         if eval(ent._.dbpedia_raw_result['@similarityScore']) >= 0.75:
             entities.append(ent.kb_id_)
-    return set(entities)
+    return list(entities)
 
 
+# x = generate_dbpedia_entities("Database design")
+
+# print(len(x))
+
+# print(x[0].replace('http://dbpedia.org/resource/',''))

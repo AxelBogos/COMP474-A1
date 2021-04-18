@@ -63,3 +63,10 @@ stories:
     - action: utter_greet
     - intent: about_university_offers_course
     - action: action_university_offers_course
+
+- story: which unis teach topic
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: uni_teach_topic
+    - action: get_unis_teach_topic
