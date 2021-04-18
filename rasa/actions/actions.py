@@ -2,7 +2,7 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from helper_functions import query_fuseki, load_query, find_label
+from helper_functions import SELECT_fuseki, ASK_fuseki,load_query, find_label
 
 # Question 1
 class Action_topic_of_lecture(Action):
