@@ -54,7 +54,7 @@ class Action_Course_Info(Action):
 class Action_Course_Link(Action):
 
     def name(self) -> Text:
-        return "action_course_info"
+        return "action_university_offers_course"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -63,7 +63,7 @@ class Action_Course_Link(Action):
         Query=load_query("q5.txt")
         Query=Query % (tracker.slots['university'],tracker.slots['course'])
         Answer=ASK_fuseki(Query)
-
+        print(Answer)
         if(Answer):
             message=f"Yes, it does!"
         else:
