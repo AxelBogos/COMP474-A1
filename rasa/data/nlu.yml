@@ -118,8 +118,17 @@ nlu:
     - Tell me about lecture [4](lecture_number) of [COMP474](course).
     - Tell me about lecture [5](lecture_number) of [COMP420](course).
     - Tell me about lecture [6](lecture_number) of [COMP353](course).  
-
-
+- intent: about_university_offers_course
+  examples: |
+    - Does [University Concordia](university) offers [COMP474](course)?
+    - Does [University of Waterloo](university) offers [COMP353](course)?
+    - Does [University of Montreal](university) offers [COMP288](course)?
+    - Is [COMP228](course)? taught at [University Concordia](university)?
+    - Is [COMP278](course)? taught at [University Concordia](university)?
+    - Is [COMP218](course)? taught at [University McGill](university)?
+    - [COMP474](course) is offered at [University McGill](university)?
+    - [COMP490](course) is offered at [University McGill](university)?
+    - [COMP491](course) is offered at [University McGill](university)?
     
 - intent: teach_course
   examples: |

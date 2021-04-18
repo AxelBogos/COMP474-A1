@@ -10,6 +10,7 @@ intents:
   - bot_challenge
   - about_course
   - about_topic_of_lecture
+  - about_university_offers_course
   - teach_course
   - count_courses
   - course_website
@@ -42,6 +43,7 @@ actions:
  - action_course_info
  - get_teach_course
  - action_topic_of_lecture
+ - action_university_offers_course
 
  
  

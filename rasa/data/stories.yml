@@ -42,4 +42,10 @@ stories:
     - action: utter_greet
     - intent: about_topic_of_lecture
     - action: action_topic_of_lecture
+- story: get university offers course
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: about_university_offers_course
+    - action: action_university_offers_course
 

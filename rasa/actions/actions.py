@@ -4,9 +4,6 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from helper_functions import query_fuseki, load_query, find_label
 
-
-query2='prefix a1_data: <http://a1.io/data#> prefix dbp: <http://dbpedia.org/property/> prefix a1_schema: <http://a1.io/schema#> SELECT ?topic WHERE{a1_data:%s a1_schema:HasLecture ?lecture .?lecture a1_schema:LectureNumber 2 .?lecture dbp:subject ?topic}'
-
 # Question 1
 class Action_topic_of_lecture(Action):
 
@@ -49,6 +46,27 @@ class Action_Course_Info(Action):
             message=f"{tracker.slots['course']} is about {Answer[0]}"
         else:
             message=f"I don't find any information about {tracker.slots['course']}."
+
+        dispatcher.utter_message(text=message)
+        return []
+# Question 4
+class Action_Course_Link(Action):
+
+    def name(self) -> Text:
+        return "action_course_info"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+         
+        Query=load_query("q4.txt")
+        Query=Query % tracker.slots['course']
+        Answer=query_fuseki(Query)
+
+        if(Answer):
+            message=f"Here it the link for {tracker.slots['course']}: {Answer[0]}"
+        else:
+            message=f"I don't find any link for {tracker.slots['course']}."
 
         dispatcher.utter_message(text=message)
         return []

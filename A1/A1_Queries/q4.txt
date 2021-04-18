@@ -1,4 +1,4 @@
-#Where can I get more information about comp 474?
+#What material was covered in lecture 2 of COMP474?
 
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix a1_data: <http://a1.io/data#>
