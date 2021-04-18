@@ -2,10 +2,11 @@
 
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix a1_data: <http://a1.io/data#>
+prefix a1_schema: <http://a1.io/schema#>
 
 SELECT ?material
 WHERE {
-  	a1_data:% a1_schema:HasLecture ?lecture .
-    ?lecture a1_schema:LectureNumber % .
+  	a1_data:%s a1_schema:HasLecture ?lecture .
+    ?lecture a1_schema:LectureNumber %s .
     ?lecture a1_schema:HasMaterial ?material .
 }
