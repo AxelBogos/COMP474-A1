@@ -16,10 +16,11 @@ class Action_topic_of_lecture(Action):
          
         Query=load_query("q1.txt")
         Query=Query % (tracker.slots['course'],tracker.slots['lecture_number'])
-        Answer=query_fuseki(Query)
-        process_query=find_label(Answer[0])
+        Answer=SELECT_fuseki(Query)
+        
 
         if(Answer):
+            process_query=find_label(Answer[0])
             message=f"Lecture {tracker.slots['lecture_number']} of {tracker.slots['course']} is about {process_query}"
         else:
             message=f"I don't find any information about the lecture {tracker.slots['lecture_number']} of {tracker.slots['course']}."
@@ -40,7 +41,7 @@ class Action_Course_Info(Action):
          
         Query=load_query("q2.txt")
         Query=Query % tracker.slots['course']
-        Answer=query_fuseki(Query)
+        Answer=SELECT_fuseki(Query)
 
         if(Answer):
             message=f"{tracker.slots['course']} is about {Answer[0]}"
@@ -49,7 +50,7 @@ class Action_Course_Info(Action):
 
         dispatcher.utter_message(text=message)
         return []
-# Question 4
+# Question 5
 class Action_Course_Link(Action):
 
     def name(self) -> Text:
@@ -59,14 +60,14 @@ class Action_Course_Link(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
          
-        Query=load_query("q4.txt")
-        Query=Query % tracker.slots['course']
-        Answer=query_fuseki(Query)
+        Query=load_query("q5.txt")
+        Query=Query % (tracker.slots['university'],tracker.slots['course'])
+        Answer=ASK_fuseki(Query)
 
         if(Answer):
-            message=f"Here it the link for {tracker.slots['course']}: {Answer[0]}"
+            message=f"Yes, it does!"
         else:
-            message=f"I don't find any link for {tracker.slots['course']}."
+            message=f"No, it doesn't."
 
         dispatcher.utter_message(text=message)
         return []
