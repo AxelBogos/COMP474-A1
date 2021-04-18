@@ -10,8 +10,9 @@ intents:
   - bot_challenge
   - about_course
   - about_topic_of_lecture
-  - about_university_offers_course
   - about_which_course_in_university_teaches_about_subject
+  - course_material_of_lec
+  - about_university_offers_course
   - teach_course
   - count_courses
   - course_website
@@ -42,10 +43,11 @@ slots:
   
 actions:
  - action_course_info
- - get_teach_course
  - action_topic_of_lecture
  - action_university_offers_course
  - action_which_course_in_university_teaches_about_subject
+ - get_teach_course
+ - materials_for_lecture
 
  
  

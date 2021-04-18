@@ -118,6 +118,7 @@ nlu:
     - Tell me about lecture [4](lecture_number) of [COMP474](course).
     - Tell me about lecture [5](lecture_number) of [COMP420](course).
     - Tell me about lecture [6](lecture_number) of [COMP353](course). 
+
 - intent: about_which_course_in_university_teaches_about_subject
   examples: |
     - Which course in [Concordia University](university) teaches [SQL](topic)?
@@ -127,6 +128,17 @@ nlu:
     - [Web Design](topic) is taught in which course at [Concordia University](university)?
     - [Database](topic) is taught in which course at [Concordia University](university)?
     
+- intent: course_material_of_lec
+  examples: |
+    - What material was covered in lecture [2](lecture_number) of [COMP474](course)?
+    - What was covered in lec [2](lecture_number) of [COMP353](course)?
+    - What was covered in lecture [2](lecture_number) of [COMP353](course)?
+    - What was covered in the [2](lecture_number)nd lecture of [COMP487](course)?
+    - Materials used in [COMP789](course) lecture [5](lecture_number)?
+    - Where do I find the slides for [SOEN436](course) lecture [2](lecture_number)?
+    - What's the content from lec [2](lecture_number) of [COMP232](course)?
+    - What was the content from lecture [6](lecture_number) of [COMP346](course)?
+
 - intent: about_university_offers_course
   examples: |
     - Does [University Concordia](university) offers [COMP474](course)?

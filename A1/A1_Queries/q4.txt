@@ -1,9 +1,11 @@
-#What material was covered in lecture 2 of COMP474?
+#What material was covered in lecture __ of ______?
 
 prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 prefix a1_data: <http://a1.io/data#>
 
-SELECT ?link 
-    WHERE{
-        a1_data:%s rdfs:seeAlso ?link  
-    }
+SELECT ?material
+WHERE {
+  	a1_data:% a1_schema:HasLecture ?lecture .
+    ?lecture a1_schema:LectureNumber % .
+    ?lecture a1_schema:HasMaterial ?material .
+}

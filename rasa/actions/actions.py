@@ -2,7 +2,7 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from helper_functions import SELECT_fuseki, ASK_fuseki, load_query, find_label, generate_dbpedia_entities
+from helper_functions import SELECT_fuseki, ASK_fuseki, load_query, find_label, generate_dbpedia_entities 
 
 
 # Question 1
@@ -18,8 +18,7 @@ class Action_topic_of_lecture(Action):
         Query=load_query("q1.txt")
         Query=Query % (tracker.slots['course'],tracker.slots['lecture_number'])
         Answer=SELECT_fuseki(Query)
-        
-
+    
         if(Answer):
             process_query=find_label(Answer[0])
             message=f"Lecture {tracker.slots['lecture_number']} of {tracker.slots['course']} is about {process_query}"
@@ -77,6 +76,30 @@ class Action_Which_course_teaches_about(Action):
 
         dispatcher.utter_message(text=message)
         return []
+
+# Question 4
+class materials_for_lec(Action):
+    def name(self) -> Text: return "materials_for_lecture"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        Query = load_query("q4.txt")
+        Query = Query %(tracker.slots['course'], tracker.slots['lecture_number'])
+        Answer = SELECT_fuseki(Query)
+
+        if(Answer):
+            message = f"Lecture {tracker.slots['lecture_number']} of {tracker.slots['course']} covered the following material(s):\n"
+            for a in Answer:
+                message = message + f"\t- {a}\n"
+        else: 
+            message = f"No course materials found for {tracker.slots['lecture_number']} of {tracker.slots['course']}"
+
+        dispatcher.utter_message(text=message)
+        return []
+
+
 
 # Question 5
 class Action_Course_Link(Action):
