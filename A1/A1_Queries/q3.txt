@@ -7,7 +7,7 @@ prefix dbr: <http://dbpedia.org/resource/>
 
 SELECT ?Course
 WHERE{
-  	a1_data:%s a1_schema:Offers ?Course .
+  	    a1_data:%s a1_schema:Offers ?Course .
         ?Course a1_schema:HasLecture ?Lecture .
         ?Lecture dbp:subject dbr:%s
     }
