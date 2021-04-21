@@ -2,7 +2,7 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from actions.helper_functions import SELECT_fuseki, ASK_fuseki, load_query, find_label, generate_dbpedia_entities 
+from actions.helper_functions import *
 
 
 # Question 1
@@ -44,7 +44,7 @@ class Action_Course_Info(Action):
         Answer=SELECT_fuseki(Query)
 
         if(Answer):
-            message=f"{tracker.slots['course']} is about {Answer[0]}"
+            message=f"{tracker.slots['course']} is about {Answer[0]}."
         else:
             message=f"I don't find any information about {tracker.slots['course']}."
 
@@ -61,19 +61,20 @@ class Action_Which_course_teaches_about(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
          
+        topic=generate_dbpedia_entities(tracker.slots['topic'])
+        university=generate_dbpedia_entities(tracker.slots['university'])
         
-        subject=tracker.slots['topic']
-        subject=generate_dbpedia_entities(subject)
+        message=f"I don't find any course at {tracker.slots['university']} about {tracker.slots['topic']}."
+        
 
-        Query=load_query("q3.txt")
-        Query=Query %(tracker.slots['university'], subject)
-        Answer=SELECT_fuseki(Query)
-
-        if(Answer):
-            message=f"{Answer[0]} teaches {subject}."
-        else:
-            message=f"I don't find any course in {tracker.slots['university']} about {subject}."
-
+        if(university and topic): 
+            Query=load_query("q3.txt") 
+            Query=Query %(university, topic)
+            Answer=SELECT_fuseki(Query)
+            if(Answer):
+                a=Answer[0].replace("data#",'')
+                message=f"{a} teaches {tracker.slots['topic']}."
+       
         dispatcher.utter_message(text=message)
         return []
 
@@ -108,16 +109,18 @@ class Action_Course_Link(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-         
-        Query=load_query("q5.txt")
-        Query=Query % (tracker.slots['university'],tracker.slots['course'])
-        Answer=ASK_fuseki(Query)
-        print(Answer)
-        if(Answer):
-            message=f"Yes, it does!"
-        else:
-            message=f"No, it doesn't."
 
+        message=f"No, it doesn't."
+        
+        university=generate_dbpedia_entities(tracker.slots['university'])
+       
+        if(university):
+            Query=load_query("q5.txt")
+            Query=Query % (university,tracker.slots['course'])
+            Answer=ASK_fuseki(Query)
+            if(Answer):
+                message=f"Yes, it does!"
+        
         dispatcher.utter_message(text=message)
         return []
 
@@ -129,11 +132,12 @@ class get_unis_teach_topic(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        Query = load_query("q6.txt")
-        
-        dbp = generate_dbpedia_entities(tracker.slots['topic'])
-        if(len(dbp)>0):
-            topic = dbp[0].replace('http://dbpedia.org/resource/','')
+         
+        topic = generate_dbpedia_entities(tracker.slots['topic'])
+
+        if(topic):
+            print(topic)
+            Query = load_query("q6.txt")
             Query = Query % (topic)
             answer = SELECT_fuseki(Query)
             if(answer):

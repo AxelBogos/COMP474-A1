@@ -32,23 +32,19 @@ def find_label(uri):
             return obj
 
 def generate_dbpedia_entities(file_txt):
-    '''
-    This function generates and returns the dbpedia entities linked by spotlight of a single file.
-    Warning! Requires the spacy en_core_web_lg model. If you do not have it, run
-    python -m spacy download en_core_web_lg on your venv (~750 mb)
-
-    !! We will definitely need to setup a local server of spotlight. Bad HTTP responses for many access in a row !!
-
-    :param file_txt: txt version of a file as rendered by Apache Tika.
-    :return: List of dbpedia URIs entities
-    '''
-
     doc = nlp(file_txt)
     entities = []
+    out = ''
+
     for ent in doc.ents:
         if eval(ent._.dbpedia_raw_result['@similarityScore']) >= 0.75:
             entities.append(ent.kb_id_)
-    return list(entities)
+
+    if(len(entities)>0):
+        entities.sort()
+        out=os.path.basename(entities[0])
+
+    return out
 
 
 # x = generate_dbpedia_entities("Database design")
@@ -56,3 +52,4 @@ def generate_dbpedia_entities(file_txt):
 # print(len(x))
 
 # print(x[0].replace('http://dbpedia.org/resource/',''))
+
