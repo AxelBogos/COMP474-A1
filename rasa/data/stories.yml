@@ -70,3 +70,10 @@ stories:
     - action: utter_greet
     - intent: uni_teach_topic
     - action: get_unis_teach_topic
+
+- story: count courses by subject
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: count_courses
+    - action: count_courses_by_subj

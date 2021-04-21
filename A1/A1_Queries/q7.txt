@@ -4,6 +4,6 @@ PREFIX a1_data: <http://a1.io/data#>
 
 SELECT (COUNT(?course) AS ?count)
 WHERE {
-  a1_data:Concordia_University a1_schema:Offers ?course .
-  ?course a1_schema:HasSubject %s
+  a1_data:%s a1_schema:Offers ?course .
+  ?course a1_schema:HasSubject "%s" .
 }

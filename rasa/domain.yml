@@ -26,6 +26,7 @@ entities:
   - university
   - course_title
   - lecture_number
+  - subject
   
 slots:
   course:
@@ -43,6 +44,9 @@ slots:
   course_title:
     type: text
     initial_value: "initial"
+  subject:
+    type: text
+    initial_value: "initial"
   
 actions:
  - action_course_info
@@ -51,6 +55,7 @@ actions:
  - action_which_course_in_university_teaches_about_subject
  - get_unis_teach_topic
  - materials_for_lecture
+ - count_courses_by_subj
 
  
  

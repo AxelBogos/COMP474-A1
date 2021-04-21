@@ -28,7 +28,6 @@ class Action_topic_of_lecture(Action):
         dispatcher.utter_message(text=message)
         return []
 
-
 # Question 2
 class Action_Course_Info(Action):
 
@@ -150,3 +149,30 @@ class get_unis_teach_topic(Action):
 
         dispatcher.utter_message(text=message)
         return []
+
+
+# Question 7
+class count_courses_by_subj(Action):
+    def name(self) -> Text:
+        return "count_courses_by_subj"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        uni = generate_dbpedia_entities(tracker.slots['university'])
+        subj = tracker.slots['subject']
+
+        Query = load_query("q7.txt")
+        Query = Query %(uni, tracker.slots['subject'])
+        answer = SELECT_fuseki(Query)
+
+        if(answer):
+            message = f"There are {answer[0]} {tracker.slots['subject']} courses taught at {tracker.slots['university']}"
+        else:
+            message = f"Could not find any {tracker.slots['subject']} courses at {tracker.slots['university']}"
+
+        dispatcher.utter_message(text=message)
+        return []
+
+#Question 8

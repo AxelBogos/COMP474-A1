@@ -47,9 +47,9 @@ def generate_dbpedia_entities(file_txt):
     return out
 
 
-# x = generate_dbpedia_entities("Database design")
+x = generate_dbpedia_entities("Concordia")
 
-# print(len(x))
+print(x)
 
-# print(x[0].replace('http://dbpedia.org/resource/',''))
+#print(x[0].replace('http://dbpedia.org/resource/',''))
 
