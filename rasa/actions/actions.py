@@ -176,3 +176,22 @@ class count_courses_by_subj(Action):
         return []
 
 #Question 8
+class get_website(Action):
+    def name(self) -> Text:
+        return "get_website"
+        
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        course = tracker.slots['course']
+        Query = load_query("q8.txt") % (course)
+        answer = SELECT_fuseki(Query)
+
+        if (answer):
+            message = f"The website for {tracker.slots['course']} is: {answer[0]}"
+        else:
+            message = f"A website for {tracker.slots['course']} could not be found"
+
+        dispatcher.utter_message(text=message)
+        return []

@@ -77,3 +77,13 @@ stories:
     - action: utter_greet
     - intent: count_courses
     - action: count_courses_by_subj
+
+- story: get website for course
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: course_website
+    - action: get_website
+
+
+    

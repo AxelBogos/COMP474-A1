@@ -166,7 +166,7 @@ nlu:
     - How many [COMP](subject) courses are taught at [Concordia](university)?
     - How many [SOEN](subject) courses are taught at [Waterloo University](university)?
     - Does [McGill University](university) have a lot of courses in [COMP](subject)?
-    - Does [Concordia](university) have a any courses in [SOCI](subject)?
+    - Does [Concordia](university) have any courses in [SOCI](subject)?
     - How many courses in [SOEN](subject) are offered at [Concordia](university)?
     - Does the [COMP](subject) have a lot of courses at [McGill](university)?
     - Do you know how many [COMP](subject) courses are available at [Concordia](university)?
