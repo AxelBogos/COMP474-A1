@@ -150,7 +150,6 @@ class get_unis_teach_topic(Action):
         dispatcher.utter_message(text=message)
         return []
 
-
 # Question 7
 class count_courses_by_subj(Action):
     def name(self) -> Text:
@@ -195,3 +194,9 @@ class get_website(Action):
 
         dispatcher.utter_message(text=message)
         return []
+
+
+#Question 8
+class count_readings(Action):
+    def name(self) -> Text:
+        return "get_website"

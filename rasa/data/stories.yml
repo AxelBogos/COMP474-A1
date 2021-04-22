@@ -85,5 +85,13 @@ stories:
     - intent: course_website
     - action: get_website
 
+- story: count readings
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: count_readings
+    - action: get_website
+
+
 
     
