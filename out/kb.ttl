@@ -92,43 +92,44 @@ a1_data:COMP353Lab8 a a1_schema:Lab ;
 a1_data:COMP353Lab9 a a1_schema:Lab ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec9 .
 
-a1_data:COMP353Tut1 a a1_schema:Tutorial ;
+a1_data:COMP353Tutorial1 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec1 .
 
-a1_data:COMP353Tut10 a a1_schema:Tutorial ;
+a1_data:COMP353Tutorial10 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec10 .
 
-a1_data:COMP353Tut11 a a1_schema:Tutorial ;
+a1_data:COMP353Tutorial11 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec11 .
 
-a1_data:COMP353Tut12 a a1_schema:Tutorial ;
+a1_data:COMP353Tutorial12 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec12 .
 
-a1_data:COMP353Tut2 a a1_schema:Tutorial ;
+a1_data:COMP353Tutorial2 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec2 .
 
-a1_data:COMP353Tut3 a a1_schema:Tutorial ;
+a1_data:COMP353Tutorial3 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec3 .
 
-a1_data:COMP353Tut4 a a1_schema:Tutorial ;
+a1_data:COMP353Tutorial4 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec4 .
 
-a1_data:COMP353Tut5 a a1_schema:Tutorial ;
+a1_data:COMP353Tutorial5 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec5 .
 
-a1_data:COMP353Tut6 a a1_schema:Tutorial ;
+a1_data:COMP353Tutorial6 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec6 .
 
-a1_data:COMP353Tut7 a a1_schema:Tutorial ;
+a1_data:COMP353Tutorial7 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec7 .
 
-a1_data:COMP353Tut8 a a1_schema:Tutorial ;
+a1_data:COMP353Tutorial8 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec8 .
 
-a1_data:COMP353Tut9 a a1_schema:Tutorial ;
+a1_data:COMP353Tutorial9 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec9 .
 
 a1_data:COMP474Lab1 a a1_schema:Lab ;
+    a1_schema:HasMaterial <http://a1.io/data#data/c474content/Lab/lab1.pdf> ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec1 .
 
 a1_data:COMP474Lab2 a a1_schema:Lab ;
@@ -155,31 +156,38 @@ a1_data:COMP474Lab8 a a1_schema:Lab ;
 a1_data:COMP474Lab9 a a1_schema:Lab ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec9 .
 
-a1_data:COMP474Tut1 a a1_schema:Tutorial ;
+a1_data:COMP474Tutorial1 a a1_schema:Tutorial ;
+    a1_schema:HasMaterial <http://a1.io/data#data/c474content/Tutorial/tutorial1.pdf> ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec1 .
 
-a1_data:COMP474Tut2 a a1_schema:Tutorial ;
+a1_data:COMP474Tutorial2 a a1_schema:Tutorial ;
+    a1_schema:HasMaterial <http://a1.io/data#data/c474content/Tutorial/tutorial2.pdf> ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec2 .
 
-a1_data:COMP474Tut3 a a1_schema:Tutorial ;
+a1_data:COMP474Tutorial3 a a1_schema:Tutorial ;
+    a1_schema:HasMaterial <http://a1.io/data#data/c474content/Tutorial/tutorial3.pdf> ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec3 .
 
-a1_data:COMP474Tut4 a a1_schema:Tutorial ;
+a1_data:COMP474Tutorial4 a a1_schema:Tutorial ;
+    a1_schema:HasMaterial <http://a1.io/data#data/c474content/Tutorial/tutorial4.pdf> ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec4 .
 
-a1_data:COMP474Tut5 a a1_schema:Tutorial ;
+a1_data:COMP474Tutorial5 a a1_schema:Tutorial ;
+    a1_schema:HasMaterial <http://a1.io/data#data/c474content/Tutorial/tutorial5.pdf> ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec5 .
 
-a1_data:COMP474Tut6 a a1_schema:Tutorial ;
+a1_data:COMP474Tutorial6 a a1_schema:Tutorial ;
+    a1_schema:HasMaterial <http://a1.io/data#data/c474content/Tutorial/tutorial6.pdf> ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec6 .
 
-a1_data:COMP474Tut7 a a1_schema:Tutorial ;
+a1_data:COMP474Tutorial7 a a1_schema:Tutorial ;
+    a1_schema:HasMaterial <http://a1.io/data#data/c474content/Tutorial/tutorial7.pdf> ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec7 .
 
-a1_data:COMP474Tut8 a a1_schema:Tutorial ;
+a1_data:COMP474Tutorial8 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec8 .
 
-a1_data:COMP474Tut9 a a1_schema:Tutorial ;
+a1_data:COMP474Tutorial9 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec9 .
 
 a1_data:Concordia_University a a1_schema:University ;
@@ -3682,7 +3690,7 @@ a1_data:COMP474 a a1_schema:Course ;
         a1_data:COMP474Lec9 ;
     a1_schema:HasSubject "COMP" ;
     a1_schema:Outline <http://a1.io/data#data/c474content/Outline.pdf> ;
-    teach:courseDescription "Rule‑based expert systems, blackboard architecture, and agent‑based. Knowledge acquisition and representation. Uncertainty and conflict resolution. Reasoning and explanation. Design of intelligent systems." ;
+    teach:courseDescription "Rule‑based expert systems, blackboard architecture, and agent‑based. Knowledge acquisition and representation. Uncertainty and conflict resolution. Reasoning and explanation. Design of intelligent systems. " ;
     teach:courseTitle "Intelligent Systems" ;
     rdfs:seeAlso <http://example.com/COMP474> .
 
@@ -9270,6 +9278,30 @@ a1_data:WSDB496 a a1_schema:Course ;
         <http://dbpedia.org/resource/The_View_(talk_show)>,
         dbr:Tuple .
 
+<http://a1.io/data#data/c474content/Lab/lab1.pdf> a a1_schema:Lab ;
+    dbp:subject dbr:Artificial_intelligence,
+        dbr:City,
+        dbr:DBpedia,
+        dbr:Database,
+        dbr:Facebook,
+        dbr:Graph_database,
+        dbr:HTTP_303,
+        dbr:Human-readable_medium,
+        dbr:Intelligent_agent,
+        dbr:Knowledge_Graph,
+        dbr:Knowledge_base,
+        dbr:LinkedIn,
+        dbr:Machine-readable_data,
+        dbr:Main_Page,
+        dbr:McGill_University,
+        dbr:Montreal,
+        dbr:Natural_language_processing,
+        dbr:Public_Knowledge,
+        dbr:Resource_Description_Framework,
+        dbr:SQL,
+        dbr:The_Details,
+        dbr:Uniform_Resource_Identifier .
+
 <http://a1.io/data#data/c474content/Slide/slides1.pdf> a a1_schema:Slide ;
     dbp:subject dbr:Amazon_rainforest,
         dbr:Apache_Lucene,
@@ -9927,6 +9959,126 @@ a1_data:WSDB496 a a1_schema:Course ;
         dbr:Walter_Scott,
         dbr:Wikidata,
         dbr:XML .
+
+<http://a1.io/data#data/c474content/Tutorial/tutorial1.pdf> a a1_schema:Tutorial ;
+    dbp:subject dbr:Artificial_intelligence,
+        dbr:City,
+        dbr:DBpedia,
+        dbr:Database,
+        dbr:Facebook,
+        dbr:Graph_database,
+        dbr:HTTP_303,
+        dbr:Human-readable_medium,
+        dbr:Intelligent_agent,
+        dbr:Knowledge_Graph,
+        dbr:Knowledge_base,
+        dbr:LinkedIn,
+        dbr:Machine-readable_data,
+        dbr:Main_Page,
+        dbr:McGill_University,
+        dbr:Montreal,
+        dbr:Natural_language_processing,
+        dbr:Public_Knowledge,
+        dbr:Resource_Description_Framework,
+        dbr:SQL,
+        dbr:The_Details,
+        dbr:Uniform_Resource_Identifier .
+
+<http://a1.io/data#data/c474content/Tutorial/tutorial2.pdf> a a1_schema:Tutorial ;
+    dbp:subject dbr:Artificial_intelligence,
+        dbr:Concordia_University,
+        dbr:English_language,
+        <http://dbpedia.org/resource/FOAF_(ontology)>,
+        dbr:French_language,
+        dbr:Graph_theory,
+        dbr:Human-readable_medium,
+        dbr:Internationalized_Resource_Identifier,
+        dbr:Knowledge_Graph,
+        dbr:N-Triples,
+        dbr:Pseudocode,
+        dbr:RDF_Schema,
+        dbr:Resource_Description_Framework,
+        dbr:Semantic_triple,
+        dbr:URL .
+
+<http://a1.io/data#data/c474content/Tutorial/tutorial3.pdf> a a1_schema:Tutorial ;
+    dbp:subject dbr:Artificial_intelligence,
+        dbr:DBpedia,
+        dbr:Knowledge_Graph,
+        dbr:Main_Page,
+        dbr:Montreal,
+        dbr:Nile,
+        dbr:RDF_Schema,
+        dbr:SPARQL,
+        dbr:SQL,
+        dbr:Uname,
+        dbr:Uniform_Resource_Identifier,
+        dbr:Wikidata,
+        dbr:Yangtze .
+
+<http://a1.io/data#data/c474content/Tutorial/tutorial4.pdf> a a1_schema:Tutorial ;
+    dbp:subject dbr:Artificial_intelligence,
+        <http://dbpedia.org/resource/Calais_(Reuters_product)>,
+        dbr:City,
+        dbr:Concordia_University,
+        dbr:DBpedia,
+        <http://dbpedia.org/resource/Go_(game)>,
+        dbr:Google,
+        dbr:Graph_database,
+        dbr:Hilton_Worldwide,
+        dbr:Meta_element,
+        dbr:Metadata,
+        dbr:Miyuri_Samarasinghe,
+        dbr:RDFa,
+        dbr:Resource_Description_Framework,
+        dbr:Rich_Alvarez,
+        dbr:SPARQL,
+        dbr:Semantic_Web,
+        dbr:Test_cricket,
+        dbr:Uniform_Resource_Identifier,
+        dbr:Wikidata,
+        dbr:Wikipedia .
+
+<http://a1.io/data#data/c474content/Tutorial/tutorial5.pdf> a a1_schema:Tutorial ;
+    dbp:subject dbr:Artificial_intelligence,
+        dbr:Cosine_similarity,
+        dbr:Dot_product,
+        dbr:Euclidean_vector,
+        dbr:GamePro,
+        dbr:Israel_Defense_Forces,
+        dbr:Recommender_system,
+        dbr:Trigonometric_functions,
+        dbr:Unit_vector .
+
+<http://a1.io/data#data/c474content/Tutorial/tutorial6.pdf> a a1_schema:Tutorial ;
+    dbp:subject dbr:Algorithm,
+        dbr:Artificial_intelligence,
+        dbr:Formula_One,
+        dbr:Fujita_scale,
+        dbr:K-nearest_neighbors_algorithm,
+        dbr:Machine_learning,
+        dbr:Majority,
+        dbr:Regression_analysis,
+        dbr:Supervised_learning .
+
+<http://a1.io/data#data/c474content/Tutorial/tutorial7.pdf> a a1_schema:Tutorial ;
+    dbp:subject dbr:Algorithm,
+        dbr:Artificial_intelligence,
+        dbr:Chatbot,
+        dbr:Concordia_University,
+        dbr:Dimension,
+        dbr:Graph_theory,
+        dbr:K-nearest_neighbors_algorithm,
+        dbr:Machine_learning,
+        dbr:Natural_language_processing,
+        dbr:Parse_tree,
+        dbr:Parsing,
+        dbr:Regular_expression,
+        dbr:SPARQL,
+        dbr:Statistical_classification,
+        dbr:Steve_Jobs,
+        dbr:Test_cricket,
+        dbr:Zero_sharp .
 
 <http://a1.io/data#data/c474content/Worksheet/worksheet1.pdf> a a1_schema:Worksheet ;
     dbp:subject dbr:Artificial_intelligence,
