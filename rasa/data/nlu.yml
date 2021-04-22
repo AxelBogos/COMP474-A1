@@ -206,9 +206,9 @@ nlu:
     - which courses avoid reading?
     - courses with no readings?
 
-- intent: subject_of_course
+- intent: subj_by_title
   examples: |
-    - Is [Intelligent Systems](course_title) a [COMP](subject) or [SOEN](subject) course?
+    - Is [Intelligent Systems](course_title) a [COMP](subject) course?
     - Which subject is [Intelligent Systems](course_title)?
     - Whats the course subject of [Advanced Database Design](course_title)?
     - Is [Advanced Program Design in C++](course_title) a [COMP](subject) class?

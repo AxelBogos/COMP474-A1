@@ -196,7 +196,54 @@ class get_website(Action):
         return []
 
 
-#Question 8
+#Question 9
 class count_readings(Action):
     def name(self) -> Text:
-        return "get_website"
+        return "count_readings"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        answer = SELECT_fuseki(load_query("q9.txt"))
+
+        if (answer):
+            message = f"{answer[0].replace('http://a1.io/data#',' ')} has {answer[1]} readings"
+        else:
+            message = f"You have asked an unanswerable question, you fool! Reassess the choices you have made to end up here."
+
+        dispatcher.utter_message(text=message)
+        return []
+
+#Question 10
+class subj_by_title(Action):
+    def name(self) -> Text:
+        return "subj_by_title"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+
+        title = tracker.slots['course_title']
+        subj = tracker.slots['subject']
+        # print(f"{title}: {subj}")
+        get = SELECT_fuseki(load_query("q10.2.txt") % (title))
+
+        #both are provided -> check truthfulness, return truth
+        if title and subj != "initial": 
+            ask = ASK_fuseki(load_query("q10.txt") % (subj, title))
+            
+            if ask == True: message = f"Yes, {title} is a {subj} course"
+            elif ask == False and get: message = f"No, {title} is a {get[0]} course"
+            else: message =  "I dont recognize that course"
+            
+        # only title provided -> just get the subject of that course
+        elif title and subj == "initial":
+            if get: message = f"{title} is a {get[0]} course"
+            else: message = f"Could not determine the subject of {title}"
+        else: message = "Something went wrong..."
+
+        dispatcher.utter_message(text=message)
+        return []
+        

@@ -1,0 +1,8 @@
+PREFIX a1_schema: <http://a1.io/schema#>
+PREFIX teach: <http://linkedscience.org/teach/ns#>
+
+SELECT DISTINCT ?subj 
+WHERE{
+  ?course a1_schema:HasSubject ?subj .
+  ?course teach:courseTitle "%s"
+}

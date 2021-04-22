@@ -90,8 +90,14 @@ stories:
     - intent: greet
     - action: utter_greet
     - intent: count_readings
-    - action: get_website
+    - action: count_readings
 
+- story: subject by course title
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: subj_by_title
+    - action: subj_by_title
 
 
     

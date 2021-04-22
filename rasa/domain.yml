@@ -17,7 +17,7 @@ intents:
   - count_courses
   - course_website
   - count_readings
-  - subject_of_course
+  - subj_by_title
   
 
 entities:
@@ -57,6 +57,8 @@ actions:
  - materials_for_lecture
  - count_courses_by_subj
  - get_website
+ - count_readings
+ - subj_by_title
 
  
  
