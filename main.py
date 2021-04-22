@@ -24,26 +24,35 @@ REGENERATE_TXT_FROM_PDF = False
 special_courses = [URIRef("http://a1.io/data#COMP353"), URIRef("http://a1.io/data#COMP474")]
 special_course_codes = ['353', '474']
 special_courses_websites = [URIRef("http://concordia.catalog.acalog.com/preview_course_nopop.php?catoid=1&coid=2703"),
-                   URIRef("http://concordia.catalog.acalog.com/preview_course_nopop.php?catoid=1&coid=2718")]
+                            URIRef("http://concordia.catalog.acalog.com/preview_course_nopop.php?catoid=1&coid=2718")]
 
-# All topics are dbpedia resources
+# All titles are dbpedia resources
 lecture_titles_353 = ['Database', 'Entity–relationship_model', 'Relational_database',
-              'Armstrong%27s_axioms', 'Armstrong%27s_axioms', 'Database_normalization',
-              'Relational_algebra', 'SQL', 'SQL', 'SQL', 'Datalog', 'Object_Definition_Language']
+                      'Armstrong%27s_axioms', 'Armstrong%27s_axioms', 'Database_normalization',
+                      'Relational_algebra', 'SQL', 'SQL', 'SQL', 'Datalog', 'Object_Definition_Language']
 
 lecture_titles_474 = ['Intelligent_system', 'Knowledge_graph', 'Ontology_(information_science)',
-              'SPARQL', 'Knowledge_base', 'Recommender_system', 'Machine_learning',
-              'Intelligent_agent', 'Text_mining']
+                      'SPARQL', 'Knowledge_base', 'Recommender_system', 'Machine_learning',
+                      'Intelligent_agent', 'Text_mining']
 
-comp353_description = "Introduction to database management systems. Conceptual database design: the entity‑relationship model. The relational data model and relational algebra: functional dependencies and normalization. The SQL language and its application in defining, querying, and updating databases; integrity constraints; triggers. Developing database applications. "
-comp474_description = "Rule‑based expert systems, blackboard architecture, and agent‑based. Knowledge acquisition and representation. Uncertainty and conflict resolution. Reasoning and explanation. Design of intelligent systems."
+# This could be retrieved by web-crawling, but assignment description makes no mention of that
+comp353_description = "Introduction to database management systems. Conceptual database design: the " \
+                      "entity‑relationship model. The relational data model and relational algebra: functional " \
+                      "dependencies and normalization. The SQL language and its application in defining, querying, " \
+                      "and updating databases; integrity constraints; triggers. Developing database applications. "
+comp474_description = "Rule‑based expert systems, blackboard architecture, and agent‑based. Knowledge acquisition and " \
+                      "representation. Uncertainty and conflict resolution. Reasoning and explanation. Design of " \
+                      "intelligent systems. "
+
+resources_dir = ['Reading', 'Slide', 'Worksheet', 'Lab', 'Tutorial', 'Other']
+lecture_related_events = ['Lab', 'Tutorial']
 
 nlp = spacy.load('en_core_web_lg')
-
 # add the pipeline stage
 nlp.add_pipe('dbpedia_spotlight')
 # nlp.add_pipe('dbpedia_spotlight', config={'dbpedia_rest_endpoint': 'http://localhost:2222/rest'})
 g = Graph()
+
 
 def populate_knowledge_base():
     g.parse('Project.ttl', format='turtle')
@@ -99,7 +108,7 @@ def populate_knowledge_base():
                     g.add((lab_id, SCH.RelatedToLecture, lec_id))
 
                     # Add Tutorials
-                    tut_id = DAT["{}{}Tut{}".format(row['Course code'], row['Course number'], i)]
+                    tut_id = DAT["{}{}Tutorial{}".format(row['Course code'], row['Course number'], i)]
                     g.add((tut_id, RDF.type, SCH.Tutorial))
                     g.add((tut_id, SCH.RelatedToLecture, lec_id))
 
@@ -114,17 +123,20 @@ def populate_knowledge_base():
                 g.add((cn, RDFS.seeAlso, URIRef("http://example.com/" + row['Course code'] + row['Course number'])))
 
                 # Add content
-                for sub_dir in ['Reading', 'Slide', 'Worksheet', 'Other']:
+                for sub_dir in resources_dir:
                     dir_path = os.path.join(dir_name, sub_dir)
                     dir_path_txt = os.path.join(dir_name_txt, sub_dir)
                     if os.path.isdir(dir_path):
                         for idf, f in enumerate(sorted(os.listdir(dir_path))):
                             f_path = os.path.join(dir_path, f)
-                            f_path_txt = os.path.join(dir_path_txt,f.split('.')[0]+".txt")
+                            f_path_txt = os.path.join(dir_path_txt, f.split('.')[0] + ".txt")
                             f_uri = DAT[f_path]
-                            lec_id = DAT["{}{}Lec{}".format(row['Course code'], row['Course number'], idf + 1)]
+                            if sub_dir in lecture_related_events:
+                                course_event_id = DAT["{}{}{}{}".format(row['Course code'], row['Course number'], sub_dir, idf + 1)]
+                            else:
+                                course_event_id = DAT["{}{}Lec{}".format(row['Course code'], row['Course number'], idf + 1)]
                             g.add((f_uri, RDF.type, SCH[sub_dir]))
-                            g.add((lec_id, SCH.HasMaterial, f_uri))
+                            g.add((course_event_id, SCH.HasMaterial, f_uri))
 
                             # Extract entities of file with spotlight
                             with open(f_path_txt, 'r') as f:
@@ -164,7 +176,7 @@ def regenerate_txt_from_pdf():
         base_outline = os.path.join(base_dir, 'Outline.pdf')
         txt_outline = os.path.join(txt_dir, 'Outline.txt')
 
-        if os.path.isfile(base_outline):
+        if os.path.isfile(base_outline) and not os.path.isfile(txt_outline) :
             file_data = parser.from_file(base_outline)
 
             # get the content of the pdf file
@@ -177,14 +189,18 @@ def regenerate_txt_from_pdf():
                 f.write(str(output))
 
         # Add content
-        for sub_dir in ['Reading', 'Slide', 'Worksheet', 'Other']:
+        for sub_dir in resources_dir:
             base_subdir = os.path.join(base_dir, sub_dir)
             if not os.path.exists(base_subdir):
                 continue
             txt_subdir = os.path.join(txt_dir, sub_dir)
             for idf, f in enumerate(sorted(os.listdir(base_subdir))):
-                file_data = parser.from_file(os.path.join(base_subdir, f))
+                output_path = os.path.join(txt_subdir, f.split(".")[0] + ".txt")
+                # if we have already generated that file, continue
+                if os.path.isfile(output_path):
+                    continue
 
+                file_data = parser.from_file(os.path.join(base_subdir, f))
                 # get the content of the pdf file
                 output = file_data['content'].strip().replace('\n', '')
 
@@ -208,7 +224,7 @@ def generate_directories():
         else:
             continue
 
-        for sub_dir in ['Reading', 'Slide', 'Worksheet', 'Other']:
+        for sub_dir in resources_dir:
             dir_path = os.path.join(dir_name, sub_dir)
             if os.path.exists(dir_path) and not os.path.exists(os.path.join(txt_dir, sub_dir)):
                 txt_subdir = os.path.join(txt_dir, sub_dir)
@@ -247,4 +263,3 @@ if __name__ == '__main__':
     if REGENERATE_TXT_FROM_PDF:
         print('Rendering PDF as txt...')
         regenerate_txt_from_pdf()
-
