@@ -257,9 +257,9 @@ if __name__ == '__main__':
     if REGENERATE_CATALOG:
         print('Generating catalog...')
         regenerate_catalog()
-    if POPULATE_KNOWLEDGE_BASE:
-        print('Populating Knolwedge Base...')
-        populate_knowledge_base()
     if REGENERATE_TXT_FROM_PDF:
         print('Rendering PDF as txt...')
         regenerate_txt_from_pdf()
+    if POPULATE_KNOWLEDGE_BASE:
+        print('Populating Knolwedge Base...')
+        populate_knowledge_base()

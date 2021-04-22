@@ -129,6 +129,7 @@ a1_data:COMP353Tutorial9 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP353Lec9 .
 
 a1_data:COMP474Lab1 a a1_schema:Lab ;
+    a1_schema:HasMaterial <http://a1.io/data#data/c474content/Lab/lab1.pdf> ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec1 .
 
 a1_data:COMP474Lab2 a a1_schema:Lab ;
@@ -168,15 +169,19 @@ a1_data:COMP474Tutorial3 a a1_schema:Tutorial ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec3 .
 
 a1_data:COMP474Tutorial4 a a1_schema:Tutorial ;
+    a1_schema:HasMaterial <http://a1.io/data#data/c474content/Tutorial/tutorial4.pdf> ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec4 .
 
 a1_data:COMP474Tutorial5 a a1_schema:Tutorial ;
+    a1_schema:HasMaterial <http://a1.io/data#data/c474content/Tutorial/tutorial5.pdf> ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec5 .
 
 a1_data:COMP474Tutorial6 a a1_schema:Tutorial ;
+    a1_schema:HasMaterial <http://a1.io/data#data/c474content/Tutorial/tutorial6.pdf> ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec6 .
 
 a1_data:COMP474Tutorial7 a a1_schema:Tutorial ;
+    a1_schema:HasMaterial <http://a1.io/data#data/c474content/Tutorial/tutorial7.pdf> ;
     a1_schema:RelatedToLecture a1_data:COMP474Lec7 .
 
 a1_data:COMP474Tutorial8 a a1_schema:Tutorial ;
@@ -9273,6 +9278,30 @@ a1_data:WSDB496 a a1_schema:Course ;
         <http://dbpedia.org/resource/The_View_(talk_show)>,
         dbr:Tuple .
 
+<http://a1.io/data#data/c474content/Lab/lab1.pdf> a a1_schema:Lab ;
+    dbp:subject dbr:Artificial_intelligence,
+        dbr:City,
+        dbr:DBpedia,
+        dbr:Database,
+        dbr:Facebook,
+        dbr:Graph_database,
+        dbr:HTTP_303,
+        dbr:Human-readable_medium,
+        dbr:Intelligent_agent,
+        dbr:Knowledge_Graph,
+        dbr:Knowledge_base,
+        dbr:LinkedIn,
+        dbr:Machine-readable_data,
+        dbr:Main_Page,
+        dbr:McGill_University,
+        dbr:Montreal,
+        dbr:Natural_language_processing,
+        dbr:Public_Knowledge,
+        dbr:Resource_Description_Framework,
+        dbr:SQL,
+        dbr:The_Details,
+        dbr:Uniform_Resource_Identifier .
+
 <http://a1.io/data#data/c474content/Slide/slides1.pdf> a a1_schema:Slide ;
     dbp:subject dbr:Amazon_rainforest,
         dbr:Apache_Lucene,
@@ -9986,6 +10015,70 @@ a1_data:WSDB496 a a1_schema:Course ;
         dbr:Uniform_Resource_Identifier,
         dbr:Wikidata,
         dbr:Yangtze .
+
+<http://a1.io/data#data/c474content/Tutorial/tutorial4.pdf> a a1_schema:Tutorial ;
+    dbp:subject dbr:Artificial_intelligence,
+        <http://dbpedia.org/resource/Calais_(Reuters_product)>,
+        dbr:City,
+        dbr:Concordia_University,
+        dbr:DBpedia,
+        <http://dbpedia.org/resource/Go_(game)>,
+        dbr:Google,
+        dbr:Graph_database,
+        dbr:Hilton_Worldwide,
+        dbr:Meta_element,
+        dbr:Metadata,
+        dbr:Miyuri_Samarasinghe,
+        dbr:RDFa,
+        dbr:Resource_Description_Framework,
+        dbr:Rich_Alvarez,
+        dbr:SPARQL,
+        dbr:Semantic_Web,
+        dbr:Test_cricket,
+        dbr:Uniform_Resource_Identifier,
+        dbr:Wikidata,
+        dbr:Wikipedia .
+
+<http://a1.io/data#data/c474content/Tutorial/tutorial5.pdf> a a1_schema:Tutorial ;
+    dbp:subject dbr:Artificial_intelligence,
+        dbr:Cosine_similarity,
+        dbr:Dot_product,
+        dbr:Euclidean_vector,
+        dbr:GamePro,
+        dbr:Israel_Defense_Forces,
+        dbr:Recommender_system,
+        dbr:Trigonometric_functions,
+        dbr:Unit_vector .
+
+<http://a1.io/data#data/c474content/Tutorial/tutorial6.pdf> a a1_schema:Tutorial ;
+    dbp:subject dbr:Algorithm,
+        dbr:Artificial_intelligence,
+        dbr:Formula_One,
+        dbr:Fujita_scale,
+        dbr:K-nearest_neighbors_algorithm,
+        dbr:Machine_learning,
+        dbr:Majority,
+        dbr:Regression_analysis,
+        dbr:Supervised_learning .
+
+<http://a1.io/data#data/c474content/Tutorial/tutorial7.pdf> a a1_schema:Tutorial ;
+    dbp:subject dbr:Algorithm,
+        dbr:Artificial_intelligence,
+        dbr:Chatbot,
+        dbr:Concordia_University,
+        dbr:Dimension,
+        dbr:Graph_theory,
+        dbr:K-nearest_neighbors_algorithm,
+        dbr:Machine_learning,
+        dbr:Natural_language_processing,
+        dbr:Parse_tree,
+        dbr:Parsing,
+        dbr:Regular_expression,
+        dbr:SPARQL,
+        dbr:Statistical_classification,
+        dbr:Steve_Jobs,
+        dbr:Test_cricket,
+        dbr:Zero_sharp .
 
 <http://a1.io/data#data/c474content/Worksheet/worksheet1.pdf> a a1_schema:Worksheet ;
     dbp:subject dbr:Artificial_intelligence,
