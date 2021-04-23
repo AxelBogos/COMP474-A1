@@ -86,7 +86,7 @@ a1_schema:HasCourseEvent
     rdfs:label   "Class has Course Event"@en ;
     rdfs:comment "A Course Event is part of a particular Class"@en ;
     rdfs:domain  a1_schema:Course ;
-    rdfs:range   a1_schema:Lecture .
+    rdfs:range   a1_schema:CourseEvent .
 
 a1_schema:RelatedToLecture
     a            rdf:Property ;
