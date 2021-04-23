@@ -6,7 +6,6 @@ import pandas as pd
 from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import RDF, RDFS
 from tika import parser
-from tqdm import tqdm
 import spacy
 
 DBR = Namespace("http://dbpedia.org/resource/")
