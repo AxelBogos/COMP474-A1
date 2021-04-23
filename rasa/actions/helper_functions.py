@@ -2,10 +2,19 @@ import requests
 from rdflib import Graph,URIRef, RDFS 
 import spacy
 import os
-dir_path= os.path.abspath(os.path.join('..','A1','A1_Queries'))
+import time
+import numpy as np
+dir_path= os.path.abspath(os.path.join('A1','A1_Queries'))
 nlp = spacy.load('en_core_web_lg')
 nlp.add_pipe('dbpedia_spotlight')
-
+def timeit(method):
+    def timed(*args, **kw):
+        ts = time.time()
+        result = method(*args, **kw)
+        te = time.time()
+        print ('%r  %2.2f s' % (method.__name__, (te - ts) ))
+        
+    return timed
 def SELECT_fuseki(query):
     responses = requests.post('http://localhost:3030/A1/sparql',data={'query': query}).json()["results"]['bindings']
     values=[]
@@ -22,7 +31,7 @@ def load_query(file_name):
     path=os.path.join(dir_path,file_name)
     with open(path) as f:
         return f.read()
-
+@timeit
 def find_label(uri):
     uri=URIRef(uri)
     g = Graph()
@@ -30,7 +39,10 @@ def find_label(uri):
     for obj in g.objects(subject=uri, predicate=RDFS.label):
         if obj.language=='en':
             return obj
-
+def find_label_from_URI(uri):
+    out=os.path.basename(uri)
+    out=out.replace('_',' ')
+    return out
 def generate_dbpedia_entities(file_txt):
     doc = nlp(file_txt)
     entities = []
@@ -46,10 +58,21 @@ def generate_dbpedia_entities(file_txt):
 
     return out
 
+def similatiry(word):
+    ref= 'lab lecture tutorial'
+    ref_tokens = nlp(ref)
+    input_token = nlp(word)
+    result=[]
+    for token in ref_tokens:
+        result.append(token.similarity(input_token))
+    result=np.array(result)
+    i=np.argmax(result)
+    s=ref.split()
+    return s[i]
+    
+#x = generate_dbpedia_entities("Concordia")
 
-x = generate_dbpedia_entities("Concordia")
-
-print(x)
+#print(x)
 
 #print(x[0].replace('http://dbpedia.org/resource/',''))
 
