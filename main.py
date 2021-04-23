@@ -6,7 +6,6 @@ import pandas as pd
 from rdflib import Graph, URIRef, Literal, Namespace
 from rdflib.namespace import RDF, RDFS
 from tika import parser
-from tqdm import tqdm
 import spacy
 
 DBR = Namespace("http://dbpedia.org/resource/")
@@ -106,11 +105,13 @@ def populate_knowledge_base():
                     lab_id = DAT["{}{}Lab{}".format(row['Course code'], row['Course number'], i)]
                     g.add((lab_id, RDF.type, SCH.Lab))
                     g.add((lab_id, SCH.RelatedToLecture, lec_id))
+                    g.add((cn, SCH.HasCourseEvent, lab_id))
 
                     # Add Tutorials
                     tut_id = DAT["{}{}Tutorial{}".format(row['Course code'], row['Course number'], i)]
                     g.add((tut_id, RDF.type, SCH.Tutorial))
                     g.add((tut_id, SCH.RelatedToLecture, lec_id))
+                    g.add((cn, SCH.HasCourseEvent, tut_id))
 
                 # Add Outline
                 dir_name = os.path.join(BASE_DATA_DIR, "c{}content").format(row['Course number'])
