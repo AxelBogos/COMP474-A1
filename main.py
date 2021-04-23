@@ -92,6 +92,7 @@ def populate_knowledge_base():
                     g.add((cn, SCH.HasLecture, lec_id))
                     g.add((lec_id, RDF.type, SCH.Lecture))
                     g.add((lec_id, SCH.LectureNumber, Literal(i)))
+                    g.add((cn, SCH.HasCourseEvent, lec_id))
 
                     # Add topics, Lecture Name, description
                     if row['Course number'] == '353':
