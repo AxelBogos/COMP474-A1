@@ -1,0 +1,223 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+  
+- intent: about_course
+  examples: |
+    - What is [COMP474](course) about?
+    - What is [COMP353](course) about?
+    - What is [COMP470](course) about?
+    - What is [COMP474](course)?
+    - What is [COMP353](course)?
+    - What is [COMP470](course)
+    - Tell me about it
+    - Tell me about
+    - Tell me about [COMP353](course)
+    - Tell me about [COMP470](course)
+    - Can you tell me about it?
+    - Can you tell me about [COMP474](course)?
+    - Can you tell me about [COMP353](course) ?
+    - Can you tell me about [COMP470](course) ?
+    - Do you know [COMP474](course) ?
+    - Tell me about [COMP474](course) ?
+
+
+- intent: about_topic_of_lecture
+  examples: |
+    - What is the [lecture](event) [2](lecture_number) of [COMP474](course) about?
+    - What is the [lab](event) [10](lecture_number) of [COMP353](course) about?
+    - What is the [tutorial](event) [3](lecture_number) of [SOEN333](course) about?
+    - What is [lecture](event) [3](lecture_number) about?
+    - In [COMP470](course) what is the topic of [lab](event) [1](lecture_number)?
+    - In [COMP466](course) what is the topic of [lab](event) [8](lecture_number)?
+    - What is the topic of [tutorial](event) [2](lecture_number) of [COMP474](course)?
+    - What is the topic of [tutorial](event) [10](lecture_number) of [COMP353](course)?
+    - What is the topic of [lecture](event) [3](lecture_number) of [SOEN333](course)?
+    - Tell me about [labotary](event) [4](lecture_number) of [COMP474](course).
+    - Tell me about [lab](event) [5](lecture_number) of [COMP420](course).
+    - Tell me about [lecture](event) [6](lecture_number) of [COMP353](course).  
+
+- intent: about_which_course_in_university_teaches_about_subject
+  examples: |
+    - Which course in [Concordia University](university) teaches [SQL](topic)?
+    - Which course in [McGill University](university) teaches [AI](topic)?
+    - Which course in [Concordia University](university) teaches [Economic](topic)?
+    - [Politic](topic) is taught in which course at [Concordia University](university)?
+    - [Web Design](topic) is taught in which course at [Concordia University](university)?
+    - [Database](topic) is taught in which course at [Concordia University](university)?
+    
+- intent: course_material_of_lec
+  examples: |
+    - What material was covered in lecture [2](lecture_number) of [COMP474](course)?
+    - What was covered in lec [2](lecture_number) of [COMP353](course)?
+    - What was covered in lecture [2](lecture_number) of [COMP353](course)?
+    - What was covered in the [2](lecture_number)nd lecture of [COMP487](course)?
+    - Materials used in [COMP789](course) lecture [5](lecture_number)?
+    - Where do I find the slides for [SOEN436](course) lecture [2](lecture_number)?
+    - What's the content from lec [2](lecture_number) of [COMP232](course)?
+    - What was the content from lecture [6](lecture_number) of [COMP346](course)?
+
+- intent: about_university_offers_course
+  examples: |
+    - Does [University Concordia](university) offers [COMP474](course)?
+    - Does [University of Waterloo](university) offers [COMP353](course)?
+    - Does [University of Montreal](university) offers [COMP288](course)?
+    - Is [COMP228](course)? taught at [University Concordia](university)?
+    - Is [COMP278](course)? taught at [University Concordia](university)?
+    - Is [COMP218](course)? taught at [University McGill](university)?
+    - [COMP474](course) is offered at [University McGill](university)?
+    - [COMP490](course) is offered at [University McGill](university)?
+    - [COMP491](course) is offered at [University McGill](university)?
+    
+- intent: uni_teach_topic
+  examples: |
+    - Which universities teach courses about [database design](topic)?
+    - Which universities teach courses about [machine learning](topic)?
+    - Where can I learn about [natural language processing](topic)?
+    - Where can I learn about [relational algebra](topic)?
+    - Tell me which schools teach [SQL](topic)
+    - Do they teach [database design](topic)?
+    - Who teaches courses about [sparql](topic)?
+
+- intent: count_courses
+  examples: |
+    - How many [COMP](subject) courses are taught at [Concordia](university)?
+    - How many [SOEN](subject) courses are taught at [Waterloo University](university)?
+    - Does [McGill University](university) have a lot of courses in [COMP](subject)?
+    - Does [Concordia](university) have any courses in [SOCI](subject)?
+    - How many courses in [SOEN](subject) are offered at [Concordia](university)?
+    - Does the [COMP](subject) have a lot of courses at [McGill](university)?
+    - Do you know how many [COMP](subject) courses are available at [Concordia](university)?
+    - Can you tell me the number of courses in [COMP](subject) are taught at [Concordia](university)?
+    - How many [COMP](subject) are offered there?
+    - How about [SOEN](subject)?
+    - How many of the same type are offered at [McGill](university)?
+
+- intent: course_website
+  examples: |
+    - What is the course website for [COMP353](course)?
+    - What is the course site for [COMP353](course)?
+    - What's the website for [COMP474](course)?
+    - What's the site for [COMP474](course)?
+    - Does [COMP474](course) have a website?
+    - Does it have a public website?
+    - Does it have a public site?
+    - What's the url for the course website?
+    - What's the url for the course site?
+    - Give me the website for [SOEN232](course)?
+    - Is there a website for [SOCI345](course)?
+    - Where can I find more info about [COMP474](course) online?
+    - Where can I find more information about [COMP474](course)?
+
+- intent: count_readings
+  examples: |
+    - Which course has the fewest readings?
+    - Which course has the least readings?
+    - What is the easiest class?
+    - What is the easiest class I can take?
+    - Which course has the least reading?
+    - What course wont make me read?
+    - I dont like reading. what coourse should I take?
+    - classes with no reading?
+    - classes with almost no reading?
+    - low reading classes
+    - which courses avoid reading?
+    - courses with no readings?
+
+- intent: subj_by_title
+  examples: |
+    - Is [Intelligent Systems](course_title) a [COMP](subject) course?
+    - Which subject is [Intelligent Systems](course_title)?
+    - Which subject is [Computational Fluid Dynamics for Aerospace Applications](course_title)?
+    - Whats the course subject of [Advanced Database Design](course_title)?
+    - Is [Advanced Program Design in C++](course_title) a [COMP](subject) class?
+    - Is [Databases](course_title) a [SOEN](subject) class?
+    - Is [Fraud Prevention & Investigation](course_title) a [SOCI](subject) class?
+    - Is [Evaluating Adult Learning Projects](course_title) a [EXCI](subject) class?
+    - Is [Gas Turbine Design](course_title) a [COMP](subject) course?
+    - Is [Flight Control Systems](course_title) a [AERO](subject) class?
+
+
+

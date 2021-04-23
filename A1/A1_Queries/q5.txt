@@ -1,4 +1,4 @@
-#Is comp 474 taught at concordia?
+#Is [some course] taught at [some school]?
 
 prefix dbr: <http://dbpedia.org/resource/>
 prefix a1_schema: <http://a1.io/schema#>
@@ -6,5 +6,5 @@ prefix a1_data: <http://a1.io/data#>
 
 ASK 
     WHERE{
-        a1_data:Concordia_University a1_schema:Offers a1_data:COMP474
+        a1_data:%s a1_schema:Offers a1_data:%s
     }

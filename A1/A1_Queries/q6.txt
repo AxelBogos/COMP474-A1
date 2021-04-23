@@ -1,8 +1,14 @@
 PREFIX a1_schema: <http://a1.io/schema#>
 PREFIX teach: <http://linkedscience.org/teach/ns#>
+PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT ?university
+SELECT DISTINCT ?dbp
 WHERE {
-  ?university a1_schema:Offers ?course .
-  ?course teach:courseTitle "Database Design" .
+  	?university a1_schema:Offers ?course .
+	?course a1_schema:HasLecture ?lecture .
+  	?lecture a1_schema:HasMaterial ?material .
+  	?material dbp:subject dbr:%s .
+	?university rdfs:seeAlso ?dbp .
 }

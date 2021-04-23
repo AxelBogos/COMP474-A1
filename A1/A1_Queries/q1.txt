@@ -4,10 +4,11 @@ prefix a1_data: <http://a1.io/data#>
 prefix dbp: <http://dbpedia.org/property/>
 prefix a1_schema: <http://a1.io/schema#>
 
-SELECT ?topic 
-WHERE{
-	a1_data:COMP474 a1_schema:HasLecture ?lecture .
-	?lecture a1_schema:LectureNumber 2 .
-	?lecture dbp:subject ?topic
 
+SELECT ?topic
+WHERE{
+	a1_data:%s a1_schema:HasLecture ?lecture .
+  	?lecture a1_schema:LectureNumber %s .
+    ?lecture a1_schema:HasMaterial ?material .
+  	?material dbp:subject ?topic .
 }

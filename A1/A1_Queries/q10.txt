@@ -1,8 +1,7 @@
 PREFIX a1_schema: <http://a1.io/schema#>
 PREFIX teach: <http://linkedscience.org/teach/ns#>
 
-SELECT DISTINCT ?program
-WHERE {
-  ?course a1_schema:HasSubject ?program .
-  ?course teach:courseTitle "Intelligent Systems" .
+ASK WHERE {
+  ?course a1_schema:HasSubject "%s" .
+  ?course teach:courseTitle "%s" .
 }

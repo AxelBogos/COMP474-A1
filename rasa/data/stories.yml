@@ -1,0 +1,103 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+  
+- story: get course info
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: about_course
+    - action: action_course_info
+    
+- story: get lecture topic
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: about_topic_of_lecture
+    - action: action_topic_of_lecture
+
+- story: get which course teaches a subject in a university
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: about_which_course_in_university_teaches_about_subject
+    - action: action_which_course_in_university_teaches_about_subject
+
+- story: get course materials for lec
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: course_material_of_lec
+    - action: materials_for_lecture
+
+- story: get university offers course
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: about_university_offers_course
+    - action: action_university_offers_course
+
+- story: which unis teach topic
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: uni_teach_topic
+    - action: get_unis_teach_topic
+
+- story: count courses by subject
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: count_courses
+    - action: count_courses_by_subj
+
+- story: get website for course
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: course_website
+    - action: get_website
+
+- story: count readings
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: count_readings
+    - action: count_readings
+
+- story: subject by course title
+  steps:
+    - intent: greet
+    - action: utter_greet
+    - intent: subj_by_title
+    - action: subj_by_title
+
+
+    

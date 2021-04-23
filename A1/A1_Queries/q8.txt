@@ -3,5 +3,5 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 SELECT ?website
 WHERE {
-  a1_data:COMP353 rdfs:seeAlso ?website
+  a1_data:%s rdfs:seeAlso ?website
 } 

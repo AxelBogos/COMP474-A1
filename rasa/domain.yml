@@ -1,0 +1,88 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - about_course
+  - about_topic_of_lecture
+  - about_which_course_in_university_teaches_about_subject
+  - course_material_of_lec
+  - about_university_offers_course
+  - uni_teach_topic
+  - count_courses
+  - course_website
+  - count_readings
+  - subj_by_title
+  
+
+entities:
+  - course
+  - topic
+  - university
+  - course_title
+  - lecture_number
+  - subject
+  - event
+  
+slots:
+  course:
+    type: any
+    initial_value: "initial"
+  lecture_number:
+    type: any
+    initial_value: "initial"
+  topic:
+    type: text
+    initial_value: "initial"
+  university:
+    type: text
+    initial_value: "University Concordia"
+  course_title:
+    type: text
+    initial_value: "initial"
+  subject:
+    type: text
+    initial_value: "initial"
+  
+actions:
+ - action_course_info
+ - action_topic_of_lecture
+ - action_university_offers_course
+ - action_which_course_in_university_teaches_about_subject
+ - get_unis_teach_topic
+ - materials_for_lecture
+ - count_courses_by_subj
+ - get_website
+ - count_readings
+ - subj_by_title
+
+ 
+ 
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
