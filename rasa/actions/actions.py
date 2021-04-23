@@ -17,14 +17,18 @@ class Action_topic_of_lecture(Action):
          
         Query=load_query("q1.txt")
         Query=Query % (tracker.slots['course'],tracker.slots['lecture_number'])
-        Answer=SELECT_fuseki(Query)
+        Answers=SELECT_fuseki(Query)
     
-        if(Answer):
-            process_query=find_label(Answer[0])
-            message=f"Lecture {tracker.slots['lecture_number']} of {tracker.slots['course']} is about {process_query}"
+        if(Answers):
+            
+            message=f"Lecture {tracker.slots['lecture_number']} of {tracker.slots['course']} covers:\n"
+            for answer in Answers:
+                label=find_label_from_URI(answer)
+                message +=f"{label}\t{answer}\n"
+
         else:
             message=f"I don't find any information about the lecture {tracker.slots['lecture_number']} of {tracker.slots['course']}."
-
+        print(message)
         dispatcher.utter_message(text=message)
         return []
 
@@ -142,7 +146,7 @@ class get_unis_teach_topic(Action):
             if(answer):
                 message = f"The topic '{tracker.slots['topic']}' is taught in some courses at:\n"
                 for a in answer:
-                    message = message + f"\t- {find_label(a)}\n"
+                    message = message + f"\t- {find_label_from_URI(a)}\n"
             else: message = f"Could not find any universities that teach courses about {tracker.slots['topic']}"
 
         else: message = f"Did not recognize topic '{tracker.slots['topic']}'"
