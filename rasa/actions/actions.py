@@ -16,20 +16,25 @@ class Action_topic_of_lecture(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
          
         event=similarity(tracker.slots['event'])
-        Query=load_query("q1.txt")
-        Query=Query % (tracker.slots['course'],tracker.slots['lecture_number'])
-        Answers=SELECT_fuseki(Query)
+        if event == "Lecture":
+            Query=load_query("q1.txt")
+            Query=Query % (tracker.slots['course'],tracker.slots['lecture_number'])
+            Answers=SELECT_fuseki(Query)
+        else:
+            Query=load_query("q1.2.txt")
+            Query=Query % (tracker.slots['course'],tracker.slots['lecture_number'],event)
+            Answers=SELECT_fuseki(Query)
     
         if(Answers):
             
-            message=f"Lecture {tracker.slots['lecture_number']} of {tracker.slots['course']} covers:\n"
+            message=f"{event} {tracker.slots['lecture_number']} of {tracker.slots['course']} covers:\n"
             for answer in Answers:
                 label=find_label_from_URI(answer)
-                message +=f"{label}\t{answer}\n"
+                message +=f"\t-{label: <30}\t{answer}\n"
 
         else:
-            message=f"I don't find any information about the lecture {tracker.slots['lecture_number']} of {tracker.slots['course']}."
-        print(message)
+            message=f"I don't find any information about the {event} {tracker.slots['lecture_number']} of {tracker.slots['course']}."
+        
         dispatcher.utter_message(text=message)
         return []
 
@@ -75,9 +80,12 @@ class Action_Which_course_teaches_about(Action):
             Query=load_query("q3.txt") 
             Query=Query %(university, topic)
             Answer=SELECT_fuseki(Query)
-            if(Answer):
-                a=Answer[0].replace("data#",'')
-                message=f"{a} teaches {tracker.slots['topic']}."
+            message=f"Here are the courses that teache about {topic}:\n"
+            for i in range(0,len(Answer),2):
+                course=os.path.basename(Answer[i])
+                course=course.replace("data#",'')
+                number=Answer[i+1]
+                message+=f"\t- {course:<10}  Subject's frequency {number}\n"
        
         dispatcher.utter_message(text=message)
         return []

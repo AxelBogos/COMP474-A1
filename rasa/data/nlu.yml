@@ -106,18 +106,18 @@ nlu:
 
 - intent: about_topic_of_lecture
   examples: |
-    - What is the lecture [2](lecture_number) of [COMP474](course) about?
-    - What is the lecture [10](lecture_number) of [COMP353](course) about?
-    - What is the lecture [3](lecture_number) of [SOEN333](course) about?
-    - What is lecture [3](lecture_number) about?
-    - In [COMP470](course) what is the topic of lecture [1](lecture_number)?
-    - In [COMP466](course) what is the topic of lecture [8](lecture_number)?
-    - What is the topic of lecture [2](lecture_number) of [COMP474](course)?
-    - What is the topic of lecture [10](lecture_number) of [COMP353](course)?
-    - What is the topic of lecture [3](lecture_number) of [SOEN333](course)?
-    - Tell me about lecture [4](lecture_number) of [COMP474](course).
-    - Tell me about lecture [5](lecture_number) of [COMP420](course).
-    - Tell me about lecture [6](lecture_number) of [COMP353](course). 
+    - What is the [lecture](event) [2](lecture_number) of [COMP474](course) about?
+    - What is the [lab](event) [10](lecture_number) of [COMP353](course) about?
+    - What is the [tutorial](event) [3](lecture_number) of [SOEN333](course) about?
+    - What is [lecture](event) [3](lecture_number) about?
+    - In [COMP470](course) what is the topic of [lab](event) [1](lecture_number)?
+    - In [COMP466](course) what is the topic of [lab](event) [8](lecture_number)?
+    - What is the topic of [tutorial](event) [2](lecture_number) of [COMP474](course)?
+    - What is the topic of [tutorial](event) [10](lecture_number) of [COMP353](course)?
+    - What is the topic of [lecture](event) [3](lecture_number) of [SOEN333](course)?
+    - Tell me about [labotary](event) [4](lecture_number) of [COMP474](course).
+    - Tell me about [lab](event) [5](lecture_number) of [COMP420](course).
+    - Tell me about [lecture](event) [6](lecture_number) of [COMP353](course).  
 
 - intent: about_which_course_in_university_teaches_about_subject
   examples: |

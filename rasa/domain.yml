@@ -27,6 +27,7 @@ entities:
   - course_title
   - lecture_number
   - subject
+  - event
   
 slots:
   course:
@@ -40,7 +41,7 @@ slots:
     initial_value: "initial"
   university:
     type: text
-    initial_value: "initial"
+    initial_value: "University Concordia"
   course_title:
     type: text
     initial_value: "initial"
