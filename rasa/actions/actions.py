@@ -231,6 +231,8 @@ class subj_by_title(Action):
 
         title = tracker.slots['course_title']
         subj = tracker.slots['subject']
+        print(title, '\t', subj)
+
         # print(f"{title}: {subj}")
         get = SELECT_fuseki(load_query("q10.2.txt") % (title))
 
