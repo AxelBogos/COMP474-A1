@@ -78,8 +78,15 @@ a1_schema:HasLecture
     a            rdf:Property ;
     rdfs:label   "Class has lecture"@en ;
     rdfs:comment "A Lecture is part of a particular Class"@en ;
-    rdfs:domain  a1_schema:Lecture ;
-    rdfs:range   a1_schema:Course .
+    rdfs:domain  a1_schema:Course ;
+    rdfs:range   a1_schema:Lecture .
+
+a1_schema:HasCourseEvent
+    a            rdf:Property ;
+    rdfs:label   "Class has Course Event"@en ;
+    rdfs:comment "A Course Event is part of a particular Class"@en ;
+    rdfs:domain  a1_schema:Course ;
+    rdfs:range   a1_schema:Lecture .
 
 a1_schema:RelatedToLecture
     a            rdf:Property ;
@@ -135,11 +142,4 @@ a1_schema:HasMaterial
     rdfs:label   "Lecture Material"@en ;
     rdfs:comment "Material of a lecture"@en ;
     rdfs:domain  a1_schema:CourseEvent ;
-    rdfs:range   a1_schema:LectureMaterial .
-
-a1_schema:LectureEventHasMaterial
-    a            rdf:Property ;
-    rdfs:label   "Lecture Material"@en ;
-    rdfs:comment "Material of a lecture"@en ;
-    rdfs:domain  a1_schema:Lecture ;
     rdfs:range   a1_schema:LectureMaterial .
