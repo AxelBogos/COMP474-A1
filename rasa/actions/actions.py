@@ -15,6 +15,7 @@ class Action_topic_of_lecture(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
          
+        event=similarity(tracker.slots['event'])
         Query=load_query("q1.txt")
         Query=Query % (tracker.slots['course'],tracker.slots['lecture_number'])
         Answers=SELECT_fuseki(Query)

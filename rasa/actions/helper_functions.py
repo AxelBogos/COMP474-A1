@@ -3,6 +3,7 @@ from rdflib import Graph,URIRef, RDFS
 import spacy
 import os
 import time
+import numpy as np
 dir_path= os.path.abspath(os.path.join('A1','A1_Queries'))
 nlp = spacy.load('en_core_web_lg')
 nlp.add_pipe('dbpedia_spotlight')
@@ -57,7 +58,18 @@ def generate_dbpedia_entities(file_txt):
 
     return out
 
-
+def similatiry(word):
+    ref= 'lab lecture tutorial'
+    ref_tokens = nlp(ref)
+    input_token = nlp(word)
+    result=[]
+    for token in ref_tokens:
+        result.append(token.similarity(input_token))
+    result=np.array(result)
+    i=np.argmax(result)
+    s=ref.split()
+    return s[i]
+    
 #x = generate_dbpedia_entities("Concordia")
 
 #print(x)

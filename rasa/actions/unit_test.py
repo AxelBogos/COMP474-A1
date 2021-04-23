@@ -14,5 +14,5 @@ def test_q1(course,number):
         print(message)
 
 
-
-test_q1("COMP474",2)
+similatiry("lab")
+#test_q1("COMP474",2)
