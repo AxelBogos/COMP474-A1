@@ -210,8 +210,14 @@ nlu:
   examples: |
     - Is [Intelligent Systems](course_title) a [COMP](subject) course?
     - Which subject is [Intelligent Systems](course_title)?
+    - Which subject is [Computational Fluid Dynamics for Aerospace Applications](course_title)?
     - Whats the course subject of [Advanced Database Design](course_title)?
     - Is [Advanced Program Design in C++](course_title) a [COMP](subject) class?
     - Is [Databases](course_title) a [SOEN](subject) class?
+    - Is [Fraud Prevention & Investigation](course_title) a [SOCI](subject) class?
+    - Is [Evaluating Adult Learning Projects](course_title) a [EXCI](subject) class?
+    - Is [Gas Turbine Design](course_title) a [COMP](subject) course?
+    - Is [Flight Control Systems](course_title) a [AERO](subject) class?
+
 
 
