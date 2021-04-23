@@ -4,7 +4,7 @@ import spacy
 import os
 import time
 import numpy as np
-dir_path= os.path.abspath(os.path.join('A1','A1_Queries'))
+dir_path= os.path.abspath(os.path.join('..','A1','A1_Queries'))
 nlp = spacy.load('en_core_web_lg')
 nlp.add_pipe('dbpedia_spotlight')
 
