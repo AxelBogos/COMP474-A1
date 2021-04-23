@@ -41,11 +41,14 @@ slots:
     initial_value: "initial"
   university:
     type: text
-    initial_value: "University Concordia"
+    initial_value: "Concordia"
   course_title:
     type: text
     initial_value: "initial"
   subject:
+    type: text
+    initial_value: "initial"
+  event:
     type: text
     initial_value: "initial"
   
